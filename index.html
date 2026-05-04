@@ -525,6 +525,40 @@
       }
 
       /*
+       * Remove button for each selected spicchio in the "I tuoi spicchi" section.
+       * This circular button contains an × symbol and sits in the top‑right
+       * corner of the order card. When clicked, it removes the corresponding
+       * product from the order. The styling echoes the existing pin‑hole
+       * embellishment but uses a larger size and colour transitions for
+       * interaction feedback. Accessibility is addressed via focus and hover
+       * styles.
+       */
+      .order-card__remove {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 6;
+        width: 24px;
+        height: 24px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 50%;
+        color: var(--clove-purple);
+        background: var(--clove-white);
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .order-card__remove:hover,
+      .order-card__remove:focus {
+        background: var(--clove-purple);
+        color: var(--clove-cream);
+      }
+
+      /*
        * Enlarge the image for spicchio n2 in the order view. The previous
        * sizing made the photo appear noticeably smaller than the others. By
        * increasing both the maximum width and height and scaling it up slightly
@@ -1170,9 +1204,22 @@
            meta.className = "order-card__meta";
            meta.textContent = formatPrice(product.price);
 
-           // Append the elements to the card: title, linked image, and meta
-           card.append(title, link, meta);
-           orderGrid.append(card);
+          // Create a button to remove the product from the order.
+          const removeBtn = document.createElement("button");
+          removeBtn.className = "order-card__remove";
+          removeBtn.setAttribute("aria-label", `Rimuovi ${product.title}`);
+          removeBtn.textContent = "×";
+          removeBtn.addEventListener("click", (event) => {
+            // Prevent click from bubbling up to other handlers
+            event.stopPropagation();
+            selected.delete(product.id);
+            updateSelectionCount();
+            renderOrder();
+          });
+
+          // Append the elements to the card: title, linked image, meta, and remove button
+          card.append(title, link, meta, removeBtn);
+          orderGrid.append(card);
         });
 
         const total = chosen.reduce((sum, product) => sum + product.price, 0);
