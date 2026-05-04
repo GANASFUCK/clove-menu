@@ -524,10 +524,20 @@
         background: var(--clove-cream);
       }
 
+      /*
+       * Enlarge the image for spicchio n2 in the order view. The previous
+       * sizing made the photo appear noticeably smaller than the others. By
+       * increasing both the maximum width and height and scaling it up slightly
+       * more, the "NUMERO 2" slice is now consistent with the rest of the
+       * selection. Adjust these values further if needed to better fit the
+       * layout.
+       */
       .order-card[data-product-id="n2"] .order-card__img {
-        max-width: 104%;
-        max-height: 134px;
-        transform: scale(1.16);
+        /* Allow the image to occupy a larger portion of its container */
+        max-width: 120%;
+        max-height: 160px;
+        /* Slightly larger scale to compensate for the photo composition */
+        transform: scale(1.3);
       }
 
       .order-card__logo {
@@ -782,7 +792,8 @@
     <main class="app-shell">
       <header class="menu-header" aria-label="Header menu">
         <a class="brand-logo" href="#menu-view" aria-label="Clove">
-          <img class="brand-logo__img" src="img/logo-clove-purple.png" alt="">
+          <!-- Use the provided Clove logo without the img/ prefix because images are served from the repository root -->
+          <img class="brand-logo__img" src="logo-clove-purple.png" alt="">
         </a>
         <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
           <span class="menu-link__label" data-menu-button-label>VAI AI TUOI SPICCHI</span>
@@ -1006,13 +1017,23 @@
           const visual = document.createElement("div");
           visual.className = "product-visual";
 
+          // Create the product image element
           const image = document.createElement("img");
           image.className = "product-photo";
           image.dataset.parallax = "photo";
+          // Use menuImage if defined; otherwise fall back to the original image
           image.src = product.menuImage || product.image;
           image.alt = product.alt;
+          // Load the first image eagerly for better UX; others can be lazy loaded
           image.loading = index === 0 || product.eager ? "eager" : "lazy";
           image.decoding = "async";
+
+          // Wrap the image in an anchor so clicking the product photo opens the full image
+          const link = document.createElement("a");
+          link.href = product.image;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.append(image);
 
           const arrowWrap = document.createElement("div");
           arrowWrap.className = "visual-arrow";
@@ -1025,7 +1046,8 @@
           arrow.setAttribute("aria-hidden", "true");
 
           arrowWrap.append(arrow);
-          visual.append(image, arrowWrap);
+          // Append the link (containing the image) and arrow to the visual container
+          visual.append(link, arrowWrap);
 
           const price = document.createElement("div");
           price.className = "price";
@@ -1105,19 +1127,28 @@
           title.className = `order-card__title${product.title.length > 10 ? " is-small" : ""}`;
           title.textContent = product.title;
 
-          const image = document.createElement("img");
-          image.className = "order-card__img";
-          image.src = product.image;
-          image.alt = product.alt;
-          image.loading = "lazy";
-          image.decoding = "async";
+           // Create the product image for the order card
+           const image = document.createElement("img");
+           image.className = "order-card__img";
+           image.src = product.image;
+           image.alt = product.alt;
+           image.loading = "lazy";
+           image.decoding = "async";
 
-          const meta = document.createElement("p");
-          meta.className = "order-card__meta";
-          meta.textContent = formatPrice(product.price);
+           // Wrap the order image in a link to open the full-size image in a new tab
+           const link = document.createElement("a");
+           link.href = product.image;
+           link.target = "_blank";
+           link.rel = "noopener noreferrer";
+           link.append(image);
 
-          card.append(title, image, meta);
-          orderGrid.append(card);
+           const meta = document.createElement("p");
+           meta.className = "order-card__meta";
+           meta.textContent = formatPrice(product.price);
+
+           // Append the elements to the card: title, linked image, and meta
+           card.append(title, link, meta);
+           orderGrid.append(card);
         });
 
         const total = chosen.reduce((sum, product) => sum + product.price, 0);
