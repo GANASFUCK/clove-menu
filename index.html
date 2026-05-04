@@ -540,6 +540,22 @@
         transform: scale(1.3);
       }
 
+      /*
+       * Enlarge the Mini Supplì image in the order view. The updated
+       * photo provided by the client includes generous white margins
+       * around the trio of rice balls on a skewer. Without special
+       * handling, the default sizing makes the preview look much smaller
+       * than the other menu items. To better match the design shown in
+       * the provided mockup, we allow the image to extend beyond its
+       * container and scale it up slightly. Adjust the values below if
+       * further tuning is needed.
+       */
+      .order-card[data-product-id="mini-suppli"] .order-card__img {
+        max-width: 120%;
+        max-height: 160px;
+        transform: scale(1.25);
+      }
+
       .order-card__logo {
         display: none;
       }
@@ -921,11 +937,19 @@
         {
           id: "mini-suppli",
           title: "MINI SUPPLÌ",
-          ingredients: ["CLASSICO  /  CACIO E PEPE  /", "POMODORO E BASILICO"],
+          // Aggiorniamo i mini supplì con una ricetta rivisitata: guacamole, passion fruit
+          // e gambero rosso. Le immagini sono state sostituite con le nuove versioni
+          // che mostrano il tris sullo spiedino per la vista completa (image) e una
+          // versione più ravvicinata per l'anteprima (menuImage).
+          ingredients: [
+            "GUACAMOLE DI AVOCADO  /  PASSION FRUIT  /",
+            "PEPE ROSA E LIME  /  GAMBERO ROSSO DI MAZARA  /",
+            "OLIO EVO  /  POLVERE DI CARAPACE"
+          ],
           price: 300,
-          image: "MINI_SUPPLI_menu.png",
-          menuImage: "MINI_SUPPLI_cut.png",
-          alt: "Tris di mini supplì",
+          image: "MINI_SUPPLI_cut.png",
+          menuImage: "MINI_SUPPLI_menu.png",
+          alt: "Tris di mini supplì con guacamole, gambero rosso e passion fruit",
           imageClass: "is-portrait is-mini-suppli",
           eager: true
         },
