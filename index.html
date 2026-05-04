@@ -953,36 +953,34 @@
           const visual = document.createElement("div");
           visual.className = "product-visual";
 
-          
-// Create the product image element
-const image = document.createElement("img");
-image.className = "product-photo";
-image.dataset.parallax = "photo";
-image.src = product.image;
-image.alt = product.alt;
-image.loading = index === 0 ? "eager" : "lazy";
-image.decoding = "async";
+          // Wrap the product image in a link so clicking the image opens it
+          const link = document.createElement("a");
+          link.href = product.image;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          const image = document.createElement("img");
+          image.className = "product-photo";
+          image.dataset.parallax = "photo";
+          image.src = product.image;
+          image.alt = product.alt;
+          image.loading = index === 0 ? "eager" : "lazy";
+          image.decoding = "async";
+          // Append image to its link wrapper
+          link.append(image);
 
-// Wrap the image in an anchor so that clicking it opens the full image
-const link = document.createElement("a");
-link.href = product.image;
-// open in the same tab; users can long-press to download if they wish
-link.append(image);
+          const arrowWrap = document.createElement("div");
+          arrowWrap.className = "visual-arrow";
+          arrowWrap.setAttribute("aria-hidden", "true");
 
-const arrowWrap = document.createElement("div");
-arrowWrap.className = "visual-arrow";
-arrowWrap.setAttribute("aria-hidden", "true");
+          const arrow = document.createElement("img");
+          arrow.className = "scroll-arrow";
+          arrow.src = "img/FRECCIA.svg";
+          arrow.alt = "";
+          arrow.setAttribute("aria-hidden", "true");
 
-const arrow = document.createElement("img");
-arrow.className = "scroll-arrow";
-arrow.src = "img/FRECCIA.svg";
-arrow.alt = "";
-arrow.setAttribute("aria-hidden", "true");
-
-arrowWrap.append(arrow);
-// Append the link (with the image) and arrow to the visual container
-visual.append(link, arrowWrap);
-
+          arrowWrap.append(arrow);
+          // Append the link (containing the image) and arrowWrap to the visual container
+          visual.append(link, arrowWrap);
 
           const price = document.createElement("div");
           price.className = "price";
@@ -1062,18 +1060,25 @@ visual.append(link, arrowWrap);
           title.className = `order-card__title${product.title.length > 10 ? " is-small" : ""}`;
           title.textContent = product.title;
 
+          // Wrap the order image in a link so clicking the image opens it
+          const linkImage = document.createElement("a");
+          linkImage.href = product.image;
+          linkImage.target = "_blank";
+          linkImage.rel = "noopener noreferrer";
           const image = document.createElement("img");
           image.className = "order-card__img";
           image.src = product.image;
           image.alt = product.alt;
           image.loading = "lazy";
           image.decoding = "async";
+          linkImage.append(image);
 
           const meta = document.createElement("p");
           meta.className = "order-card__meta";
           meta.textContent = formatPrice(product.price);
 
-          card.append(title, image, meta);
+          // Append the title, linkImage (image inside link) and meta to the card
+          card.append(title, linkImage, meta);
           orderGrid.append(card);
         });
 
