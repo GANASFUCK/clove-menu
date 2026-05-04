@@ -63,15 +63,10 @@
       .brand-logo {
         display: grid;
         place-items: center start;
-        width: 92px;
-        height: 22px;
+        width: 96px;
+        height: 23px;
         color: var(--clove-purple);
-        font-size: 25px;
-        font-weight: 900;
-        line-height: 0.8;
-        letter-spacing: 0;
         text-decoration: none;
-        transform: scaleX(0.82);
         transform-origin: left center;
       }
 
@@ -204,6 +199,16 @@
         --photo-width: min(84vw, 390px);
       }
 
+      .product-section.is-mini-suppli {
+        --photo-width: min(106vw, 620px);
+        --photo-height: 430px;
+      }
+
+      .product-section.is-gianduia {
+        --photo-width: min(94vw, 488px);
+        --photo-height: 382px;
+      }
+
       .product-section.is-n2 {
         --photo-width: min(93vw, 438px);
         --photo-height: 314px;
@@ -269,6 +274,31 @@
       .product-section.is-n2 .product-photo.is-visible {
         top: 72%;
         transform: translate(-50%, -50%) scale(1.34);
+      }
+
+      .product-section.is-mini-suppli .product-visual,
+      .product-section.is-gianduia .product-visual {
+        overflow: hidden;
+      }
+
+      .product-section.is-mini-suppli .product-photo,
+      .product-section.is-mini-suppli .product-photo.is-visible {
+        width: min(106vw, 620px);
+        max-width: none;
+        max-height: none;
+        top: 50%;
+        transform: translate(-50%, -55%) scale(1);
+        filter: none;
+      }
+
+      .product-section.is-gianduia .product-photo,
+      .product-section.is-gianduia .product-photo.is-visible {
+        width: min(93vw, 488px);
+        max-width: none;
+        max-height: none;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        filter: none;
       }
 
       .visual-arrow {
@@ -659,8 +689,8 @@
         }
 
         .brand-logo {
-          width: 82px;
-          height: 20px;
+          width: 86px;
+          height: 21px;
         }
 
         .menu-link {
@@ -680,6 +710,26 @@
 
         .product-section.is-portrait {
           --photo-width: min(84vw, 350px);
+        }
+
+        .product-section.is-mini-suppli {
+          --photo-width: min(106vw, 430px);
+          --photo-height: 372px;
+        }
+
+        .product-section.is-mini-suppli .product-photo,
+        .product-section.is-mini-suppli .product-photo.is-visible {
+          width: min(106vw, 430px);
+        }
+
+        .product-section.is-gianduia {
+          --photo-width: min(92vw, 380px);
+          --photo-height: 328px;
+        }
+
+        .product-section.is-gianduia .product-photo,
+        .product-section.is-gianduia .product-photo.is-visible {
+          width: min(92vw, 380px);
         }
 
         .product-section.is-n2 {
@@ -732,7 +782,7 @@
     <main class="app-shell">
       <header class="menu-header" aria-label="Header menu">
         <a class="brand-logo" href="#menu-view" aria-label="Clove">
-          CLOVE
+          <img class="brand-logo__img" src="img/logo-clove-purple.png" alt="">
         </a>
         <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
           <span class="menu-link__label" data-menu-button-label>VAI AI TUOI SPICCHI</span>
@@ -863,8 +913,10 @@
           ingredients: ["CLASSICO  /  CACIO E PEPE  /", "POMODORO E BASILICO"],
           price: 300,
           image: "img/MINI_SUPPLI_menu.png",
+          menuImage: "img/MINI_SUPPLI_cut.png",
           alt: "Tris di mini supplì",
-          imageClass: "is-portrait"
+          imageClass: "is-portrait is-mini-suppli",
+          eager: true
         },
         {
           id: "polpettine",
@@ -900,7 +952,8 @@
           price: 450,
           image: "img/GIANDUIA_cut.png",
           alt: "Dolce con cioccolato gianduia, zucchero a velo e granella di nocciola",
-          imageClass: "is-dessert"
+          imageClass: "is-dessert is-gianduia",
+          eager: true
         }
       ];
 
@@ -953,19 +1006,25 @@
           const visual = document.createElement("div");
           visual.className = "product-visual";
 
-          // Wrap the product image in a link so clicking the image opens it
+          // Create a link wrapper for the product image so that clicking
+          // the photo opens the full image in a new tab. Without this
+          // wrapper the image itself would not be clickable.
           const link = document.createElement("a");
           link.href = product.image;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
+
+          // Create the image element that will be displayed in the menu.
           const image = document.createElement("img");
           image.className = "product-photo";
           image.dataset.parallax = "photo";
-          image.src = product.image;
+          // Use the menu-specific image if provided, otherwise fall back to the main image.
+          image.src = product.menuImage || product.image;
           image.alt = product.alt;
-          image.loading = index === 0 ? "eager" : "lazy";
+          image.loading = index === 0 || product.eager ? "eager" : "lazy";
           image.decoding = "async";
-          // Append image to its link wrapper
+
+          // Append the image into its link wrapper.
           link.append(image);
 
           const arrowWrap = document.createElement("div");
@@ -979,7 +1038,7 @@
           arrow.setAttribute("aria-hidden", "true");
 
           arrowWrap.append(arrow);
-          // Append the link (containing the image) and arrowWrap to the visual container
+          // Append the link (containing the image) and the arrow to the visual container
           visual.append(link, arrowWrap);
 
           const price = document.createElement("div");
@@ -1060,24 +1119,28 @@
           title.className = `order-card__title${product.title.length > 10 ? " is-small" : ""}`;
           title.textContent = product.title;
 
-          // Wrap the order image in a link so clicking the image opens it
+          // Create a link wrapper for the order image so that clicking
+          // the photo opens the full image in a new tab. This improves
+          // accessibility when reviewing the selected items.
           const linkImage = document.createElement("a");
           linkImage.href = product.image;
           linkImage.target = "_blank";
           linkImage.rel = "noopener noreferrer";
+
           const image = document.createElement("img");
           image.className = "order-card__img";
           image.src = product.image;
           image.alt = product.alt;
           image.loading = "lazy";
           image.decoding = "async";
+          // Append the image into its link wrapper.
           linkImage.append(image);
 
           const meta = document.createElement("p");
           meta.className = "order-card__meta";
           meta.textContent = formatPrice(product.price);
 
-          // Append the title, linkImage (image inside link) and meta to the card
+          // Append the title, wrapped image and meta information to the card
           card.append(title, linkImage, meta);
           orderGrid.append(card);
         });
