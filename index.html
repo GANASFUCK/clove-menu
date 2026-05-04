@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Clove - Menu</title>
+    <meta name="description" content="Menu digitale Clove.">
+    <meta property="og:title" content="Clove - Menu">
+    <meta property="og:description" content="Spicchi, fritti e dolci Clove.">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;800;900&family=Syne:wght@400;500;600;700&display=swap");
+
+      :root {
+        --clove-purple: #5c2a80;
+        --clove-cream: #f2eee9;
+        --clove-cream-light: #fbf8f3;
+        --clove-white: #fffefa;
+        --header-height: 78px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-family: "Obviously", "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .app-shell {
+        min-height: 100svh;
+        overflow-x: clip;
+        background: var(--clove-cream);
+      }
+
+      .menu-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 0 23px 0 25px;
+        background: var(--clove-cream);
+        border-bottom: 1.5px solid var(--clove-purple);
+      }
+
+      .brand-logo {
+        display: block;
+        width: 92px;
+        height: 22px;
+        text-decoration: none;
+      }
+
+      .brand-logo__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .menu-link {
+        width: clamp(168px, 45vw, 188px);
+        min-width: 0;
+        min-height: 34px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        padding: 5px 13px 7px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: right center;
+        cursor: pointer;
+        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .menu-link__label {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: clip;
+        white-space: nowrap;
+        transform: translateY(1px);
+      }
+
+      .menu-link.is-filled {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .order-count {
+        min-width: 19px;
+        height: 19px;
+        padding: 1px 5px 0;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        background: currentColor;
+        color: var(--clove-cream);
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1;
+        transform: translateY(1px) scale(1);
+        transform-origin: center;
+      }
+
+      .menu-link.is-filled .order-count {
+        background: var(--clove-white);
+        color: var(--clove-purple);
+      }
+
+      .order-count[hidden] {
+        display: none;
+      }
+
+      .order-count.is-bouncing {
+        animation: order-count-bounce 360ms cubic-bezier(0.2, 0.9, 0.2, 1.2);
+      }
+
+      @keyframes order-count-bounce {
+        0% {
+          transform: translateY(1px) scale(0.86);
+        }
+
+        48% {
+          transform: translateY(1px) scale(1.24);
+        }
+
+        100% {
+          transform: translateY(1px) scale(1);
+        }
+      }
+
+      .menu-link:active {
+        transform: scaleX(0.82) scale(0.965);
+      }
+
+      .view {
+        display: block;
+      }
+
+      .view[hidden] {
+        display: none;
+      }
+
+      .product-section {
+        --photo-width: min(84vw, 390px);
+        --photo-height: 274px;
+        --title-size: clamp(106px, 28.5vw, 154px);
+        position: relative;
+        min-height: calc(100svh - var(--header-height));
+        scroll-margin-top: var(--header-height);
+        padding: 52px 18px 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1.5px solid rgba(92, 42, 128, 0.18);
+      }
+
+      .product-section.is-portrait {
+        --photo-width: min(84vw, 390px);
+        --photo-height: 274px;
+      }
+
+      .product-section.is-wide {
+        --photo-width: min(84vw, 390px);
+      }
+
+      .product-section.is-dessert {
+        --photo-width: min(84vw, 390px);
+      }
+
+      .product-section.is-n2 {
+        --photo-width: min(93vw, 438px);
+        --photo-height: 314px;
+      }
+
+      .product-title {
+        position: relative;
+        z-index: 1;
+        width: max-content;
+        max-width: none;
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: var(--title-size);
+        font-weight: 900;
+        line-height: 0.77;
+        letter-spacing: 0;
+        text-align: center;
+        white-space: nowrap;
+        transform: scaleX(0.72);
+        transform-origin: center;
+        will-change: transform;
+      }
+
+      .product-title.is-word {
+        --title-size: clamp(62px, 17vw, 96px);
+        width: max-content;
+        white-space: nowrap;
+        line-height: 0.78;
+      }
+
+      .product-title.is-long {
+        --title-size: clamp(56px, 15.5vw, 86px);
+      }
+
+      .product-visual {
+        position: relative;
+        width: 100%;
+        min-height: var(--photo-height);
+        margin-top: 0;
+      }
+
+      .product-photo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        width: auto;
+        height: auto;
+        max-width: var(--photo-width);
+        max-height: var(--photo-height);
+        object-fit: contain;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: drop-shadow(0 17px 15px rgba(43, 14, 88, 0.05));
+      }
+
+      .product-photo.is-visible {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .product-section.is-n2 .product-photo,
+      .product-section.is-n2 .product-photo.is-visible {
+        top: 72%;
+        transform: translate(-50%, -50%) scale(1.34);
+      }
+
+      .visual-arrow {
+        position: absolute;
+        z-index: 3;
+        right: clamp(24px, 8vw, 48px);
+        top: 50%;
+        transform: translateY(-42%) scaleX(1.2);
+        transform-origin: center;
+        pointer-events: none;
+      }
+
+      .product-section.is-portrait .visual-arrow {
+        right: clamp(24px, 8vw, 48px);
+        top: 50%;
+      }
+
+      .price {
+        width: max-content;
+        margin-top: -6px;
+        color: var(--clove-purple);
+        font-size: clamp(44px, 12vw, 62px);
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: 0;
+        text-align: center;
+        transform: scaleX(0.78);
+      }
+
+      .scroll-arrow {
+        width: 30px;
+        height: 122px;
+        object-fit: contain;
+      }
+
+      .ingredients {
+        width: min(100%, 520px);
+        margin: 8px auto 0;
+        color: var(--clove-purple);
+        font-size: clamp(17px, 4.55vw, 24px);
+        font-weight: 500;
+        line-height: 1.03;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+      }
+
+      .mark-button,
+      .order-link,
+      .back-button {
+        align-self: center;
+        min-width: 224px;
+        min-height: 54px;
+        margin-top: 19px;
+        padding: 6px 39px 8px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 31px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+        cursor: pointer;
+        transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .mark-button:active,
+      .order-link:active,
+      .back-button:active {
+        transform: scale(0.965);
+      }
+
+      .mark-button.is-selected,
+      .order-link {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .order-cta-section {
+        min-height: calc(60svh - var(--header-height));
+        padding: 64px 18px 72px;
+        display: grid;
+        place-items: center;
+      }
+
+      .order-link {
+        width: min(86vw, 380px);
+        text-decoration: none;
+      }
+
+      .order-page {
+        min-height: calc(100svh - var(--header-height));
+        padding: 37px 17px 118px;
+      }
+
+      .order-title {
+        width: max-content;
+        max-width: none;
+        margin: 0 auto 28px;
+        color: var(--clove-purple);
+        font-size: clamp(49px, 13vw, 76px);
+        font-weight: 900;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-align: center;
+        white-space: nowrap;
+        transform: scaleX(0.72);
+      }
+
+      .order-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .order-card {
+        position: relative;
+        min-height: 205px;
+        padding: 14px 9px 13px;
+        display: grid;
+        grid-template-rows: 28px 1fr auto;
+        align-items: center;
+        justify-items: center;
+        overflow: hidden;
+        background: var(--clove-cream-light);
+        border: 1.5px solid var(--clove-purple);
+      }
+
+      .order-card[data-product-id="n2"] .order-card__img {
+        max-width: 104%;
+        max-height: 134px;
+        transform: scale(1.16);
+      }
+
+      .order-card__logo {
+        position: absolute;
+        top: 10px;
+        left: 9px;
+        width: 44px;
+        height: auto;
+      }
+
+      .order-card__title {
+        z-index: 1;
+        margin: 0;
+        align-self: start;
+        color: var(--clove-purple);
+        font-size: 25px;
+        font-weight: 900;
+        line-height: 0.85;
+        letter-spacing: 0;
+        text-align: center;
+        white-space: nowrap;
+        transform: scaleX(0.78);
+      }
+
+      .order-card__title.is-small {
+        font-size: 21px;
+      }
+
+      .order-card__img {
+        max-width: 92%;
+        max-height: 118px;
+        object-fit: contain;
+        filter: drop-shadow(0 9px 10px rgba(43, 14, 88, 0.05));
+      }
+
+      .order-card__meta {
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: scaleX(0.82);
+      }
+
+      .empty-order {
+        margin: 44px auto;
+        max-width: 300px;
+        color: var(--clove-purple);
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 0.95;
+        text-align: center;
+        transform: scaleX(0.8);
+      }
+
+      .total-bar {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 40;
+        display: none;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .order-page:not([hidden]) .total-bar {
+        display: flex;
+      }
+
+      .total-bar__inner {
+        width: min(100%, 558px);
+        min-height: 78px;
+        padding: 16px 22px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        pointer-events: auto;
+      }
+
+      .total-label,
+      .total-value {
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 0.85;
+        letter-spacing: 0;
+        transform: scaleX(0.78);
+      }
+
+      .back-button {
+        width: min(86vw, 360px);
+        margin: 28px auto 0;
+        display: block;
+        background: transparent;
+      }
+
+      @media (max-width: 374px) {
+        .menu-header {
+          gap: 12px;
+          padding-right: 15px;
+          padding-left: 20px;
+        }
+
+        .brand-logo {
+          width: 82px;
+          height: 20px;
+        }
+
+        .menu-link {
+          width: 166px;
+          min-height: 32px;
+          gap: 6px;
+          padding-right: 9px;
+          padding-left: 9px;
+          font-size: 15px;
+        }
+
+        .product-section {
+          --photo-width: min(84vw, 350px);
+          padding-right: 12px;
+          padding-left: 12px;
+        }
+
+        .product-section.is-portrait {
+          --photo-width: min(84vw, 350px);
+        }
+
+        .product-section.is-n2 {
+          --photo-width: min(91vw, 360px);
+          --photo-height: 296px;
+        }
+
+        .product-title {
+          --title-size: 96px;
+        }
+
+        .product-title.is-word {
+          --title-size: 58px;
+        }
+
+        .product-title.is-long {
+          --title-size: 52px;
+        }
+
+        .order-grid {
+          gap: 10px;
+        }
+
+        .order-card {
+          min-height: 190px;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .product-title:not(.is-word) {
+          --title-size: clamp(92px, 26vw, 104px);
+        }
+      }
+
+      @media (min-width: 520px) {
+        .app-shell {
+          width: 558px;
+          margin: 0 auto;
+          border-right: 1px solid rgba(92, 42, 128, 0.12);
+          border-left: 1px solid rgba(92, 42, 128, 0.12);
+        }
+
+        .product-section {
+          min-height: 721px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="menu-header" aria-label="Header menu">
+        <a class="brand-logo" href="#menu-view" aria-label="Clove">
+          <img class="brand-logo__img" src="img/logo-clove-purple.png" alt="Clove">
+        </a>
+        <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
+          <span class="menu-link__label" data-menu-button-label>VAI AI TUOI SPICCHI</span>
+          <span class="order-count" data-order-count hidden>0</span>
+        </button>
+      </header>
+
+      <section class="view" id="menu-view" aria-label="Menu Clove">
+        <div id="product-list"></div>
+        <section class="order-cta-section" aria-label="Vai al tuo ordine">
+          <button class="order-link" type="button" data-open-order>IL TUO ORDINE →</button>
+        </section>
+      </section>
+
+      <section class="view order-page" id="order-view" aria-label="Il tuo ordine" hidden>
+        <h1 class="order-title">IL TUO ORDINE:</h1>
+        <div class="order-grid" id="order-grid"></div>
+        <p class="empty-order" id="empty-order" hidden>NESSUN PRODOTTO SEGNATO</p>
+        <button class="back-button" type="button" data-back-menu>TORNA AL MENÙ</button>
+        <div class="total-bar" aria-live="polite">
+          <div class="total-bar__inner">
+            <span class="total-label">TOTALE:</span>
+            <span class="total-value" id="total-value">0,00€</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const products = [
+        {
+          id: "n1",
+          title: "NUMERO 1",
+          ingredients: ["CAPOCOLLO DI MARTINA FRANCA  /", "STRACCIATELLA  /  OLIVA TAGGIASCA"],
+          price: 350,
+          image: "img/NUMERO_1_cut.png",
+          alt: "Spicchio Numero 1 con capocollo, stracciatella e oliva taggiasca",
+          imageClass: "is-wide"
+        },
+        {
+          id: "n2",
+          title: "NUMERO 2",
+          ingredients: ["MELANZANA ARROSTO  /  CREMA DI POMODORO", "STRACCIATELLA  /  PARMIGIANO  /  BASILICO", "CRUMBLE DI PANE"],
+          price: 350,
+          image: "img/NUMERO_2_cut.png",
+          alt: "Spicchio Numero 2 con melanzana arrosto e stracciatella",
+          imageClass: "is-n2"
+        },
+        {
+          id: "n3",
+          title: "NUMERO 3",
+          ingredients: ["ZUCCHINE ALLA SCAPECE  /  JULIENNE DI CAROTE ARROSTO  /", "RICOTTA ARTIGIANALE"],
+          price: 350,
+          image: "img/NUMERO_3_cut.png",
+          alt: "Spicchio Numero 3 con zucchine alla scapece e ricotta artigianale",
+          imageClass: "is-wide"
+        },
+        {
+          id: "n4",
+          title: "NUMERO 4",
+          ingredients: ["SCAROLA RIPASSATA  /  OLIVE TAGGIASCHE  /  UVETTA  /", "PINOLI  /  HUMMUS DI CANNELLINI"],
+          price: 350,
+          image: "img/NUMERO_4_cut.png",
+          alt: "Spicchio Numero 4 con scarola, olive, uvetta, pinoli e hummus"
+        },
+        {
+          id: "n5",
+          title: "NUMERO 5",
+          ingredients: ["GUANCIALE AFFUMICATO AL LEGNO DI FAGGIO  /  STRACCIATELLA PUGLIESE  /", "TARTUFO  /  POMODORINO CARAMELLATO"],
+          price: 350,
+          image: "img/NUMERO_5_menu.png",
+          alt: "Spicchio Numero 5 con guanciale, tartufo e pomodorino caramellato",
+          imageClass: "is-wide"
+        },
+        {
+          id: "n6",
+          title: "NUMERO 6",
+          ingredients: ["JAMON COCIDO 100% IBERICO BEHER  /  STRACCIATELLA PUGLIESE  /", "OLIO EVO  /  MISTICANZA DI ERBE SPONTANEE"],
+          price: 450,
+          image: "img/NUMERO_6_cut.png",
+          alt: "Spicchio Numero 6 con jamon iberico e stracciatella"
+        },
+        {
+          id: "n7",
+          title: "NUMERO 7",
+          ingredients: ["PROSCIUTTO DI PARMA 30 MESI SAN GIACOMO  /", "STRACCIATELLA"],
+          price: 450,
+          image: "img/NUMERO_7_cut.png",
+          alt: "Spicchio Numero 7 con Prosciutto di Parma e stracciatella"
+        },
+        {
+          id: "n8",
+          title: "NUMERO 8",
+          ingredients: ["ROAST BEEF  /  PATATA DOLCE  /  SALSA TONNATA  /", "POMODORINO SEMI DRY  /  MISTICANZA"],
+          price: 450,
+          image: "img/NUMERO_8_cut.png",
+          alt: "Spicchio Numero 8 con roast beef, patata dolce e salsa tonnata",
+          imageClass: "is-wide"
+        },
+        {
+          id: "n9",
+          title: "NUMERO 9",
+          ingredients: ["GAMBERO ROSSO DI MAZARA DEL VALLO  /  AVOCADO  /", "FRUTTO DELLA PASSIONE  /  LIME  /  PEPE ROSA"],
+          price: 450,
+          image: "img/NUMERO_9_cut.png",
+          alt: "Spicchio Numero 9 con gambero rosso, avocado e frutto della passione"
+        },
+        {
+          id: "n10",
+          title: "NUMERO 10",
+          ingredients: ["GUACAMOLE AVOCADO E POMODORO  /", "CARPACCIO DI RICCIOLA MARINATO CON JALAPENO  /", "FRUTTO DELLA PASSIONE E TARTUFO  /  PEPE BIANCO  /  OLIO EVO"],
+          price: 450,
+          image: "img/NUMERO_10_cut.png",
+          alt: "Spicchio Numero 10 con guacamole, ricciola, passion fruit e tartufo"
+        },
+        {
+          id: "polpette-veg",
+          title: "POLPETTE VEG",
+          ingredients: ["PATATA DOLCE  /  CECI  /  ZENZERO  /", "MAIONESE ALLA CURCUMA"],
+          price: 300,
+          image: "img/POLPETTE_VEG_cut.png",
+          alt: "Polpette vegetali con maionese alla curcuma",
+          imageClass: "is-dessert"
+        },
+        {
+          id: "mini-suppli",
+          title: "MINI SUPPLÌ",
+          ingredients: ["CLASSICO  /  CACIO E PEPE  /", "POMODORO E BASILICO"],
+          price: 300,
+          image: "img/MINI_SUPPLI_menu.png",
+          alt: "Tris di mini supplì",
+          imageClass: "is-portrait"
+        },
+        {
+          id: "polpettine",
+          title: "POLPETTINE",
+          ingredients: ["POLPETTINE DI CARNE E OLIVE  /", "MAIONESE ALLE OLIVE"],
+          price: 400,
+          image: "img/POLPETTINE_menu.png",
+          alt: "Polpettine di carne e olive con maionese alle olive",
+          imageClass: "is-wide"
+        },
+        {
+          id: "pasticcera",
+          title: "PASTICCERA",
+          ingredients: ["CREMA PASTICCERA  /  CARAMELLO  /", "ZUCCHERO A VELO"],
+          price: 450,
+          image: "img/PASTICCERA_cut.png",
+          alt: "Dolce con crema pasticcera, caramello e zucchero a velo",
+          imageClass: "is-dessert"
+        },
+        {
+          id: "crema-latte",
+          title: "CREMA LATTE",
+          ingredients: ["CREMA DI LATTE ALLA VANIGLIA  /  CARAMELLO  /", "ZUCCHERO A VELO"],
+          price: 450,
+          image: "img/CREMA_LATTE_cut.png",
+          alt: "Dolce con crema di latte alla vaniglia, caramello e zucchero a velo",
+          imageClass: "is-dessert"
+        },
+        {
+          id: "gianduia",
+          title: "GIANDUIA",
+          ingredients: ["CIOCCOLATO GIANDUIA  /  ZUCCHERO A VELO  /", "GRANELLA DI NOCCIOLA"],
+          price: 450,
+          image: "img/GIANDUIA_cut.png",
+          alt: "Dolce con cioccolato gianduia, zucchero a velo e granella di nocciola",
+          imageClass: "is-dessert"
+        }
+      ];
+
+      const selected = new Set();
+      const menuView = document.querySelector("#menu-view");
+      const orderView = document.querySelector("#order-view");
+      const productList = document.querySelector("#product-list");
+      const orderGrid = document.querySelector("#order-grid");
+      const emptyOrder = document.querySelector("#empty-order");
+      const totalValue = document.querySelector("#total-value");
+      const menuButton = document.querySelector("[data-menu-button]");
+      const menuButtonLabel = document.querySelector("[data-menu-button-label]");
+      const orderCount = document.querySelector("[data-order-count]");
+      const openOrderButton = document.querySelector("[data-open-order]");
+      const backButton = document.querySelector("[data-back-menu]");
+      let previousSelectedSize = 0;
+
+      function formatPrice(cents) {
+        return `${(cents / 100).toFixed(2).replace(".", ",")}€`;
+      }
+
+      function titleClass(product) {
+        const classes = ["product-title"];
+        if (!product.title.startsWith("NUMERO")) classes.push("is-word");
+        if (product.title.length > 12) classes.push("is-long");
+        return classes.join(" ");
+      }
+
+      function sectionClass(product) {
+        return ["product-section", product.imageClass].filter(Boolean).join(" ");
+      }
+
+      function renderProducts() {
+        const fragment = document.createDocumentFragment();
+
+        products.forEach((product, index) => {
+          const section = document.createElement("section");
+          section.className = sectionClass(product);
+          section.id = product.id;
+          section.setAttribute("aria-labelledby", `product-title-${product.id}`);
+          section.dataset.productId = product.id;
+
+          const title = document.createElement("h1");
+          title.className = titleClass(product);
+          title.id = `product-title-${product.id}`;
+          title.dataset.parallax = "title";
+          title.textContent = product.title;
+
+          const visual = document.createElement("div");
+          visual.className = "product-visual";
+
+          const image = document.createElement("img");
+          image.className = "product-photo";
+          image.dataset.parallax = "photo";
+          image.src = product.image;
+          image.alt = product.alt;
+          image.loading = index === 0 ? "eager" : "lazy";
+          image.decoding = "async";
+
+          const arrowWrap = document.createElement("div");
+          arrowWrap.className = "visual-arrow";
+          arrowWrap.setAttribute("aria-hidden", "true");
+
+          const arrow = document.createElement("img");
+          arrow.className = "scroll-arrow";
+          arrow.src = "img/FRECCIA.svg";
+          arrow.alt = "";
+          arrow.setAttribute("aria-hidden", "true");
+
+          arrowWrap.append(arrow);
+          visual.append(image, arrowWrap);
+
+          const price = document.createElement("div");
+          price.className = "price";
+          price.setAttribute("aria-label", `Prezzo ${formatPrice(product.price)}`);
+          price.textContent = formatPrice(product.price);
+
+          const ingredients = document.createElement("p");
+          ingredients.className = "ingredients";
+          product.ingredients.forEach((line, lineIndex) => {
+            if (lineIndex > 0) ingredients.append(document.createElement("br"));
+            ingredients.append(document.createTextNode(line));
+          });
+
+          const button = document.createElement("button");
+          button.className = "mark-button";
+          button.type = "button";
+          button.textContent = "SEGNA";
+          button.setAttribute("aria-pressed", "false");
+          button.dataset.productId = product.id;
+
+          section.append(title, visual, price, ingredients, button);
+          fragment.append(section);
+        });
+
+        productList.append(fragment);
+      }
+
+      function updateButtons() {
+        document.querySelectorAll(".mark-button").forEach((button) => {
+          const isSelected = selected.has(button.dataset.productId);
+          button.classList.toggle("is-selected", isSelected);
+          button.setAttribute("aria-pressed", String(isSelected));
+        });
+        updateHeaderButton();
+      }
+
+      function updateHeaderButton() {
+        const isOrderOpen = !orderView.hidden;
+        const selectedSize = selected.size;
+
+        if (isOrderOpen) {
+          menuButtonLabel.textContent = "MENÙ";
+          menuButton.setAttribute("aria-label", "Torna al menu");
+          menuButton.classList.remove("is-filled");
+          orderCount.hidden = true;
+          previousSelectedSize = selectedSize;
+          return;
+        }
+
+        menuButtonLabel.textContent = "VAI AI TUOI SPICCHI";
+        menuButton.setAttribute("aria-label", "Vai ai tuoi spicchi");
+        menuButton.classList.toggle("is-filled", selectedSize > 0);
+        orderCount.textContent = selectedSize;
+        orderCount.hidden = selectedSize === 0;
+
+        if (selectedSize > previousSelectedSize) {
+          orderCount.classList.remove("is-bouncing");
+          void orderCount.offsetWidth;
+          orderCount.classList.add("is-bouncing");
+        }
+
+        previousSelectedSize = selectedSize;
+      }
+
+      function renderOrder() {
+        orderGrid.textContent = "";
+        const chosen = products.filter((product) => selected.has(product.id));
+        emptyOrder.hidden = chosen.length > 0;
+
+        chosen.forEach((product) => {
+          const card = document.createElement("article");
+          card.className = "order-card";
+          card.dataset.productId = product.id;
+
+          const logo = document.createElement("img");
+          logo.className = "order-card__logo";
+          logo.src = "img/logo-clove-purple.png";
+          logo.alt = "";
+          logo.setAttribute("aria-hidden", "true");
+
+          const title = document.createElement("h2");
+          title.className = `order-card__title${product.title.length > 10 ? " is-small" : ""}`;
+          title.textContent = product.title;
+
+          const image = document.createElement("img");
+          image.className = "order-card__img";
+          image.src = product.image;
+          image.alt = product.alt;
+          image.loading = "lazy";
+          image.decoding = "async";
+
+          const meta = document.createElement("p");
+          meta.className = "order-card__meta";
+          meta.textContent = formatPrice(product.price);
+
+          card.append(logo, title, image, meta);
+          orderGrid.append(card);
+        });
+
+        const total = chosen.reduce((sum, product) => sum + product.price, 0);
+        totalValue.textContent = formatPrice(total);
+      }
+
+      function showOrder() {
+        renderOrder();
+        menuView.hidden = true;
+        orderView.hidden = false;
+        updateHeaderButton();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showMenu() {
+        orderView.hidden = true;
+        menuView.hidden = false;
+        updateHeaderButton();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function setupReveal() {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll(".product-photo").forEach((image) => revealObserver.observe(image));
+      }
+
+      let ticking = false;
+
+      function applyParallax() {
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(applyParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      productList.addEventListener("click", (event) => {
+        const button = event.target.closest(".mark-button");
+        if (!button) return;
+
+        if (selected.has(button.dataset.productId)) {
+          selected.delete(button.dataset.productId);
+        } else {
+          selected.add(button.dataset.productId);
+        }
+
+        updateButtons();
+      });
+
+      menuButton.addEventListener("click", () => {
+        if (orderView.hidden) {
+          showOrder();
+        } else {
+          showMenu();
+        }
+      });
+      openOrderButton.addEventListener("click", showOrder);
+      backButton.addEventListener("click", showMenu);
+
+      renderProducts();
+      setupReveal();
+      updateHeaderButton();
+      applyParallax();
+
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        target?.scrollIntoView();
+      }
+    </script>
+  </body>
+</html>
