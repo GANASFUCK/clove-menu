@@ -61,10 +61,18 @@
       }
 
       .brand-logo {
-        display: block;
+        display: grid;
+        place-items: center start;
         width: 92px;
         height: 22px;
+        color: var(--clove-purple);
+        font-size: 25px;
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: 0;
         text-decoration: none;
+        transform: scaleX(0.82);
+        transform-origin: left center;
       }
 
       .brand-logo__img {
@@ -357,13 +365,33 @@
 
       .order-page {
         min-height: calc(100svh - var(--header-height));
-        padding: 37px 17px 118px;
+        position: relative;
+        padding: 40px 17px 76px;
+        overflow: hidden;
+      }
+
+      .order-page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(rgba(92, 42, 128, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 42, 128, 0.055) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: linear-gradient(to bottom, transparent, #000 11%, #000 88%, transparent);
+        pointer-events: none;
+      }
+
+      .order-page > * {
+        position: relative;
+        z-index: 1;
       }
 
       .order-title {
         width: max-content;
         max-width: none;
-        margin: 0 auto 28px;
+        margin: 0 auto 34px;
         color: var(--clove-purple);
         font-size: clamp(49px, 13vw, 76px);
         font-weight: 900;
@@ -374,23 +402,96 @@
         transform: scaleX(0.72);
       }
 
+      .order-title::after {
+        content: "SEGNATI";
+        position: absolute;
+        right: -18px;
+        bottom: -21px;
+        padding: 3px 11px 5px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: rotate(-7deg) scaleX(0.86);
+      }
+
       .order-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+        gap: 17px 13px;
+        padding: 4px 0 0;
       }
 
       .order-card {
         position: relative;
-        min-height: 205px;
-        padding: 14px 9px 13px;
+        min-height: 218px;
+        padding: 48px 9px 15px;
         display: grid;
-        grid-template-rows: 28px 1fr auto;
+        grid-template-rows: 1fr auto;
         align-items: center;
         justify-items: center;
-        overflow: hidden;
-        background: var(--clove-cream-light);
+        overflow: visible;
+        background: var(--clove-white);
+        border: 1.5px solid rgba(92, 42, 128, 0.42);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.05);
+        isolation: isolate;
+        transform: rotate(-1.4deg);
+      }
+
+      .order-card:nth-child(2n) {
+        transform: rotate(1.2deg);
+      }
+
+      .order-card:nth-child(3n) {
+        transform: rotate(-0.6deg);
+      }
+
+      .order-card::before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: 50%;
+        z-index: 5;
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(92, 42, 128, 0.3);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 31% 28%, rgba(255, 255, 255, 0.72) 0 13%, transparent 14%),
+          radial-gradient(circle at 58% 64%, #5c2a80 0 58%, #4a206a 59% 100%);
+        box-shadow:
+          4px 6px 0 rgba(92, 42, 128, 0.08),
+          1px 3px 5px rgba(43, 14, 88, 0.13);
+        transform: translateX(-50%);
+      }
+
+      .order-card::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        z-index: 4;
+        width: 3px;
+        height: 13px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #bbb8b3 0 38%, #fbf8f3 39% 62%, #9f9d99 63% 100%);
+        box-shadow: 3px 5px 0 rgba(92, 42, 128, 0.04);
+        transform: translateX(-50%) rotate(8deg);
+        transform-origin: top center;
+      }
+
+      .order-card__pin-hole {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 10px;
         border: 1.5px solid var(--clove-purple);
+        border-radius: 50%;
+        background: var(--clove-cream);
       }
 
       .order-card[data-product-id="n2"] .order-card__img {
@@ -400,39 +501,44 @@
       }
 
       .order-card__logo {
-        position: absolute;
-        top: 10px;
-        left: 9px;
-        width: 44px;
-        height: auto;
+        display: none;
       }
 
       .order-card__title {
+        position: absolute;
+        top: 40px;
+        left: 50%;
         z-index: 1;
+        width: max-content;
         margin: 0;
-        align-self: start;
         color: var(--clove-purple);
-        font-size: 25px;
+        font-size: 44px;
         font-weight: 900;
-        line-height: 0.85;
+        line-height: 0.78;
         letter-spacing: 0;
         text-align: center;
         white-space: nowrap;
-        transform: scaleX(0.78);
+        pointer-events: none;
+        transform: translateX(-50%) scaleX(0.72);
       }
 
       .order-card__title.is-small {
-        font-size: 21px;
+        font-size: 32px;
       }
 
       .order-card__img {
-        max-width: 92%;
-        max-height: 118px;
+        position: relative;
+        z-index: 2;
+        max-width: 98%;
+        max-height: 129px;
+        margin-top: 11px;
         object-fit: contain;
         filter: drop-shadow(0 9px 10px rgba(43, 14, 88, 0.05));
       }
 
       .order-card__meta {
+        position: relative;
+        z-index: 3;
         margin: 0;
         color: var(--clove-purple);
         font-size: 24px;
@@ -442,7 +548,7 @@
       }
 
       .empty-order {
-        margin: 44px auto;
+        margin: 48px auto 34px;
         max-width: 300px;
         color: var(--clove-purple);
         font-size: 30px;
@@ -450,48 +556,97 @@
         line-height: 0.95;
         text-align: center;
         transform: scaleX(0.8);
+        padding: 30px 18px;
+        border: 1.5px solid rgba(92, 42, 128, 0.45);
+        background: var(--clove-white);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.05);
       }
 
       .total-bar {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 40;
+        position: static;
+        width: min(100%, 520px);
+        margin: 44px auto 0;
         display: none;
         justify-content: center;
-        pointer-events: none;
+        pointer-events: auto;
+      }
+
+      .total-bar[hidden] {
+        display: none;
       }
 
       .order-page:not([hidden]) .total-bar {
         display: flex;
       }
 
+      .order-page:not([hidden]) .total-bar[hidden] {
+        display: none;
+      }
+
       .total-bar__inner {
-        width: min(100%, 558px);
-        min-height: 78px;
-        padding: 16px 22px 18px;
+        width: min(100%, 390px);
+        min-height: 0;
+        position: relative;
+        padding: 20px 20px 8px;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        background: var(--clove-purple);
-        color: var(--clove-white);
+        justify-content: center;
+        gap: 4px;
+        border: 0;
+        background: transparent;
+        color: var(--clove-purple);
         pointer-events: auto;
+        transform: rotate(1deg);
+      }
+
+      .total-bar__inner::before {
+        content: "TOT";
+        position: absolute;
+        top: 70px;
+        right: clamp(44px, 18%, 78px);
+        left: auto;
+        padding: 3px 10px 5px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: rotate(-8deg) scaleX(0.86);
+      }
+
+      .total-bar__inner::after {
+        content: "";
+        width: min(78%, 286px);
+        height: 1.5px;
+        margin-top: 4px;
+        background: var(--clove-purple);
+        transform: rotate(-1deg);
       }
 
       .total-label,
       .total-value {
-        font-size: 38px;
         font-weight: 900;
         line-height: 0.85;
         letter-spacing: 0;
         transform: scaleX(0.78);
       }
 
+      .total-label {
+        color: var(--clove-purple);
+        font-size: clamp(36px, 10vw, 54px);
+      }
+
+      .total-value {
+        color: var(--clove-purple);
+        font-size: clamp(72px, 20vw, 112px);
+      }
+
       .back-button {
         width: min(86vw, 360px);
-        margin: 28px auto 0;
+        margin: 34px auto 0;
         display: block;
         background: transparent;
       }
@@ -577,7 +732,7 @@
     <main class="app-shell">
       <header class="menu-header" aria-label="Header menu">
         <a class="brand-logo" href="#menu-view" aria-label="Clove">
-          <img class="brand-logo__img" src="img/logo-clove-purple.png" alt="Clove">
+          CLOVE
         </a>
         <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
           <span class="menu-link__label" data-menu-button-label>VAI AI TUOI SPICCHI</span>
@@ -587,22 +742,22 @@
 
       <section class="view" id="menu-view" aria-label="Menu Clove">
         <div id="product-list"></div>
-        <section class="order-cta-section" aria-label="Vai al tuo ordine">
-          <button class="order-link" type="button" data-open-order>IL TUO ORDINE →</button>
+        <section class="order-cta-section" aria-label="Vai ai tuoi spicchi">
+          <button class="order-link" type="button" data-open-order>I TUOI SPICCHI →</button>
         </section>
       </section>
 
-      <section class="view order-page" id="order-view" aria-label="Il tuo ordine" hidden>
-        <h1 class="order-title">IL TUO ORDINE:</h1>
+      <section class="view order-page" id="order-view" aria-label="I tuoi spicchi" hidden>
+        <h1 class="order-title">I TUOI SPICCHI</h1>
         <div class="order-grid" id="order-grid"></div>
-        <p class="empty-order" id="empty-order" hidden>NESSUN PRODOTTO SEGNATO</p>
-        <button class="back-button" type="button" data-back-menu>TORNA AL MENÙ</button>
+        <p class="empty-order" id="empty-order" hidden>ANCORA NIENTE SEGNATO</p>
         <div class="total-bar" aria-live="polite">
           <div class="total-bar__inner">
             <span class="total-label">TOTALE:</span>
             <span class="total-value" id="total-value">0,00€</span>
           </div>
         </div>
+        <button class="back-button" type="button" data-back-menu>TORNA AL MENÙ</button>
       </section>
     </main>
 
@@ -755,6 +910,7 @@
       const productList = document.querySelector("#product-list");
       const orderGrid = document.querySelector("#order-grid");
       const emptyOrder = document.querySelector("#empty-order");
+      const totalBar = document.querySelector(".total-bar");
       const totalValue = document.querySelector("#total-value");
       const menuButton = document.querySelector("[data-menu-button]");
       const menuButtonLabel = document.querySelector("[data-menu-button-label]");
@@ -797,26 +953,36 @@
           const visual = document.createElement("div");
           visual.className = "product-visual";
 
-          const image = document.createElement("img");
-          image.className = "product-photo";
-          image.dataset.parallax = "photo";
-          image.src = product.image;
-          image.alt = product.alt;
-          image.loading = index === 0 ? "eager" : "lazy";
-          image.decoding = "async";
+          
+// Create the product image element
+const image = document.createElement("img");
+image.className = "product-photo";
+image.dataset.parallax = "photo";
+image.src = product.image;
+image.alt = product.alt;
+image.loading = index === 0 ? "eager" : "lazy";
+image.decoding = "async";
 
-          const arrowWrap = document.createElement("div");
-          arrowWrap.className = "visual-arrow";
-          arrowWrap.setAttribute("aria-hidden", "true");
+// Wrap the image in an anchor so that clicking it opens the full image
+const link = document.createElement("a");
+link.href = product.image;
+// open in the same tab; users can long-press to download if they wish
+link.append(image);
 
-          const arrow = document.createElement("img");
-          arrow.className = "scroll-arrow";
-          arrow.src = "img/FRECCIA.svg";
-          arrow.alt = "";
-          arrow.setAttribute("aria-hidden", "true");
+const arrowWrap = document.createElement("div");
+arrowWrap.className = "visual-arrow";
+arrowWrap.setAttribute("aria-hidden", "true");
 
-          arrowWrap.append(arrow);
-          visual.append(image, arrowWrap);
+const arrow = document.createElement("img");
+arrow.className = "scroll-arrow";
+arrow.src = "img/FRECCIA.svg";
+arrow.alt = "";
+arrow.setAttribute("aria-hidden", "true");
+
+arrowWrap.append(arrow);
+// Append the link (with the image) and arrow to the visual container
+visual.append(link, arrowWrap);
+
 
           const price = document.createElement("div");
           price.className = "price";
@@ -885,17 +1051,12 @@
         orderGrid.textContent = "";
         const chosen = products.filter((product) => selected.has(product.id));
         emptyOrder.hidden = chosen.length > 0;
+        totalBar.hidden = chosen.length === 0;
 
         chosen.forEach((product) => {
           const card = document.createElement("article");
           card.className = "order-card";
           card.dataset.productId = product.id;
-
-          const logo = document.createElement("img");
-          logo.className = "order-card__logo";
-          logo.src = "img/logo-clove-purple.png";
-          logo.alt = "";
-          logo.setAttribute("aria-hidden", "true");
 
           const title = document.createElement("h2");
           title.className = `order-card__title${product.title.length > 10 ? " is-small" : ""}`;
@@ -912,7 +1073,7 @@
           meta.className = "order-card__meta";
           meta.textContent = formatPrice(product.price);
 
-          card.append(logo, title, image, meta);
+          card.append(title, image, meta);
           orderGrid.append(card);
         });
 
