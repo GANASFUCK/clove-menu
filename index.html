@@ -1,60 +1,2574 @@
 <!doctype html>
 <html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Clove - Menu</title>
-<meta name="description" content="Menu digitale Clove Roma. Segna i tuoi spicchi e mostra il conto al banco.">
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;800;900&display=swap");
-:root{--purple:#5c2a80;--cream:#f2eee9;--paper:#fffefa;--red:#d64332;--line:rgba(92,42,128,.22);--h:78px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:#e9e3dc;color:var(--purple);font-family:Obviously,"Barlow Condensed","Arial Narrow",Arial,sans-serif;-webkit-font-smoothing:antialiased}button{font:inherit;color:inherit}.shell{width:min(100%,558px);min-height:100svh;margin:0 auto;background:var(--cream);border-left:1px solid rgba(92,42,128,.12);border-right:1px solid rgba(92,42,128,.12);overflow:hidden}.top{position:sticky;top:0;z-index:50;height:var(--h);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 22px;background:rgba(242,238,233,.94);backdrop-filter:blur(14px);border-bottom:2px solid var(--purple)}.logo{width:102px;height:25px;object-fit:contain}.topbtn{min-width:154px;min-height:38px;padding:6px 18px;border:2px solid var(--purple);border-radius:999px;background:transparent;font-size:20px;font-weight:900;line-height:.9;text-transform:uppercase;transform:scaleX(.82);cursor:pointer}.topbtn.full{background:var(--purple);color:var(--paper)}.count{display:inline-grid;place-items:center;min-width:21px;height:21px;margin-left:7px;border-radius:50%;background:currentColor;color:var(--cream);font-size:13px;transform:scaleX(1.22)}.full .count{background:var(--paper);color:var(--purple)}.count:empty{display:none}.tabs{position:sticky;top:var(--h);z-index:45;display:flex;gap:10px;padding:12px 16px;background:rgba(242,238,233,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;padding:8px 19px 10px;border:2px solid var(--purple);border-radius:999px;background:transparent;font-size:22px;font-weight:900;line-height:1;text-decoration:none;text-transform:uppercase;transform:scaleX(.82);transform-origin:left;color:var(--purple)}.tab.active{background:var(--purple);color:var(--paper)}.info{padding:28px 38px 20px;border-bottom:2px solid rgba(92,42,128,.18)}.info-row{display:flex;justify-content:space-between;gap:16px;padding:9px 0 10px;border-top:1.5px solid var(--purple);font-size:23px;font-weight:900;line-height:1;text-transform:uppercase}.info-row:last-child{border-bottom:1.5px solid var(--purple)}.info a{color:var(--purple);text-decoration:none}.section-label{margin:0;padding:52px 18px 8px;font-size:16px;font-weight:900;text-align:center;text-transform:uppercase;letter-spacing:0}.product{position:relative;min-height:calc(100svh - var(--h));padding:52px 16px 44px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;border-bottom:1px solid rgba(92,42,128,.16);scroll-margin-top:calc(var(--h) + 62px)}.product h2{position:relative;z-index:1;width:max-content;margin:0 auto;color:var(--purple);font-size:clamp(90px,25.5vw,148px);font-weight:900;line-height:.78;letter-spacing:0;text-align:center;text-transform:uppercase;white-space:nowrap;transform:scaleX(.72);transform-origin:center;transition:transform .18s ease}.product.is-long h2{font-size:clamp(58px,16vw,86px)}.product img.food{z-index:2;width:min(86vw,420px);height:310px;margin:-10px auto 0;object-fit:contain;filter:drop-shadow(0 18px 17px rgba(43,14,88,.05));transition:transform .25s ease}.product:nth-of-type(2n) img.food{transform:translateY(3px) rotate(.5deg)}.price{margin:-4px auto 4px;font-size:clamp(50px,14vw,70px);font-weight:900;line-height:.82;text-align:center;transform:scaleX(.78)}.desc{width:min(100%,500px);margin:5px auto 0;font-size:clamp(21px,5.7vw,27px);font-weight:500;line-height:1.02;text-align:center;text-transform:uppercase;transform:scaleX(.82)}.segna{min-width:232px;min-height:58px;margin-top:22px;padding:8px 44px;border:2px solid var(--purple);border-radius:999px;background:transparent;font-size:34px;font-weight:900;line-height:.9;text-transform:uppercase;transform:scaleX(.84);cursor:pointer}.segna.on{background:var(--purple);color:var(--paper)}.qty{display:none;align-items:center;width:min(82vw,320px);height:54px;margin-top:16px;border:3px solid var(--purple);border-radius:999px;overflow:hidden}.product.has-qty .qty{display:flex}.product.has-qty .segna{display:none}.qty button,.qty b{height:100%;display:grid;place-items:center;font-size:34px;font-weight:900}.qty button{width:29%;border:0;background:var(--paper);cursor:pointer}.qty b{width:42%;background:var(--purple);color:var(--paper)}.simple-section{padding:48px 22px 54px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--h) + 62px)}.simple-section h2,.order h1{margin:0 0 24px;font-size:clamp(58px,15vw,88px);font-weight:900;line-height:.8;text-align:center;text-transform:uppercase;white-space:nowrap;transform:scaleX(.72)}.list{display:grid;gap:12px}.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:15px 0;border-top:1.5px solid var(--purple);font-size:24px;font-weight:900;text-transform:uppercase;line-height:.95}.row:last-child{border-bottom:1.5px solid var(--purple)}.row small{display:block;margin-top:5px;font-size:16px;font-weight:500;line-height:1;text-transform:uppercase}.money{font-size:29px;font-weight:900;white-space:nowrap}.badge{display:inline-flex;align-items:center;margin:0 7px 5px 0;padding:4px 8px 5px;border:1.5px solid var(--purple);border-radius:999px;font-size:13px;font-weight:900;line-height:.9}.order-cta{padding:58px 18px 72px;display:grid;place-items:center}.bigbtn{width:min(88vw,390px);min-height:64px;border:0;border-radius:999px;background:var(--purple);color:var(--paper);font-size:34px;font-weight:900;text-transform:uppercase;line-height:.9;transform:scaleX(.84);cursor:pointer}.order{min-height:calc(100svh - var(--h));position:relative;padding:52px 18px 78px;overflow:hidden}.order:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(92,42,128,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(92,42,128,.055) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,transparent,#000 10%,#000 90%,transparent);pointer-events:none}.order>*{position:relative}.order h1{margin-bottom:40px}.order h1:after{content:"SEGNATI";display:inline-block;margin-left:-25px;padding:5px 12px;border:2px solid var(--purple);border-radius:999px;background:var(--cream);font-size:19px;line-height:.9;transform:rotate(-8deg) scaleX(.84)}.hint{width:min(92%,420px);margin:-14px auto 28px;font-size:24px;font-weight:700;line-height:1;text-align:center;text-transform:uppercase;transform:scaleX(.82)}.order-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 13px}.card{position:relative;min-height:220px;padding:47px 9px 15px;display:grid;grid-template-rows:1fr auto;align-items:center;justify-items:center;background:var(--paper);border:1.5px solid rgba(92,42,128,.42);box-shadow:0 10px 0 rgba(92,42,128,.05);transform:rotate(-1.2deg)}.card:nth-child(2n){transform:rotate(1.1deg)}.card:before{content:"";position:absolute;top:-11px;left:50%;z-index:2;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 31% 28%,rgba(255,255,255,.72) 0 13%,transparent 14%),var(--purple);box-shadow:4px 6px 0 rgba(92,42,128,.08),1px 3px 5px rgba(43,14,88,.13);transform:translateX(-50%)}.card h3{position:absolute;top:39px;left:50%;z-index:1;width:max-content;margin:0;font-size:40px;font-weight:900;line-height:.78;text-transform:uppercase;white-space:nowrap;transform:translateX(-50%) scaleX(.72)}.card h3.small{font-size:29px}.card img{z-index:2;max-width:104%;max-height:126px;object-fit:contain;filter:drop-shadow(0 9px 10px rgba(43,14,88,.05))}.card p{z-index:3;margin:0;font-size:25px;font-weight:900;line-height:.9;transform:scaleX(.82)}.remove{position:absolute;right:8px;top:8px;z-index:3;width:25px;height:25px;border:1.5px solid var(--purple);border-radius:50%;background:var(--paper);font-size:18px;font-weight:900;line-height:1;cursor:pointer}.total{width:min(100%,390px);margin:44px auto 0;text-align:center}.total span{display:block;font-size:clamp(37px,10vw,56px);font-weight:900;line-height:.85;text-transform:uppercase;transform:scaleX(.78)}.total b{display:block;margin-top:2px;font-size:clamp(78px,21vw,116px);font-weight:900;line-height:.82;transform:scaleX(.78)}.copy-note{display:none;margin:24px auto 0;padding:13px 20px;border:2px solid var(--purple);border-radius:999px;background:transparent;font-size:24px;font-weight:900;text-transform:uppercase;line-height:.9;transform:scaleX(.84)}.copy-note.show{display:block}.empty{margin:50px auto 28px;max-width:310px;padding:30px 18px;background:var(--paper);border:1.5px solid rgba(92,42,128,.45);box-shadow:0 10px 0 rgba(92,42,128,.05);font-size:30px;font-weight:900;line-height:.95;text-align:center;text-transform:uppercase;transform:scaleX(.82)}.toast{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:30px;background:var(--purple);color:var(--paper);font-size:clamp(58px,16vw,95px);font-weight:900;line-height:.82;text-align:center;text-transform:uppercase;transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.86,.2,1);pointer-events:none}.toast.show{transform:translateY(0)}.float{position:fixed;right:max(16px,calc((100vw - 558px)/2 + 18px));bottom:86px;z-index:60;width:48px;height:130px;border:0;background:transparent;padding:0;cursor:pointer;animation:float 2.7s ease-in-out infinite;transition:filter .2s ease,transform .2s ease}.float img{width:100%;height:100%;object-fit:contain}.float:after{content:"SU";position:absolute;right:2px;top:-24px;padding:5px 8px;border:1.5px solid var(--red);border-radius:999px;background:var(--cream);color:var(--red);font-size:14px;font-weight:900;line-height:.9;opacity:0;transform:translateY(8px) rotate(-7deg);transition:.2s}.float.bottom{filter:sepia(1) saturate(5) hue-rotate(325deg) brightness(.95)}.float.bottom:after{opacity:1;transform:translateY(0) rotate(-7deg)}.float.up{animation:none;transform:rotate(180deg) translateY(5px)}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}.hidden{display:none!important}@media(max-width:374px){.top{padding:0 17px}.logo{width:88px}.topbtn{min-width:142px;font-size:17px}.product h2{font-size:88px}.product.is-long h2{font-size:50px}.product img.food{height:285px}.desc{font-size:20px}.order-grid{gap:11px}.card{min-height:198px}.card h3{font-size:35px}.card h3.small{font-size:26px}}
-</style>
-</head>
-<body>
-<div class="shell">
-<header class="top"><img class="logo" src="logo-clove-purple.png" alt="Clove"><button class="topbtn" id="orderBtn">I TUOI SPICCHI <span class="count" id="count"></span></button></header>
-<nav class="tabs" id="tabs"><a class="tab active" href="#spicchi">Spicchi</a><a class="tab" href="#fritti">Fritti</a><a class="tab" href="#dolci">Dolci</a><a class="tab" href="#bevande">Bevande</a><a class="tab" href="#birre">Birre</a><a class="tab" href="#vini">Vini</a></nav>
-<main id="menuView">
-<section class="info"><div class="info-row"><span>Via dei Gracchi 229</span><span>Roma</span></div><div class="info-row"><span>17 Maggio 2026</span><span>100% lievito madre</span></div><div class="info-row"><a href="https://www.instagram.com/clove.roma/">@clove.roma</a><a href="https://www.instagram.com/amaliacostantini/">@amaliacostantini</a></div></section>
-<div id="spicchi"></div><div id="products"></div>
-<section class="simple-section" id="fritti"><h2>Fritti</h2><div class="list" id="fried"></div></section>
-<section class="simple-section" id="dolci"><h2>Dolci</h2><div class="list" id="desserts"></div></section>
-<section class="simple-section" id="bevande"><h2>Bevande</h2><div class="list" id="drinks"></div></section>
-<section class="simple-section" id="birre"><h2>Birre</h2><div class="list" id="beers"></div></section>
-<section class="simple-section" id="vini"><h2>Vini</h2><div class="list" id="wines"></div></section>
-<section class="order-cta"><button class="bigbtn" id="openOrder">Il tuo ordine</button></section>
-</main>
-<section class="order hidden" id="orderView"><h1>I tuoi spicchi</h1><p class="hint">Mostralo al banco o usalo per non perdere il filo.</p><div class="order-grid" id="grid"></div><p class="empty hidden" id="empty">Ancora niente segnato</p><div class="total" id="totalBox"><span>Totale:</span><b id="total">0,00€</b></div><button class="copy-note" id="copyBtn">Copia ordine</button><button class="bigbtn" id="backBtn" style="display:block;margin:34px auto 0;background:transparent;color:var(--purple);border:2px solid var(--purple)">Torna al menu</button></section>
-</div><button class="float" id="arrow" aria-label="Torna su"><img src="FRECCIA.svg" alt=""></button><div class="toast" id="toast">Tieni il conto<br>dei tuoi spicchi</div>
-<script>
-const products=[
-{id:'n1',t:'NUMERO 1',name:'Capocollo',d:'Capocollo di Martina Franca / stracciatella / oliva taggiasca',p:350,img:'NUMERO_1_cut.png'},
-{id:'n2',t:'NUMERO 2',name:'Melanzana',d:'Melanzana arrosto / crema di pomodoro / stracciatella / parmigiano / basilico / crumble di pane',p:350,img:'NUMERO_2_cut.png'},
-{id:'n3',t:'NUMERO 3',name:'Zucchine',d:'Zucchine alla scapece / julienne di carote arrosto / ricotta artigianale',p:350,img:'NUMERO_3_cut.png'},
-{id:'n4',t:'NUMERO 4',name:'Stracciata semi dry',d:'Stracciata / pomodoro semi dry / pesto leggero / basilico',p:350,img:'NUMERO_4_cut.png'},
-{id:'n5',t:'NUMERO 5',name:'Guanciale tartufo',d:'Guanciale affumicato al legno di faggio / stracciatella pugliese / tartufo / pomodorino caramellato',p:350,img:'NUMERO_5_menu.png'},
-{id:'n6',t:'NUMERO 6',name:'Roast Beef',d:'Roast beef / patata dolce / salsa tonnata / pomodorino semi dry / misticanza',p:450,img:'NUMERO_6_cut.png'},
-{id:'n7',t:'NUMERO 7',name:'Prosciutto di Parma',d:'Prosciutto di Parma 30 mesi San Giacomo / stracciatella',p:450,img:'NUMERO_7_cut.png',long:true},
-{id:'n8',t:'NUMERO 8',name:'Ricciola',d:'Carpaccio di ricciola marinato / jalapeno / passion fruit / tartufo / pepe bianco / olio evo',p:450,img:'NUMERO_8_cut.png'},
-{id:'n9',t:'NUMERO 9',name:'Jamon Iberico',d:'Jamon cocido 100% iberico Beher / stracciatella pugliese / olio evo / misticanza di erbe spontanee',p:450,img:'NUMERO_9_cut.png'},
-{id:'n10',t:'NUMERO 10',name:'Gambero',d:'Gambero rosso di Mazara del Vallo / avocado / frutto della passione / lime / pepe rosa',p:450,img:'NUMERO_10_cut.png'}];
-const fried=[{id:'mini-suppli',n:'Mini supplì',d:'Guacamole di avocado / passion fruit / pepe rosa e lime / gambero rosso di Mazara / olio evo / polvere di carapace',p:300,img:'MINI_SUPPLI_menu.png'},{id:'polpette-veg',n:'Polpette veg',d:'Patata dolce / ceci / zenzero / maionese alla curcuma',p:300,img:'POLPETTE_VEG_cut.png'},{id:'polpettine',n:'Polpettine',d:'Polpettine di carne e olive / maionese alle olive',p:400,img:'POLPETTINE_menu.png'}];
-const desserts=[{id:'crema-pasticcera',n:'Crema Pasticcera',d:'Crema pasticcera / caramello / zucchero a velo',p:450,img:'PASTICCERA_cut.png'},{id:'crema-vaniglia',n:'Crema Vaniglia',d:'Crema alla vaniglia / caramello / zucchero a velo',p:450,img:'CREMA_LATTE_cut.png'},{id:'gianduia',n:'Gianduia',d:'Cioccolato gianduia / zucchero a velo / granella di nocciola',p:450,img:'GIANDUIA_cut.png'}];
-const drinks=[['Acqua',200,'50 cl'],['Chinotto',250,''],['Aranciata',250,''],['Limonata',250,''],['Gassosa',250,''],['Coca Cola',250,''],['Coca Cola Zero',250,'']];
-const beers=[['Arbor Ales - My Little Sabrony',600,'IPA'],['Arbor Ales - Mosaic',600,'IPA'],['Arbor Ales - Shangri-La',600,'Session IPA']];
-const wines=[['Ca del Vént - Franciacorta Pas Operé',4000,'Bottiglia'],['Ca del Vént - Blanc de Noirs',4500,'Bottiglia'],['Bianco della casa',600,'Mescita'],['Rosso della casa',600,'Mescita']];
-const order={};const fmt=c=>(c/100).toFixed(2).replace('.',',')+'€';const all=[...products,...fried.map(x=>({id:x.id,t:x.n,name:x.n,d:x.d,p:x.p,img:x.img,long:x.n.length>13})),...desserts.map(x=>({id:x.id,t:x.n,name:x.n,d:x.d,p:x.p,img:x.img,long:x.n.length>13}))];
-function row(item){return `<div class="row"><div>${item[0]}${item[2]?`<small>${item[2]}</small>`:''}</div><div class="money">${fmt(item[1])}</div></div>`}
-function addableRow(x){return `<div class="row"><div>${x.n}<small>${x.d}</small></div><div><button class="segna" style="min-width:96px;min-height:42px;margin:0;font-size:23px;padding:7px 18px" data-add="${x.id}">Segna</button></div></div>`}
-function render(){document.getElementById('products').innerHTML=products.map(x=>`<section class="product ${x.long?'is-long':''}" id="${x.id}"><h2>${x.t}</h2><img class="food" src="${x.img}" alt="${x.name}"><div class="price">${fmt(x.p)}</div><p class="desc">${x.d}</p><button class="segna" data-add="${x.id}">Segna</button><div class="qty"><button data-dec="${x.id}">-</button><b id="q-${x.id}">0</b><button data-add="${x.id}">+</button></div></section>`).join('');document.getElementById('fried').innerHTML=fried.map(addableRow).join('');document.getElementById('desserts').innerHTML=desserts.map(addableRow).join('');document.getElementById('drinks').innerHTML=drinks.map(row).join('');document.getElementById('beers').innerHTML=beers.map(row).join('');document.getElementById('wines').innerHTML=wines.map(x=>`<div class="row"><div><span class="badge">${x[2].toUpperCase()}</span>${x[0]}</div><div class="money">${fmt(x[1])}</div></div>`).join('');sync()}
-function sync(){let n=0,total=0;Object.entries(order).forEach(([id,q])=>{const p=all.find(x=>x.id===id);if(p){n+=q;total+=q*p.p}});document.getElementById('count').textContent=n?String(n):'';document.getElementById('orderBtn').classList.toggle('full',n>0);document.querySelectorAll('.product').forEach(s=>{const q=order[s.id]||0;s.classList.toggle('has-qty',q>0);const b=document.getElementById('q-'+s.id);if(b)b.textContent=q});document.querySelectorAll('[data-add]').forEach(b=>b.classList.toggle('on',(order[b.dataset.add]||0)>0));document.getElementById('total').textContent=fmt(total);renderOrder(n,total)}
-function renderOrder(n,total){const grid=document.getElementById('grid');grid.innerHTML=Object.entries(order).flatMap(([id,q])=>{const p=all.find(x=>x.id===id);return p?Array.from({length:q},()=>`<article class="card"><button class="remove" data-dec="${id}">×</button><h3 class="${p.t.length>10?'small':''}">${p.t}</h3><img src="${p.img}" alt="${p.name}"><p>${fmt(p.p)} × 1</p></article>`):[]}).join('');document.getElementById('empty').classList.toggle('hidden',n>0);document.getElementById('totalBox').classList.toggle('hidden',n===0);document.getElementById('copyBtn').classList.toggle('show',n>0)}
-document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');const d=e.target.closest('[data-dec]');if(a){order[a.dataset.add]=(order[a.dataset.add]||0)+1;sync()}if(d){const id=d.dataset.dec;order[id]=Math.max(0,(order[id]||0)-1);if(!order[id])delete order[id];sync()}});
-function showOrder(){document.getElementById('toast').classList.add('show');setTimeout(()=>{document.getElementById('toast').classList.remove('show');document.getElementById('menuView').classList.add('hidden');document.getElementById('tabs').classList.add('hidden');document.getElementById('orderView').classList.remove('hidden');document.getElementById('orderBtn').textContent='MENÙ';scrollTo({top:0,behavior:'smooth'})},650)}
-function showMenu(){document.getElementById('orderView').classList.add('hidden');document.getElementById('menuView').classList.remove('hidden');document.getElementById('tabs').classList.remove('hidden');document.getElementById('orderBtn').innerHTML='I TUOI SPICCHI <span class="count" id="count"></span>';sync();scrollTo({top:0,behavior:'smooth'})}
-document.getElementById('openOrder').onclick=showOrder;document.getElementById('orderBtn').onclick=()=>document.getElementById('orderView').classList.contains('hidden')?showOrder():showMenu();document.getElementById('backBtn').onclick=showMenu;document.getElementById('copyBtn').onclick=async()=>{const lines=Object.entries(order).map(([id,q])=>{const p=all.find(x=>x.id===id);return p?`${q} x ${p.name} - ${fmt(p.p*q)}`:''}).filter(Boolean);const txt='CLOVE - ordine\n'+lines.join('\n')+'\nTotale: '+document.getElementById('total').textContent;try{await navigator.clipboard.writeText(txt);document.getElementById('copyBtn').textContent='Copiato'}catch{document.getElementById('copyBtn').textContent='Ordine pronto'}};
-const arrow=document.getElementById('arrow');arrow.onclick=()=>{arrow.classList.add('up');scrollTo({top:0,behavior:'smooth'});setTimeout(()=>arrow.classList.remove('up'),900)};addEventListener('scroll',()=>{const bottom=document.documentElement.scrollHeight-innerHeight-scrollY<460&&scrollY>420;arrow.classList.toggle('bottom',bottom);document.querySelectorAll('.product h2').forEach(h=>{const r=h.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)h.style.transform=`scaleX(.72) translateY(${Math.max(-8,Math.min(8,(innerHeight/2-r.top)*.015))}px)`})},{passive:true});
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active')});render();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Clove - Menu</title>
+    <meta name="description" content="Menu digitale Clove. Spicchi, fritti, dolci e bevande.">
+    <meta property="og:title" content="Clove - Menu">
+    <meta property="og:description" content="Segna i tuoi spicchi Clove e componi l'ordine.">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;800;900&family=Syne:wght@400;500;600;700&display=swap");
+
+      :root {
+        --clove-purple: #5c2a80;
+        --clove-purple-deep: #300078;
+        --clove-cream: #f2eee9;
+        --clove-cream-light: #fbfbf3;
+        --clove-white: #fffefa;
+        --clove-line: rgba(92, 42, 128, 0.22);
+        --header-height: 76px;
+        --rail-height: 54px;
+        --app-max-width: 558px;
+        --salumi-pink: #f07848;
+        --avocado-green: #007800;
+        --passion-orange: #d89000;
+        --sweet-potato: #ff7800;
+        --truffle-dark: #180000;
+        --bread-cream: #f0c090;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-family: "Obviously", "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      img {
+        display: block;
+      }
+
+      .app-shell {
+        min-height: 100svh;
+        overflow-x: clip;
+        background: var(--clove-cream);
+      }
+
+      .menu-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 18px;
+        background: var(--clove-cream);
+        border-bottom: 1.5px solid var(--clove-purple);
+      }
+
+      .brand-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 108px;
+        min-width: 82px;
+        height: 26px;
+        color: var(--clove-purple);
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: 0;
+        text-decoration: none;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+      }
+
+      .brand-logo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .header-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .menu-link {
+        min-height: 36px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .menu-link {
+        min-width: clamp(116px, 32vw, 152px);
+        padding: 6px 12px 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        font-size: 17px;
+        transform: scaleX(0.82);
+        transform-origin: right center;
+      }
+
+      .menu-link.is-filled {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .menu-link:active,
+      .mark-button:active,
+      .qty-action:active,
+      .qty-number:active,
+      .category-link:active,
+      .floating-arrow:active {
+        transform: scale(0.965);
+      }
+
+      .menu-link:active {
+        transform: scaleX(0.82) scale(0.965);
+      }
+
+      .order-count {
+        min-width: 19px;
+        height: 19px;
+        padding: 1px 5px 0;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        background: currentColor;
+        color: var(--clove-cream);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .menu-link.is-filled .order-count {
+        background: var(--clove-white);
+        color: var(--clove-purple);
+      }
+
+      .order-count[hidden] {
+        display: none;
+      }
+
+      .category-rail {
+        position: sticky;
+        top: var(--header-height);
+        z-index: 45;
+        height: var(--rail-height);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 8px 0 9px;
+        background: var(--clove-cream);
+        border-bottom: 1px solid var(--clove-line);
+        scroll-padding: 10px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+      }
+
+      .category-rail::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-link {
+        flex: 0 0 auto;
+        min-height: 34px;
+        padding: 7px 11px 8px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        scroll-snap-align: center;
+      }
+
+      .category-link:first-child {
+        margin-left: 10px;
+      }
+
+      .category-link:last-child {
+        margin-right: 10px;
+      }
+
+      .category-link.is-active {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .view {
+        display: block;
+      }
+
+      .view[hidden] {
+        display: none;
+      }
+
+      #menu-view {
+        position: relative;
+        background:
+          linear-gradient(rgba(92, 42, 128, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 42, 128, 0.045) 1px, transparent 1px),
+          var(--clove-cream);
+        background-size: 34px 34px;
+      }
+
+      .service-strip {
+        position: relative;
+        z-index: 1;
+        padding: 18px 18px 12px;
+        border-bottom: 1.5px solid var(--clove-line);
+      }
+
+      .service-strip__line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 7px 0;
+        border-top: 1px solid var(--clove-purple);
+        color: var(--clove-purple);
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1;
+        text-transform: uppercase;
+        overflow: hidden;
+      }
+
+      .service-strip__line:last-child {
+        border-bottom: 1px solid var(--clove-purple);
+      }
+
+      .service-strip__line > * {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .service-strip__line > *:last-child {
+        text-align: right;
+      }
+
+      .service-strip__line a {
+        color: var(--clove-purple);
+        text-decoration: none;
+      }
+
+      .product-section {
+        --accent: var(--clove-purple);
+        --photo-width: min(84vw, 392px);
+        --photo-height: 282px;
+        --title-size: clamp(96px, 26vw, 150px);
+        position: relative;
+        min-height: calc(100svh - var(--header-height) - var(--rail-height));
+        scroll-margin-top: calc(var(--header-height) + var(--rail-height));
+        padding: 36px 18px 34px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1.5px solid var(--clove-line);
+      }
+
+      .product-section.is-wide {
+        --photo-width: min(88vw, 414px);
+      }
+
+      .product-section.is-n2 {
+        --photo-width: min(93vw, 438px);
+        --photo-height: 314px;
+      }
+
+      .product-section.is-dessert {
+        --photo-height: 292px;
+      }
+
+      .product-section.is-fritti {
+        --photo-height: 300px;
+      }
+
+      .product-kicker {
+        --title-float: 0px;
+        width: min(100%, 500px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--clove-purple);
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: translateY(var(--title-float));
+        transition: transform 120ms linear;
+      }
+
+      .product-kicker span {
+        display: inline-block;
+        transform: scaleX(0.82);
+      }
+
+      .product-name {
+        font-size: 19px;
+      }
+
+      .product-name.is-emphasis {
+        font-size: 22px;
+      }
+
+      .product-title {
+        position: relative;
+        z-index: 2;
+        width: max-content;
+        max-width: none;
+        margin: 13px 0 0;
+        color: var(--clove-purple);
+        font-size: var(--title-size);
+        font-weight: 900;
+        line-height: 0.77;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: translateY(var(--title-float, 0px)) scaleX(0.72);
+        transform-origin: center;
+        transition: transform 120ms linear;
+      }
+
+      .product-title.is-word {
+        --title-size: clamp(58px, 16vw, 92px);
+        line-height: 0.8;
+      }
+
+      .product-title.is-long {
+        --title-size: clamp(45px, 12.6vw, 72px);
+      }
+
+      .product-stage {
+        position: relative;
+        width: 100%;
+        min-height: var(--photo-height);
+        margin-top: -2px;
+        display: grid;
+        place-items: center;
+      }
+
+      .product-photo-wrap {
+        position: relative;
+        z-index: 2;
+      }
+
+      .product-photo {
+        width: auto;
+        height: auto;
+        max-width: var(--photo-width);
+        max-height: var(--photo-height);
+        object-fit: contain;
+        filter: drop-shadow(0 18px 18px rgba(48, 0, 120, 0.05));
+        transition: transform 220ms ease;
+      }
+
+      .product-meta {
+        width: min(100%, 492px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: -3px;
+      }
+
+      .price {
+        color: var(--clove-purple);
+        font-size: clamp(42px, 11.5vw, 62px);
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: 0;
+        transform: scaleX(0.78);
+      }
+
+      .ingredients {
+        width: min(100%, 522px);
+        margin: 11px auto 0;
+        color: var(--clove-purple);
+        font-size: clamp(16px, 4.25vw, 23px);
+        font-weight: 500;
+        line-height: 1.03;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+      }
+
+      .product-actions {
+        min-height: 58px;
+        margin-top: 17px;
+        display: grid;
+        place-items: center;
+      }
+
+      .mark-button,
+      .order-link,
+      .back-button,
+      .clear-button {
+        min-height: 54px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .mark-button {
+        min-width: 224px;
+        padding: 6px 39px 8px;
+      }
+
+      .mark-button.is-selected,
+      .order-link {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .qty-control {
+        min-width: min(78vw, 244px);
+        min-height: 54px;
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        overflow: hidden;
+        background: var(--clove-white);
+      }
+
+      .qty-action,
+      .qty-number {
+        height: 100%;
+        border: 0;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .qty-action {
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 17px;
+        transform: scaleX(0.82);
+      }
+
+      .qty-number {
+        display: grid;
+        place-items: center;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .qty-value {
+        transform: scaleX(0.82);
+      }
+
+      .compact-section {
+        scroll-margin-top: calc(var(--header-height) + var(--rail-height));
+        padding: 42px 0 96px;
+        border-bottom: 1.5px solid var(--clove-line);
+      }
+
+      .compact-title {
+        width: max-content;
+        max-width: none;
+        margin: 0 auto 24px;
+        color: var(--clove-purple);
+        font-size: clamp(68px, 18vw, 104px);
+        font-weight: 900;
+        line-height: 0.78;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        transform: translateY(var(--title-float, 0px)) scaleX(0.72);
+        transition: transform 120ms linear;
+      }
+
+      .compact-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .compact-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          "text price"
+          "text action";
+        align-items: start;
+        gap: 10px 12px;
+        padding: 17px 16px 18px;
+        border-top: 1.5px solid var(--clove-purple);
+      }
+
+      .compact-row:last-child {
+        border-bottom: 1.5px solid var(--clove-purple);
+      }
+
+      .compact-row__text {
+        grid-area: text;
+        min-width: 0;
+        align-self: start;
+      }
+
+      .compact-row__name {
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: clamp(22px, 6.2vw, 31px);
+        font-weight: 900;
+        line-height: 0.95;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+        overflow-wrap: anywhere;
+      }
+
+      .compact-row__meta {
+        margin: 6px 0 0;
+        color: var(--clove-purple);
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+        overflow-wrap: anywhere;
+      }
+
+      .compact-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 8px;
+      }
+
+      .compact-row[data-category="vini"] .compact-badges,
+      .compact-row[data-category="cocktail"] .compact-badges {
+        display: none;
+      }
+
+      .compact-badge {
+        padding: 4px 7px 5px;
+        border: 1px solid var(--clove-purple);
+        border-radius: 999px;
+        color: var(--clove-purple);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.86);
+        transform-origin: left center;
+      }
+
+      .compact-price {
+        grid-area: price;
+        justify-self: end;
+        align-self: start;
+        min-width: 76px;
+        padding: 8px 10px 9px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        color: var(--clove-purple);
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 0.9;
+        text-align: center;
+        transform: scaleX(0.78);
+        transform-origin: center;
+      }
+
+      .compact-row__actions {
+        grid-area: action;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .compact-add {
+        min-width: 92px;
+        min-height: 42px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 22px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .compact-add.is-selected {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .compact-quantity {
+        min-width: 112px;
+        min-height: 42px;
+        display: inline-grid;
+        grid-template-columns: 55px 1fr;
+        overflow: hidden;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-white);
+      }
+
+      .compact-quantity button {
+        min-width: 0;
+        border: 0;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .compact-quantity__remove {
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 12px;
+        transform: scaleX(0.82);
+      }
+
+      .compact-quantity__count {
+        display: grid;
+        place-items: center;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 22px;
+      }
+
+      .floating-arrow {
+        --scroll-float: 0px;
+        position: fixed;
+        right: max(10px, calc((100vw - var(--app-max-width)) / 2 + 8px));
+        bottom: calc(72px + env(safe-area-inset-bottom));
+        z-index: 80;
+        width: 38px;
+        height: 134px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        transform: translateY(var(--scroll-float));
+        animation: arrow-breathe 2.9s ease-in-out infinite;
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 260ms ease, filter 220ms ease, transform 260ms ease;
+      }
+
+      .floating-arrow::after {
+        content: "SU";
+        position: absolute;
+        right: 27px;
+        bottom: 7px;
+        padding: 4px 9px 6px;
+        border: 1.5px solid #b94031;
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: #b94031;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 0.9;
+        opacity: 0;
+        transform: rotate(-8deg) scaleX(0.82) translateY(4px);
+        transform-origin: right center;
+        transition: opacity 220ms ease, transform 220ms ease;
+        pointer-events: none;
+      }
+
+      .floating-arrow img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: scaleX(1.18);
+        transition: filter 220ms ease, opacity 220ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .floating-arrow.is-bottom img {
+        filter: sepia(1) saturate(4.6) hue-rotate(322deg) brightness(0.88);
+        opacity: 0.94;
+        transform: rotate(180deg) scaleX(1.18);
+      }
+
+      .floating-arrow.is-bottom::after {
+        opacity: 1;
+        transform: rotate(-8deg) scaleX(0.82) translateY(0);
+      }
+
+      .floating-arrow.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(calc(var(--scroll-float) + 14px)) scale(0.96);
+      }
+
+      .floating-arrow.is-returning img {
+        transform: rotate(180deg) scaleX(1.18);
+      }
+
+      @keyframes arrow-breathe {
+        0%,
+        100% {
+          translate: 0 -2px;
+        }
+
+        50% {
+          translate: 0 4px;
+        }
+      }
+
+      .order-transition {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.02);
+        transition: opacity 280ms ease, transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .order-transition[hidden] {
+        display: none;
+      }
+
+      .order-transition.is-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .order-transition__text {
+        width: min(82vw, 430px);
+        margin: 0;
+        font-size: clamp(56px, 15vw, 88px);
+        font-weight: 900;
+        line-height: 0.78;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.72);
+      }
+
+      .order-cta-section {
+        padding: 28px 18px 46px;
+        display: grid;
+        place-items: center;
+      }
+
+      .order-link {
+        width: min(86vw, 390px);
+        text-decoration: none;
+      }
+
+      .order-page {
+        min-height: calc(100svh - var(--header-height));
+        position: relative;
+        overflow: hidden;
+        padding: 44px 16px 76px;
+      }
+
+      .order-page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(rgba(92, 42, 128, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 42, 128, 0.055) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 91%, transparent);
+        pointer-events: none;
+      }
+
+      .order-page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .order-title {
+        width: max-content;
+        max-width: none;
+        margin: 0 auto 12px;
+        color: var(--clove-purple);
+        font-size: clamp(58px, 15.5vw, 94px);
+        font-weight: 900;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: scaleX(0.72);
+      }
+
+      .order-title::after {
+        content: "SEGNATI";
+        position: absolute;
+        right: -24px;
+        bottom: -19px;
+        padding: 4px 10px 6px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: rotate(-8deg) scaleX(0.86);
+      }
+
+      .order-note {
+        width: min(100%, 410px);
+        margin: 0 auto 34px;
+        color: var(--clove-purple);
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+      }
+
+      .order-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 13px;
+        padding-top: 4px;
+      }
+
+      .order-grid:empty {
+        display: none;
+      }
+
+      .order-card {
+        position: relative;
+        min-height: 236px;
+        padding: 46px 9px 13px;
+        display: grid;
+        grid-template-rows: 1fr auto auto;
+        align-items: center;
+        justify-items: center;
+        overflow: visible;
+        isolation: isolate;
+        background: var(--clove-white);
+        border: 1.5px solid rgba(92, 42, 128, 0.42);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.05);
+        transform: rotate(-1.4deg);
+      }
+
+      .order-card:nth-child(2n) {
+        transform: rotate(1.2deg);
+      }
+
+      .order-card:nth-child(3n) {
+        transform: rotate(-0.6deg);
+      }
+
+      .order-card::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        z-index: 5;
+        width: 24px;
+        height: 24px;
+        border: 1px solid rgba(92, 42, 128, 0.3);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 31% 28%, rgba(255, 255, 255, 0.74) 0 13%, transparent 14%),
+          radial-gradient(circle at 58% 64%, var(--clove-purple) 0 58%, #4a206a 59% 100%);
+        box-shadow: 4px 6px 0 rgba(92, 42, 128, 0.08), 1px 3px 5px rgba(48, 0, 120, 0.13);
+        transform: translateX(-50%);
+      }
+
+      .order-card::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        z-index: 4;
+        width: 3px;
+        height: 13px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #bbb8b3 0 38%, #fbf8f3 39% 62%, #9f9d99 63% 100%);
+        box-shadow: 3px 5px 0 rgba(92, 42, 128, 0.04);
+        transform: translateX(-50%) rotate(8deg);
+        transform-origin: top center;
+      }
+
+      .order-card__title {
+        position: absolute;
+        top: 39px;
+        left: 50%;
+        z-index: 1;
+        width: max-content;
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 0.78;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        pointer-events: none;
+        transform: translateX(-50%) scaleX(0.72);
+      }
+
+      .order-card__title.is-small {
+        font-size: 31px;
+      }
+
+      .order-card__img {
+        position: relative;
+        z-index: 2;
+        max-width: 104%;
+        max-height: 116px;
+        margin-top: 11px;
+        object-fit: contain;
+        filter: drop-shadow(0 9px 10px rgba(48, 0, 120, 0.05));
+      }
+
+      .order-card__placeholder {
+        width: 94%;
+        min-height: 104px;
+        display: grid;
+        place-items: center;
+        border-top: 1px solid var(--clove-line);
+        border-bottom: 1px solid var(--clove-line);
+        color: var(--clove-purple);
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 0.85;
+        text-transform: uppercase;
+        transform: scaleX(0.78);
+      }
+
+      .order-card__meta {
+        display: none;
+        position: relative;
+        z-index: 3;
+        margin: 2px 0 9px;
+        color: var(--clove-purple);
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: scaleX(0.82);
+      }
+
+      .order-card__qty {
+        width: min(100%, 132px);
+        min-width: 0;
+        min-height: 38px;
+        grid-template-columns: 1fr 1fr;
+        background: var(--clove-white);
+      }
+
+      .order-card__qty .qty-action {
+        font-size: 11px;
+      }
+
+      .order-card__qty .qty-number {
+        font-size: 20px;
+      }
+
+      .order-text-list {
+        width: min(100%, 510px);
+        margin: 18px auto 0;
+        display: grid;
+        gap: 0;
+      }
+
+      .order-text-list:empty {
+        display: none;
+      }
+
+      .order-text-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 0 15px;
+        border-top: 1.5px solid var(--clove-purple);
+      }
+
+      .order-text-row:last-child {
+        border-bottom: 1.5px solid var(--clove-purple);
+      }
+
+      .order-text-row__name {
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: 29px;
+        font-weight: 900;
+        line-height: 0.9;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+      }
+
+      .order-text-row__meta {
+        margin: 6px 0 0;
+        color: var(--clove-purple);
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+      }
+
+      .order-text-control {
+        min-width: 116px;
+        min-height: 42px;
+        display: inline-grid;
+        grid-template-columns: 58px 1fr;
+        overflow: hidden;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-white);
+      }
+
+      .order-text-control button {
+        min-width: 0;
+        border: 0;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .order-text-control__remove {
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 12px;
+        transform: scaleX(0.82);
+      }
+
+      .order-text-control__count {
+        display: grid;
+        place-items: center;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 23px;
+      }
+
+      .empty-order {
+        margin: 48px auto 34px;
+        max-width: 300px;
+        color: var(--clove-purple);
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 0.95;
+        text-align: center;
+        text-transform: uppercase;
+        transform: scaleX(0.8);
+        padding: 30px 18px;
+        border: 1.5px solid rgba(92, 42, 128, 0.45);
+        background: var(--clove-white);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.05);
+      }
+
+      .order-actions {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .clear-button,
+      .back-button {
+        width: min(86vw, 360px);
+        font-size: 25px;
+      }
+
+      .clear-button {
+        background: transparent;
+      }
+
+      .total-bar {
+        position: static;
+        width: min(100%, 520px);
+        margin: 44px auto 0;
+        display: none;
+        justify-content: center;
+        pointer-events: auto;
+      }
+
+      .order-page:not([hidden]) .total-bar {
+        display: flex;
+      }
+
+      .total-bar__inner {
+        width: min(100%, 390px);
+        min-height: 0;
+        position: relative;
+        padding: 20px 20px 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        background: transparent;
+        color: var(--clove-purple);
+        pointer-events: auto;
+        isolation: isolate;
+        transform: rotate(1deg);
+      }
+
+      .total-bar__inner::before {
+        content: "TOT";
+        position: absolute;
+        top: 71px;
+        right: clamp(44px, 18%, 78px);
+        padding: 4px 10px 6px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 0.9;
+        z-index: 3;
+        transform: rotate(-8deg) scaleX(0.86);
+      }
+
+      .total-bar__inner::after {
+        content: "";
+        width: min(78%, 286px);
+        height: 1.5px;
+        margin-top: 4px;
+        background: var(--clove-purple);
+        transform: rotate(-1deg);
+      }
+
+      .total-label,
+      .total-value {
+        font-weight: 900;
+        line-height: 0.85;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        transform: scaleX(0.78);
+      }
+
+      .total-label {
+        font-size: clamp(36px, 10vw, 54px);
+      }
+
+      .total-value {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(72px, 20vw, 112px);
+      }
+
+      @media (max-width: 374px) {
+        .menu-header {
+          gap: 10px;
+          padding-right: 12px;
+          padding-left: 18px;
+        }
+
+        .brand-logo {
+          width: 82px;
+          font-size: 24px;
+        }
+
+        .menu-link {
+          min-width: 116px;
+          font-size: 14px;
+        }
+
+        .product-section {
+          --photo-width: min(85vw, 342px);
+          padding-right: 12px;
+          padding-left: 12px;
+        }
+
+        .product-title:not(.is-word) {
+          --title-size: clamp(86px, 25vw, 98px);
+        }
+
+        .product-title.is-long {
+          --title-size: 40px;
+        }
+
+        .order-grid {
+          gap: 10px;
+        }
+
+        .order-card {
+          min-height: 202px;
+        }
+
+        .order-text-row {
+          gap: 8px;
+        }
+
+        .order-text-row__name {
+          font-size: 25px;
+        }
+
+        .order-text-control {
+          min-width: 102px;
+        }
+
+        .compact-row {
+          gap: 8px 9px;
+        }
+
+        .compact-price {
+          min-width: 66px;
+          font-size: 19px;
+        }
+
+        .compact-quantity {
+          min-width: 98px;
+        }
+      }
+
+      @media (min-width: 560px) {
+        .app-shell {
+          width: var(--app-max-width);
+          margin: 0 auto;
+          border-right: 1px solid rgba(92, 42, 128, 0.12);
+          border-left: 1px solid rgba(92, 42, 128, 0.12);
+        }
+
+        .product-section {
+          min-height: 760px;
+        }
+
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          scroll-behavior: auto !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="menu-header" aria-label="Header menu">
+        <a class="brand-logo" href="#menu-view" aria-label="Clove">
+          <img src="img/logo-clove-purple.png" alt="Clove">
+        </a>
+        <div class="header-actions">
+          <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
+            <span data-menu-button-label>ORDINE</span>
+            <span class="order-count" data-order-count hidden>0</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="view" id="menu-view" aria-label="Menu Clove">
+        <nav class="category-rail" aria-label="Categorie menu">
+          <button class="category-link is-active" type="button" data-scroll-target="spicchi">SPICCHI</button>
+          <button class="category-link" type="button" data-scroll-target="fritti">FRITTI</button>
+          <button class="category-link" type="button" data-scroll-target="dolci">DOLCI</button>
+          <button class="category-link" type="button" data-scroll-target="bevande">BEVANDE</button>
+          <button class="category-link" type="button" data-scroll-target="birre">BIRRE</button>
+          <button class="category-link" type="button" data-scroll-target="cocktail">COCKTAIL</button>
+          <button class="category-link" type="button" data-scroll-target="vini">VINI</button>
+        </nav>
+
+        <section class="service-strip" aria-label="Informazioni Clove">
+          <div class="service-strip__line">
+            <span>VIA DEI GRACCHI 229</span>
+            <span>ROMA</span>
+          </div>
+          <div class="service-strip__line">
+            <span>17 MAGGIO 2026</span>
+            <span>100% LIEVITO MADRE</span>
+          </div>
+          <div class="service-strip__line">
+            <a href="https://www.instagram.com/clove.roma/" target="_blank" rel="noreferrer">@CLOVE.ROMA</a>
+            <a href="https://www.instagram.com/amaliacostantini/" target="_blank" rel="noreferrer">@AMALIACOSTANTINI</a>
+          </div>
+        </section>
+
+        <div id="product-list"></div>
+
+        <section class="order-cta-section" aria-label="Vai al tuo ordine">
+          <button class="order-link" type="button" data-open-order>IL TUO ORDINE →</button>
+        </section>
+      </section>
+
+      <section class="view order-page" id="order-view" aria-label="Il tuo ordine" hidden>
+        <h1 class="order-title">IL TUO ORDINE:</h1>
+        <p class="order-note">Mostralo al banco o usalo per non perdere il filo.</p>
+        <div class="order-grid" id="order-grid"></div>
+        <div class="order-text-list" id="order-text-list"></div>
+        <p class="empty-order" id="empty-order" hidden>NESSUN PRODOTTO SEGNATO</p>
+        <div class="total-bar" aria-live="polite">
+          <div class="total-bar__inner">
+            <span class="total-label">TOTALE:</span>
+            <span class="total-value" id="total-value">0,00€</span>
+          </div>
+        </div>
+        <div class="order-actions">
+          <button class="clear-button" type="button" data-clear-order>SVUOTA</button>
+          <button class="back-button" type="button" data-back-menu>TORNA AL MENU</button>
+        </div>
+      </section>
+    </main>
+
+    <button class="floating-arrow" type="button" data-floating-arrow aria-label="Torna all'inizio">
+      <img src="img/FRECCIA.svg" alt="">
+    </button>
+
+    <div class="order-transition" data-order-transition hidden aria-hidden="true">
+      <p class="order-transition__text">TIENI IL CONTO<br>DEI TUOI SPICCHI</p>
+    </div>
+
+    <script>
+      const storageKey = "clove-menu-order-v5";
+
+      const categories = [
+        { id: "spicchi", label: "SPICCHI" },
+        { id: "fritti", label: "FRITTI" },
+        { id: "dolci", label: "DOLCI" },
+        { id: "bevande", label: "BEVANDE" },
+        { id: "birre", label: "BIRRE" },
+        { id: "cocktail", label: "COCKTAIL" },
+        { id: "vini", label: "VINI" }
+      ];
+
+      const products = [
+        {
+          id: "n1",
+          category: "spicchi",
+          number: "N.1",
+          title: "NUMERO 1",
+          name: "Capocollo",
+          ingredients: ["CAPOCOLLO DI MARTINA FRANCA /", "STRACCIATELLA / OLIVA TAGGIASCA"],
+          highlights: ["Capocollo", "Stracciatella", "Oliva taggiasca"],
+          price: 350,
+          image: "img/NUMERO_1_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N01_Capocollo/Giulio-di-gregorio-clovo-roma 7.jpg",
+            "../01_Spicchi/MENU/N01_Capocollo/Giulio-di-gregorio-clovo-roma 8.jpg",
+            "../01_Spicchi/MENU/N01_Capocollo/Giulio-di-gregorio-clovo-roma 9.jpg",
+            "../01_Spicchi/MENU/N01_Capocollo/Giulio-di-gregorio-clovo-roma 10.jpg"
+          ],
+          story: "Salume rosato, crema lattica e oliva scura: primo morso netto.",
+          tags: ["SALUME", "3,50", "FIRMA"],
+          className: "is-wide",
+          accent: "#f07848"
+        },
+        {
+          id: "n2",
+          category: "spicchi",
+          number: "N.2",
+          title: "NUMERO 2",
+          name: "Melanzana",
+          ingredients: ["MELANZANA ARROSTO / CREMA DI POMODORO", "STRACCIATELLA / PARMIGIANO / BASILICO", "CRUMBLE DI PANE"],
+          highlights: ["Melanzana", "Pomodoro", "Basilico", "Crumble"],
+          price: 350,
+          image: "img/NUMERO_2_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 57.jpg",
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 58.jpg",
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 59.jpg",
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 60.jpg",
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 61.jpg",
+            "../01_Spicchi/MENU/N02_Melanzana/Giulio-di-gregorio-clovo-roma 62.jpg"
+          ],
+          story: "Vegetale pieno, rosso pomodoro, basilico fresco e parte croccante.",
+          tags: ["VEG", "3,50", "CRUNCH"],
+          className: "is-n2",
+          accent: "#007800"
+        },
+        {
+          id: "n3",
+          category: "spicchi",
+          number: "N.3",
+          title: "NUMERO 3",
+          name: "Zucchine",
+          ingredients: ["ZUCCHINE ALLA SCAPECE / JULIENNE DI CAROTE ARROSTO /", "RICOTTA ARTIGIANALE"],
+          highlights: ["Zucchine", "Carote", "Ricotta"],
+          price: 350,
+          image: "img/NUMERO_3_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N03_Zucchine/Giulio-di-gregorio-clovo-roma 63.jpg",
+            "../01_Spicchi/MENU/N03_Zucchine/Giulio-di-gregorio-clovo-roma 64.jpg",
+            "../01_Spicchi/MENU/N03_Zucchine/Giulio-di-gregorio-clovo-roma 65.jpg",
+            "../01_Spicchi/MENU/N03_Zucchine/Giulio-di-gregorio-clovo-roma 66.jpg"
+          ],
+          story: "Acido, dolce, lattico: il verde e l'arancio sono la firma.",
+          tags: ["VEG", "3,50", "SCAPECE"],
+          className: "is-wide",
+          accent: "#ff7800"
+        },
+        {
+          id: "n4",
+          category: "spicchi",
+          number: "N.4",
+          title: "NUMERO 4",
+          name: "Stracciata semi dry",
+          ingredients: ["STRACCIATA / BASILICO / POMODORINI SEMI DRY /", "PARMIGIANO REGGIANO 30 MESI"],
+          highlights: ["Stracciata", "Basilico", "Semi dry", "Parmigiano"],
+          price: 350,
+          image: "img/NUMERO_4_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N04_Semidry_Basilico/Giulio-di-gregorio-clovo-roma 67.jpg",
+            "../01_Spicchi/MENU/N04_Semidry_Basilico/Giulio-di-gregorio-clovo-roma 68.jpg",
+            "../01_Spicchi/MENU/N04_Semidry_Basilico/Giulio-di-gregorio-clovo-roma 69.jpg",
+            "../01_Spicchi/MENU/N04_Semidry_Basilico/Giulio-di-gregorio-clovo-roma 70.jpg"
+          ],
+          story: "Bianco, rosso, verde: essenziale ma preciso.",
+          tags: ["VEG", "3,50", "SEMI DRY"],
+          accent: "#007800"
+        },
+        {
+          id: "n5",
+          category: "spicchi",
+          number: "N.5",
+          title: "NUMERO 5",
+          name: "Guanciale tartufo",
+          ingredients: ["GUANCIALE AFFUMICATO AL LEGNO DI FAGGIO / STRACCIATELLA PUGLIESE /", "TARTUFO / POMODORINO CARAMELLATO"],
+          highlights: ["Guanciale", "Stracciatella", "Tartufo", "Pomodorino"],
+          price: 350,
+          image: "img/NUMERO_5_menu.png",
+          gallery: [
+            "../01_Spicchi/MENU/N05_Guanciale_Tartufo/Giulio-di-gregorio-clovo-roma 45.jpg",
+            "../01_Spicchi/MENU/N05_Guanciale_Tartufo/Giulio-di-gregorio-clovo-roma 46.jpg",
+            "../01_Spicchi/MENU/N05_Guanciale_Tartufo/Giulio-di-gregorio-clovo-roma 47.jpg",
+            "../01_Spicchi/MENU/N05_Guanciale_Tartufo/Giulio-di-gregorio-clovo-roma 48.jpg",
+            "../01_Spicchi/MENU/N05_Guanciale_Tartufo/Giulio-di-gregorio-clovo-roma 49.jpg"
+          ],
+          story: "Fumo, crema, tartufo scuro e rosso lucido in cima.",
+          tags: ["SALUME", "3,50", "TARTUFO"],
+          className: "is-wide",
+          accent: "#180000"
+        },
+        {
+          id: "n6",
+          category: "spicchi",
+          number: "N.6",
+          title: "NUMERO 6",
+          name: "Roast beef",
+          ingredients: ["ROAST BEEF / PATATA DOLCE / SALSA TONNATA /", "POMODORINO SEMI DRY / MISTICANZA"],
+          highlights: ["Roast beef", "Patata dolce", "Salsa tonnata", "Semi dry"],
+          price: 450,
+          image: "img/NUMERO_8_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 28.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 29.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 30.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 31.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 32.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 33.jpg",
+            "../01_Spicchi/MENU/N08_Roast_Beef/Giulio-di-gregorio-clovo-roma 34.jpg"
+          ],
+          story: "La salsa tonnata diventa grafica. La patata dolce tiene il colore.",
+          tags: ["CARNE", "4,50", "TONNATA"],
+          className: "is-wide",
+          accent: "#ff7800"
+        },
+        {
+          id: "n7",
+          category: "spicchi",
+          number: "N.7",
+          title: "NUMERO 7",
+          name: "Prosciutto di Parma",
+          ingredients: ["PROSCIUTTO DI PARMA 30 MESI SAN GIACOMO /", "STRACCIATELLA"],
+          highlights: ["Parma 30 mesi", "Stracciatella", "Impasto madre"],
+          price: 450,
+          image: "img/NUMERO_7_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N07_Prosciutto_Parma/Giulio-di-gregorio-clovo-roma 3.jpg",
+            "../01_Spicchi/MENU/N07_Prosciutto_Parma/Giulio-di-gregorio-clovo-roma 4.jpg",
+            "../01_Spicchi/MENU/N07_Prosciutto_Parma/Giulio-di-gregorio-clovo-roma 5.jpg",
+            "../01_Spicchi/MENU/N07_Prosciutto_Parma/Giulio-di-gregorio-clovo-roma 6.jpg"
+          ],
+          story: "Due ingredienti, tutto sul taglio e sulla qualita.",
+          tags: ["SALUME", "4,50", "30 MESI"],
+          emphasisName: true,
+          accent: "#f07848"
+        },
+        {
+          id: "n8",
+          category: "spicchi",
+          number: "N.8",
+          title: "NUMERO 8",
+          name: "Ricciola",
+          ingredients: ["GUACAMOLE AVOCADO E POMODORO /", "CARPACCIO DI RICCIOLA MARINATO CON JALAPENO /", "FRUTTO DELLA PASSIONE E TARTUFO / PEPE BIANCO / OLIO EVO"],
+          highlights: ["Ricciola", "Guacamole", "Passion fruit", "Tartufo"],
+          price: 450,
+          image: "img/NUMERO_10_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N10_Ricciola/P1004827 1.jpg",
+            "../01_Spicchi/MENU/N10_Ricciola/P1004828 1.jpg",
+            "../01_Spicchi/MENU/N10_Ricciola/P1004837 1.jpg",
+            "../01_Spicchi/MENU/N10_Ricciola/P1004841 1.jpg",
+            "../01_Spicchi/MENU/N10_Ricciola/P1004850 1.jpg"
+          ],
+          story: "Pesce crudo, avocado e acidita. Il lato piu fresco di Clove.",
+          tags: ["PESCE", "4,50", "CRUDO"],
+          emphasisName: true,
+          accent: "#007800"
+        },
+        {
+          id: "n9",
+          category: "spicchi",
+          number: "N.9",
+          title: "NUMERO 9",
+          name: "Jamon Iberico",
+          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA PUGLIESE /", "OLIO EVO / MISTICANZA"],
+          highlights: ["Jamon", "BEHER", "Stracciatella", "Misticanza"],
+          price: 450,
+          image: "img/NUMERO_6_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 39.jpg",
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 40.jpg",
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 41.jpg",
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 42.jpg",
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 43.jpg",
+            "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 44.jpg"
+          ],
+          story: "Rosa chiaro e verde: premium senza peso.",
+          tags: ["SALUME", "4,50", "IBERICO"],
+          emphasisName: true,
+          accent: "#f09060"
+        },
+        {
+          id: "n10",
+          category: "spicchi",
+          number: "N.10",
+          title: "NUMERO 10",
+          name: "Gambero",
+          ingredients: ["GAMBERO ROSSO DI MAZARA DEL VALLO / AVOCADO /", "FRUTTO DELLA PASSIONE / LIME / PEPE ROSA"],
+          highlights: ["Gambero rosso", "Avocado", "Passion fruit", "Lime"],
+          price: 450,
+          image: "img/NUMERO_9_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 35.jpg",
+            "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 36.jpg",
+            "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 37.jpg",
+            "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 38.jpg"
+          ],
+          story: "Corallo, verde e giallo. Tropicale ma preciso.",
+          tags: ["PESCE", "4,50", "MAZARA"],
+          accent: "#d89000"
+        },
+        {
+          id: "polpette-veg",
+          category: "fritti",
+          title: "POLPETTE VEG",
+          name: "Polpette veg",
+          ingredients: ["PATATA DOLCE / CECI / ZENZERO /", "MAIONESE ALLA CURCUMA"],
+          highlights: ["Patata dolce", "Ceci", "Zenzero", "Curcuma"],
+          price: 300,
+          image: "img/POLPETTE_VEG_cut.png",
+          gallery: [
+            "../03_Fritti/F01_Polpettine_Vegetali/Giulio-di-gregorio-clovo-roma 75.jpg",
+            "../03_Fritti/F01_Polpettine_Vegetali/Giulio-di-gregorio-clovo-roma 76.jpg"
+          ],
+          story: "Vegetale, caldo, speziato, con salsa gialla.",
+          tags: ["FRITTO", "3,00", "VEG"],
+          className: "is-fritti",
+          accent: "#ff7800"
+        },
+        {
+          id: "polpettine",
+          category: "fritti",
+          title: "POLPETTINE",
+          name: "Polpettine",
+          ingredients: ["POLPETTINE CROCCANTI DI CARNE E OLIVE /", "MAIONESE ALLE OLIVE"],
+          highlights: ["Carne", "Olive", "Croccante", "Maionese"],
+          price: 400,
+          image: "img/POLPETTINE_menu.png",
+          gallery: [
+            "../03_Fritti/F02_Olive_Ascolane_Scomposte/Giulio-di-gregorio-clovo-roma 77.jpg",
+            "../03_Fritti/F02_Olive_Ascolane_Scomposte/Giulio-di-gregorio-clovo-roma 78.jpg"
+          ],
+          story: "Polpettine croccanti, carne e olive, maionese dedicata.",
+          tags: ["FRITTO", "4,00", "POLPETTINE"],
+          className: "is-fritti is-wide",
+          accent: "#5c2a80"
+        },
+        {
+          id: "patate-croc",
+          category: "fritti",
+          title: "PATATE CROC",
+          name: "Patate croc",
+          ingredients: ["PATATE LESSE / UOVO / PREZZEMOLO /", "MOZZARELLA"],
+          highlights: ["Patate", "Uovo", "Prezzemolo", "Mozzarella"],
+          price: 300,
+          image: "img/PATATE_CROC_menu.png",
+          gallery: [],
+          story: "Patate lesse, uovo, prezzemolo e mozzarella.",
+          tags: ["FRITTO", "3,00", "PATATE"],
+          className: "is-fritti",
+          accent: "#d89000"
+        },
+        {
+          id: "crema-pasticcera",
+          category: "dolci",
+          title: "CREMA PASTICCERA",
+          name: "Crema Pasticcera",
+          ingredients: ["CREMA PASTICCERA / CARAMELLO /", "ZUCCHERO A VELO"],
+          highlights: ["Crema", "Caramello", "Zucchero"],
+          price: 450,
+          image: "img/PASTICCERA_cut.png",
+          gallery: [
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 84.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 85.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 86.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 87.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 88.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 89.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 90.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 91.jpg",
+            "../02_Dolci/D01_Crema_Pasticcera_Caramello/Giulio-di-gregorio-clovo-roma 92.jpg"
+          ],
+          story: "Base brioche artigianale, crema gialla e caramello.",
+          tags: ["DOLCE", "4,50", "BRIOCHE"],
+          className: "is-dessert",
+          accent: "#d89000"
+        },
+        {
+          id: "crema-vaniglia",
+          category: "dolci",
+          title: "CREMA VANIGLIA",
+          name: "Crema Vaniglia",
+          ingredients: ["CREMA DI LATTE ALLA VANIGLIA / CARAMELLO /", "ZUCCHERO A VELO"],
+          highlights: ["Vaniglia", "Latte", "Caramello"],
+          price: 450,
+          image: "img/CREMA_LATTE_cut.png",
+          gallery: [
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 105.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 106.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 107.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 108.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 109.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 110.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 111.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 112.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 113.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 114.jpg",
+            "../02_Dolci/D02_Crema_Latte_Vaniglia_Caramello/Giulio-di-gregorio-clovo-roma 115.jpg"
+          ],
+          story: "Bianco, morbido, caramello e zucchero a velo.",
+          tags: ["DOLCE", "4,50", "VANIGLIA"],
+          className: "is-dessert",
+          accent: "#f0c090"
+        },
+        {
+          id: "gianduia",
+          category: "dolci",
+          title: "GIANDUIA",
+          name: "Gianduia",
+          ingredients: ["CIOCCOLATO GIANDUIA / ZUCCHERO A VELO /", "GRANELLA DI NOCCIOLA"],
+          highlights: ["Gianduia", "Nocciola", "Zucchero"],
+          price: 450,
+          image: "img/GIANDUIA_cut.png",
+          gallery: [
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 96.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 97.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 98.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 99.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 101.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 102.jpg",
+            "../02_Dolci/D03_Gianduia_Nocciola/Giulio-di-gregorio-clovo-roma 103.jpg"
+          ],
+          story: "Il finale piu scuro: cioccolato, nocciola, brioche.",
+          tags: ["DOLCE", "4,50", "NOCCIOLA"],
+          className: "is-dessert",
+          accent: "#180000"
+        },
+        {
+          id: "ferrarelle",
+          category: "bevande",
+          compact: true,
+          name: "Ferrarelle",
+          detail: "Acqua lattina",
+          service: "33CL",
+          price: 250
+        },
+        {
+          id: "electa",
+          category: "bevande",
+          compact: true,
+          name: "Electa",
+          detail: "Acqua lattina",
+          service: "33CL",
+          price: 250
+        },
+        {
+          id: "maxima",
+          category: "bevande",
+          compact: true,
+          name: "Maxima",
+          detail: "Acqua lattina",
+          service: "33CL",
+          price: 250
+        },
+        {
+          id: "chinotto",
+          category: "bevande",
+          compact: true,
+          name: "Chinotto Ferrarelle",
+          detail: "Bevanda lattina",
+          service: "25CL",
+          price: 250
+        },
+        {
+          id: "limonata",
+          category: "bevande",
+          compact: true,
+          name: "Limonata Ferrarelle",
+          detail: "Bevanda lattina",
+          service: "25CL",
+          price: 250
+        },
+        {
+          id: "aranciata",
+          category: "bevande",
+          compact: true,
+          name: "Aranciata Ferrarelle",
+          detail: "Bevanda lattina",
+          service: "25CL",
+          price: 250
+        },
+        {
+          id: "gassosa",
+          category: "bevande",
+          compact: true,
+          name: "Gassosa Ferrarelle",
+          detail: "Bevanda lattina",
+          service: "25CL",
+          price: 250
+        },
+        {
+          id: "coca-cola",
+          category: "bevande",
+          compact: true,
+          name: "Coca Cola",
+          detail: "Bevanda lattina",
+          service: "33CL",
+          price: 250
+        },
+        {
+          id: "coca-zero",
+          category: "bevande",
+          compact: true,
+          name: "Coca Zero",
+          detail: "Bevanda lattina",
+          service: "33CL",
+          price: 250
+        },
+        {
+          id: "te-pesca-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Te alla Pesca Prumotto",
+          detail: "Bevanda bottiglia",
+          service: "23CL",
+          price: 400
+        },
+        {
+          id: "te-menta-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Te alla Menta Prumotto",
+          detail: "Bevanda bottiglia",
+          service: "23CL",
+          price: 400
+        },
+        {
+          id: "te-earl-grey-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Te Earl Grey Prumotto",
+          detail: "Bevanda bottiglia",
+          service: "23CL",
+          price: 400
+        },
+        {
+          id: "succo-pesche-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Succo di Pesche Prumotto",
+          detail: "Succo bottiglia",
+          service: "20CL",
+          price: 450
+        },
+        {
+          id: "succo-albicocche-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Succo di Albicocche Prumotto",
+          detail: "Succo bottiglia",
+          service: "20CL",
+          price: 450
+        },
+        {
+          id: "succo-pere-prumotto",
+          category: "bevande",
+          compact: true,
+          name: "Succo di Pere Prumotto",
+          detail: "Succo bottiglia",
+          service: "20CL",
+          price: 450
+        },
+        {
+          id: "cocktail-1-prumotto-carote-zenzero",
+          category: "bevande",
+          compact: true,
+          name: "Cocktail 1 Prumotto",
+          detail: "Mele / carote / zenzero",
+          service: "20CL",
+          price: 500
+        },
+        {
+          id: "cocktail-4-prumotto-arancio-sedano",
+          category: "bevande",
+          compact: true,
+          name: "Cocktail 4 Prumotto",
+          detail: "Mele / arancio / sedano",
+          service: "20CL",
+          price: 500
+        },
+        {
+          id: "cocktail-1-prumotto-rosa-canina",
+          category: "bevande",
+          compact: true,
+          name: "Cocktail 1 Prumotto Rosa Canina",
+          detail: "Mele / rosa canina",
+          service: "20CL",
+          price: 500
+        },
+        {
+          id: "arbor-yakima-valley-ipa",
+          category: "birre",
+          compact: true,
+          name: "Arbor Yakima Valley IPA",
+          detail: "IPA / 7%",
+          service: "58,6CL",
+          price: 1100
+        },
+        {
+          id: "arbor-rocketman-ipa",
+          category: "birre",
+          compact: true,
+          name: "Arbor Rocketman IPA",
+          detail: "IPA / 6%",
+          service: "58,6CL",
+          price: 1100
+        },
+        {
+          id: "renton-jimmy-pale-session-ipa",
+          category: "birre",
+          compact: true,
+          name: "Renton Jimmy Pale Session IPA",
+          detail: "Session IPA / 4,5%",
+          service: "33CL",
+          price: 600
+        },
+        {
+          id: "renton-bombay-red-ale",
+          category: "birre",
+          compact: true,
+          name: "Renton Bombay Red Ale",
+          detail: "Red Ale / 5,7%",
+          service: "33CL",
+          price: 600
+        },
+        {
+          id: "cala-passione-lager",
+          category: "birre",
+          compact: true,
+          name: "Cala Passione Lager",
+          detail: "Lager / 4,8%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "cala-delirio-bock",
+          category: "birre",
+          compact: true,
+          name: "Cala Delirio Bock",
+          detail: "Bock / 7,2%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "cala-nirvana-weizen",
+          category: "birre",
+          compact: true,
+          name: "Cala Nirvana Weizen",
+          detail: "Weizen / 5,1%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "cala-diavolicchia-golden-ale",
+          category: "birre",
+          compact: true,
+          name: "Cala Diavolicchia Golden Ale",
+          detail: "Golden Ale / 5,2%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "cala-citrusina-blanche-cedro",
+          category: "birre",
+          compact: true,
+          name: "Cala Citrusina Blanche al Cedro",
+          detail: "Blanche / 4,6%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "cala-giubilo-lager-senza-glutine",
+          category: "birre",
+          compact: true,
+          name: "Cala Giubilo Lager senza Glutine",
+          detail: "Lager senza glutine / 4,8%",
+          service: "33CL",
+          price: 650
+        },
+        {
+          id: "ichnusa-non-filtrata",
+          category: "birre",
+          compact: true,
+          name: "Ichnusa Non Filtrata",
+          detail: "Lager / 5%",
+          service: "44CL",
+          price: 450
+        },
+        {
+          id: "spritz",
+          category: "cocktail",
+          compact: true,
+          name: "Spritz",
+          detail: "Cocktail",
+          service: "COCKTAIL",
+          price: 500
+        },
+        {
+          id: "vodka-lemon",
+          category: "cocktail",
+          compact: true,
+          name: "Vodka Lemon",
+          detail: "Cocktail",
+          service: "COCKTAIL",
+          price: 500
+        },
+        {
+          id: "gin-lemon",
+          category: "cocktail",
+          compact: true,
+          name: "Gin Lemon",
+          detail: "Cocktail",
+          service: "COCKTAIL",
+          price: 500
+        },
+        {
+          id: "ridarola-bianco",
+          category: "vini",
+          compact: true,
+          name: "Calice Al Di La Del Fiume",
+          detail: "Ridarola Bianco",
+          service: "CALICE",
+          price: 500
+        },
+        {
+          id: "ridarola-rosso",
+          category: "vini",
+          compact: true,
+          name: "Calice Al Di La Del Fiume",
+          detail: "Ridarola Rosso",
+          service: "CALICE",
+          price: 500
+        },
+        {
+          id: "langhe-arneis",
+          category: "vini",
+          compact: true,
+          name: "Calice Cascina Albano",
+          detail: "Langhe Arneis",
+          service: "CALICE",
+          price: 500
+        },
+        {
+          id: "confine-rosato-frizzante",
+          category: "vini",
+          compact: true,
+          name: "Calice Vin Viandante",
+          detail: "Confine Rosato Frizzante",
+          service: "CALICE",
+          price: 500
+        },
+        {
+          id: "pevi-bollata-brut-nature",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Pevi",
+          detail: "Bollata Metodo Classico Brut Nature",
+          service: "BOTTIGLIA",
+          price: 5500
+        },
+        {
+          id: "pevi-miscellanea",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Pevi",
+          detail: "Miscellanea",
+          service: "BOTTIGLIA",
+          price: 3500
+        },
+        {
+          id: "rinelli-ambra",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Rinelli Vigneti",
+          detail: "Ambra",
+          service: "BOTTIGLIA",
+          price: 3500
+        },
+        {
+          id: "rinelli-24h",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Rinelli Vigneti",
+          detail: "24H",
+          service: "BOTTIGLIA",
+          price: 3500
+        },
+        {
+          id: "rinelli-bosco",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Rinelli Vigneti",
+          detail: "Bosco",
+          service: "BOTTIGLIA",
+          price: 3500
+        },
+        {
+          id: "colle-cianchetti-manco-nettaro",
+          category: "vini",
+          compact: true,
+          name: "Bottiglia Colle Cianchetti",
+          detail: "Manco N'Ettaro",
+          service: "BOTTIGLIA",
+          price: 4000
+        }
+      ];
+
+      const productById = new Map(products.map((product) => [product.id, product]));
+      const cart = new Map();
+      const menuView = document.querySelector("#menu-view");
+      const orderView = document.querySelector("#order-view");
+      const productList = document.querySelector("#product-list");
+      const orderGrid = document.querySelector("#order-grid");
+      const orderTextList = document.querySelector("#order-text-list");
+      const emptyOrder = document.querySelector("#empty-order");
+      const totalValue = document.querySelector("#total-value");
+      const menuButton = document.querySelector("[data-menu-button]");
+      const menuButtonLabel = document.querySelector("[data-menu-button-label]");
+      const orderCount = document.querySelector("[data-order-count]");
+      const openOrderButton = document.querySelector("[data-open-order]");
+      const backButton = document.querySelector("[data-back-menu]");
+      const clearButton = document.querySelector("[data-clear-order]");
+      const floatingArrow = document.querySelector("[data-floating-arrow]");
+      const orderTransition = document.querySelector("[data-order-transition]");
+      const categoryRail = document.querySelector(".category-rail");
+      let activeCategoryId = "";
+
+      function formatPrice(cents) {
+        return `${(cents / 100).toFixed(2).replace(".", ",")}€`;
+      }
+
+      function loadCart() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+          Object.entries(saved).forEach(([id, qty]) => {
+            if (productById.has(id) && Number(qty) > 0) cart.set(id, Number(qty));
+          });
+        } catch {
+          cart.clear();
+        }
+      }
+
+      function saveCart() {
+        localStorage.setItem(storageKey, JSON.stringify(Object.fromEntries(cart)));
+      }
+
+      function cartQty(id) {
+        return cart.get(id) || 0;
+      }
+
+      function cartUnits() {
+        return [...cart.values()].reduce((sum, qty) => sum + qty, 0);
+      }
+
+      function cartItems() {
+        return [...cart.entries()]
+          .map(([id, qty]) => ({ product: productById.get(id), qty }))
+          .filter((item) => item.product && item.qty > 0);
+      }
+
+      function cartTotal() {
+        return cartItems().reduce((sum, item) => sum + item.product.price * item.qty, 0);
+      }
+
+      function setQty(id, qty) {
+        const nextQty = Math.max(0, Number(qty) || 0);
+        if (nextQty === 0) cart.delete(id);
+        else cart.set(id, nextQty);
+        saveCart();
+        updateCartUI();
+      }
+
+      function increment(id) {
+        setQty(id, cartQty(id) + 1);
+      }
+
+      function decrement(id) {
+        setQty(id, cartQty(id) - 1);
+      }
+
+      function titleClass(product) {
+        const classes = ["product-title"];
+        if (!product.title?.startsWith("NUMERO")) classes.push("is-word");
+        if ((product.title || "").length > 12) classes.push("is-long");
+        return classes.join(" ");
+      }
+
+      function sectionClass(product) {
+        return ["product-section", product.className, `is-${product.category}`].filter(Boolean).join(" ");
+      }
+
+      function mainImage(product) {
+        return product.image || product.gallery?.[0] || "";
+      }
+
+      function renderQtyControl(product, extraClass = "") {
+        const qty = cartQty(product.id);
+        if (qty === 0) {
+          return `<button class="mark-button" type="button" data-add="${product.id}">SEGNA</button>`;
+        }
+
+        return `
+          <div class="qty-control ${extraClass}">
+            <button class="qty-action" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
+            <button class="qty-number" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">
+              <span class="qty-value">${qty}</span>
+            </button>
+          </div>
+        `;
+      }
+
+      function renderProduct(product) {
+        const title = product.title || product.name;
+        const nameClass = `product-name${product.emphasisName ? " is-emphasis" : ""}`;
+        return `
+          <section class="${sectionClass(product)}" id="${product.id}" data-category="${product.category}" data-product-id="${product.id}" style="--accent:${product.accent || "var(--clove-purple)"}">
+            <div class="product-kicker">
+              <span class="product-number">${product.number || categories.find((category) => category.id === product.category)?.label || "CLOVE"}</span>
+              <span class="${nameClass}">${product.name}</span>
+            </div>
+            <h2 class="${titleClass(product)}">${title}</h2>
+            <div class="product-stage">
+              <div class="product-photo-wrap">
+                <img class="product-photo" src="${mainImage(product)}" alt="${product.name}" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="product-meta">
+              <div class="price">${formatPrice(product.price)}</div>
+            </div>
+            <p class="ingredients">${product.ingredients.map((line, index) => `${index ? "<br>" : ""}${line}`).join("")}</p>
+            <div class="product-actions" data-actions-for="${product.id}">
+              ${renderQtyControl(product)}
+            </div>
+          </section>
+        `;
+      }
+
+      function renderCompactBadges(product) {
+        return [product.service].filter(Boolean)
+          .map((label) => `<span class="compact-badge">${label}</span>`)
+          .join("");
+      }
+
+      function renderCompactRow(product) {
+        const qty = cartQty(product.id);
+        const actionMarkup = qty > 0
+          ? `
+            <div class="compact-quantity">
+              <button class="compact-quantity__remove" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
+              <button class="compact-quantity__count" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">${qty}</button>
+            </div>
+          `
+          : `<button class="compact-add" type="button" data-add="${product.id}" aria-label="Aggiungi ${product.name}">SEGNA</button>`;
+
+        return `
+          <article class="compact-row" data-product-id="${product.id}" data-category="${product.category}">
+            <div class="compact-row__text">
+              <h3 class="compact-row__name">${product.name}</h3>
+              <p class="compact-row__meta">${product.detail}</p>
+              ${product.service ? `<div class="compact-badges">${renderCompactBadges(product)}</div>` : ""}
+            </div>
+            <div class="compact-price">${formatPrice(product.price)}</div>
+            <div class="compact-row__actions">
+              ${actionMarkup}
+            </div>
+          </article>
+        `;
+      }
+
+      function renderCompactSection(categoryId, title, note = "") {
+        const compactProducts = products.filter((product) => product.compact && product.category === categoryId);
+        const listMarkup = compactProducts.map((product) => renderCompactRow(product)).join("");
+
+        return `
+          <section class="compact-section" id="${categoryId}" data-category="${categoryId}" aria-label="${title}">
+            <h2 class="compact-title">${title}</h2>
+            ${note ? `<p class="order-note">${note}</p>` : ""}
+            <div class="compact-list">
+              ${listMarkup}
+            </div>
+          </section>
+        `;
+      }
+
+      function renderMenu() {
+        const visibleProducts = products.filter((product) => !product.compact);
+        const chunks = [];
+
+        categories.forEach((category) => {
+          if (["bevande", "birre", "cocktail", "vini"].includes(category.id)) return;
+          const categoryProducts = visibleProducts.filter((product) => product.category === category.id);
+          categoryProducts.forEach((product, index) => {
+            const html = renderProduct(product);
+            if (index === 0) {
+              chunks.push(html.replace(`id="${product.id}"`, `id="${category.id}" data-anchor-product="${product.id}"`));
+            } else {
+              chunks.push(html);
+            }
+          });
+        });
+
+        chunks.push(renderCompactSection("bevande", "BEVANDE"));
+        chunks.push(renderCompactSection("birre", "BIRRE"));
+        chunks.push(renderCompactSection("cocktail", "COCKTAIL"));
+        chunks.push(renderCompactSection("vini", "VINI"));
+        productList.innerHTML = chunks.join("");
+      }
+
+      function updateProductActions() {
+        products.forEach((product) => {
+          const actionNode = document.querySelector(`[data-actions-for="${product.id}"]`);
+          if (actionNode) actionNode.innerHTML = renderQtyControl(product);
+        });
+
+        document.querySelectorAll(".compact-row").forEach((row) => {
+          const product = productById.get(row.dataset.productId);
+          if (product) row.outerHTML = renderCompactRow(product);
+        });
+      }
+
+      function updateHeaderButton() {
+        const isOrderOpen = !orderView.hidden;
+        const units = cartUnits();
+
+        if (isOrderOpen) {
+          menuButtonLabel.textContent = "MENU";
+          menuButton.setAttribute("aria-label", "Torna al menu");
+          menuButton.classList.remove("is-filled");
+          orderCount.hidden = true;
+          return;
+        }
+
+        menuButtonLabel.textContent = "ORDINE";
+        menuButton.setAttribute("aria-label", "Vai al tuo ordine");
+        menuButton.classList.toggle("is-filled", units > 0);
+        orderCount.textContent = units;
+        orderCount.hidden = units === 0;
+      }
+
+      function updateCartUI() {
+        updateProductActions();
+        updateHeaderButton();
+        if (!orderView.hidden) renderOrder();
+      }
+
+      function renderOrder() {
+        const items = cartItems();
+        const cardItems = items.filter(({ product }) => mainImage(product));
+        const textItems = items.filter(({ product }) => !mainImage(product));
+        orderGrid.innerHTML = "";
+        orderTextList.innerHTML = "";
+        emptyOrder.hidden = items.length > 0;
+
+        cardItems.forEach(({ product, qty }) => {
+          const card = document.createElement("article");
+          card.className = "order-card";
+          card.dataset.productId = product.id;
+
+          const title = document.createElement("h2");
+          title.className = `order-card__title${(product.title || product.name).length > 10 ? " is-small" : ""}`;
+          title.textContent = product.title || product.name;
+
+          const imageSrc = mainImage(product);
+          const media = imageSrc ? document.createElement("img") : document.createElement("div");
+          if (imageSrc) {
+            media.className = "order-card__img";
+            media.src = imageSrc;
+            media.alt = product.name;
+            media.loading = "lazy";
+            media.decoding = "async";
+          } else {
+            media.className = "order-card__placeholder";
+            media.textContent = product.category;
+          }
+
+          const meta = document.createElement("p");
+          meta.className = "order-card__meta";
+          meta.textContent = "";
+
+          const qtyWrap = document.createElement("div");
+          qtyWrap.innerHTML = renderQtyControl(product, "order-card__qty");
+
+          card.append(title, media, meta, qtyWrap.firstElementChild);
+          orderGrid.append(card);
+        });
+
+        textItems.forEach(({ product, qty }) => {
+          const row = document.createElement("article");
+          row.className = "order-text-row";
+          row.dataset.productId = product.id;
+
+          const textColumn = document.createElement("div");
+          const title = document.createElement("h2");
+          title.className = "order-text-row__name";
+          title.textContent = product.name;
+
+          const meta = document.createElement("p");
+          meta.className = "order-text-row__meta";
+          meta.textContent = `${product.category} / ${formatPrice(product.price)} × ${qty}`;
+
+          const controls = document.createElement("div");
+          controls.className = "order-text-control";
+          controls.innerHTML = `
+            <button class="order-text-control__remove" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
+            <button class="order-text-control__count" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">${qty}</button>
+          `;
+
+          textColumn.append(title, meta);
+          row.append(textColumn, controls);
+          orderTextList.append(row);
+        });
+
+        totalValue.textContent = formatPrice(cartTotal());
+      }
+
+      function openOrderView() {
+        renderOrder();
+        menuView.hidden = true;
+        orderView.hidden = false;
+        floatingArrow.hidden = true;
+        updateHeaderButton();
+        updateFloatingArrow();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showOrder() {
+        if (!orderView.hidden) return;
+        orderTransition.hidden = false;
+        requestAnimationFrame(() => {
+          orderTransition.classList.add("is-active");
+        });
+        window.setTimeout(openOrderView, 420);
+        window.setTimeout(() => {
+          orderTransition.classList.remove("is-active");
+        }, 860);
+        window.setTimeout(() => {
+          orderTransition.hidden = true;
+        }, 1180);
+      }
+
+      function showMenu() {
+        orderView.hidden = true;
+        menuView.hidden = false;
+        floatingArrow.hidden = false;
+        updateHeaderButton();
+        updateFloatingArrow();
+        updateCategoryTracking(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function setActiveCategory(categoryId, center = false) {
+        if (!categoryId) return;
+        activeCategoryId = categoryId;
+        document.querySelectorAll(".category-link").forEach((button) => {
+          const isActive = button.dataset.scrollTarget === categoryId;
+          button.classList.toggle("is-active", isActive);
+          if (isActive && center) {
+            button.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        });
+      }
+
+      function currentCategoryFromScroll() {
+        const sections = categories
+          .map((category) => ({ id: category.id, section: document.querySelector(`[data-category="${category.id}"]`) }))
+          .filter((item) => item.section);
+        if (!sections.length) return "";
+
+        const railHeight = categoryRail?.offsetHeight || 0;
+        const headerHeight = document.querySelector(".menu-header")?.offsetHeight || 0;
+        const checkpoint = window.scrollY + headerHeight + railHeight + 28;
+        let current = sections[0].id;
+
+        sections.forEach(({ id, section }) => {
+          if (section.offsetTop <= checkpoint) current = id;
+        });
+
+        return current;
+      }
+
+      function updateCategoryTracking(center = false) {
+        if (menuView.hidden) return;
+        const nextCategoryId = currentCategoryFromScroll();
+        if (nextCategoryId && nextCategoryId !== activeCategoryId) {
+          setActiveCategory(nextCategoryId, center);
+        }
+      }
+
+      function setupCategoryTracking() {
+        updateCategoryTracking(false);
+      }
+
+      document.addEventListener("click", (event) => {
+        const add = event.target.closest("[data-add]");
+        if (add) {
+          increment(add.dataset.add);
+          return;
+        }
+
+        const incrementButton = event.target.closest("[data-increment]");
+        if (incrementButton) {
+          increment(incrementButton.dataset.increment);
+          return;
+        }
+
+        const decrementButton = event.target.closest("[data-decrement]");
+        if (decrementButton) {
+          decrement(decrementButton.dataset.decrement);
+          return;
+        }
+
+      });
+
+      document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = document.querySelector(`#${button.dataset.scrollTarget}`);
+          setActiveCategory(button.dataset.scrollTarget, true);
+          target?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      menuButton.addEventListener("click", () => {
+        if (orderView.hidden) showOrder();
+        else showMenu();
+      });
+
+      openOrderButton.addEventListener("click", showOrder);
+      backButton.addEventListener("click", showMenu);
+      clearButton.addEventListener("click", () => {
+        cart.clear();
+        saveCart();
+        updateCartUI();
+      });
+
+      floatingArrow.addEventListener("click", () => {
+        floatingArrow.classList.add("is-returning");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.setTimeout(() => {
+          floatingArrow.classList.remove("is-returning");
+        }, 900);
+      });
+
+      function updateFloatingArrow() {
+        const floatValue = `${Math.sin(window.scrollY / 70) * 4}px`;
+        const titleValue = `${Math.sin(window.scrollY / 95) * 3}px`;
+        const distanceFromBottom = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+        const firstCompact = document.querySelector(".compact-section");
+        const compactStart = firstCompact ? firstCompact.offsetTop : Number.POSITIVE_INFINITY;
+        const isNearBottom = distanceFromBottom < 460 && window.scrollY > 420;
+        const isFoodArea = window.scrollY < compactStart - window.innerHeight * 0.38;
+        const isVisible = !floatingArrow.hidden && (isFoodArea || isNearBottom);
+
+        floatingArrow.style.setProperty("--scroll-float", floatValue);
+        floatingArrow.classList.toggle("is-bottom", isNearBottom);
+        floatingArrow.classList.toggle("is-hidden", !isVisible);
+
+        document.querySelectorAll(".product-kicker, .product-title, .compact-title").forEach((element) => {
+          element.style.setProperty("--title-float", titleValue);
+        });
+      }
+
+      function updateScrollState() {
+        updateFloatingArrow();
+        updateCategoryTracking(true);
+      }
+
+      window.addEventListener("scroll", updateScrollState, { passive: true });
+      window.addEventListener("resize", updateScrollState);
+
+      loadCart();
+      renderMenu();
+      setupCategoryTracking();
+      updateCartUI();
+      updateScrollState();
+    </script>
+  </body>
 </html>
