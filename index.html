@@ -136,6 +136,22 @@
         transform-origin: right center;
       }
 
+      .allergen-link {
+        min-width: 98px;
+        font-size: 14px;
+      }
+
+      .language-link {
+        min-width: 46px;
+        padding-right: 8px;
+        padding-left: 8px;
+        font-size: 21px;
+      }
+
+      .order-menu-link {
+        min-width: clamp(104px, 28vw, 142px);
+      }
+
       .menu-link.is-filled {
         background: var(--clove-purple);
         color: var(--clove-white);
@@ -334,9 +350,22 @@
         transition: transform 120ms linear;
       }
 
+      .product-kicker__left {
+        min-width: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
       .product-kicker span {
         display: inline-block;
         transform: scaleX(0.82);
+      }
+
+      .product-allergens {
+        flex: 0 0 auto;
+        text-align: right;
+        white-space: nowrap;
       }
 
       .product-name {
@@ -575,6 +604,17 @@
         transform: scaleX(0.82);
         transform-origin: left center;
         overflow-wrap: anywhere;
+      }
+
+      .compact-row__allergens {
+        margin: 7px 0 0;
+        color: var(--clove-purple);
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
       }
 
       .compact-badges {
@@ -843,7 +883,7 @@
       }
 
       .order-title::after {
-        content: "SEGNATI";
+        content: attr(data-stamp);
         position: absolute;
         right: -24px;
         bottom: -19px;
@@ -868,6 +908,84 @@
         text-align: center;
         text-transform: uppercase;
         transform: scaleX(0.82);
+      }
+
+      .allergen-page {
+        min-height: calc(100svh - var(--header-height));
+        position: relative;
+        overflow: hidden;
+        padding: 44px 18px 72px;
+        color: var(--clove-purple);
+      }
+
+      .allergen-page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(rgba(92, 42, 128, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 42, 128, 0.055) 1px, transparent 1px);
+        background-size: 34px 34px;
+        pointer-events: none;
+      }
+
+      .allergen-page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .allergen-title {
+        width: max-content;
+        max-width: none;
+        margin: 0 auto 20px;
+        color: var(--clove-purple);
+        font-size: clamp(62px, 17vw, 98px);
+        font-weight: 900;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: scaleX(0.72);
+      }
+
+      .allergen-list {
+        width: min(100%, 430px);
+        margin: 0 auto 32px;
+        padding: 0;
+        list-style: none;
+        border-top: 1.5px solid var(--clove-purple);
+      }
+
+      .allergen-list li {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        padding: 12px 0 11px;
+        border-bottom: 1.5px solid var(--clove-purple);
+      }
+
+      .allergen-code {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        font-size: 19px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .allergen-name {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 0.95;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
       }
 
       .order-grid {
@@ -1218,6 +1336,47 @@
           font-size: 14px;
         }
 
+        .header-actions {
+          gap: 5px;
+        }
+
+        .allergen-link {
+          min-width: 72px;
+          padding-right: 8px;
+          padding-left: 8px;
+          font-size: 11px;
+        }
+
+        .language-link {
+          min-width: 40px;
+          padding-right: 6px;
+          padding-left: 6px;
+          font-size: 18px;
+        }
+
+        .order-menu-link {
+          min-width: 74px;
+          padding-right: 8px;
+          padding-left: 8px;
+        }
+
+        .product-kicker {
+          gap: 6px;
+          font-size: 13px;
+        }
+
+        .product-kicker__left {
+          gap: 6px;
+        }
+
+        .product-name {
+          font-size: 17px;
+        }
+
+        .product-name.is-emphasis {
+          font-size: 19px;
+        }
+
         .product-section {
           --photo-width: min(85vw, 342px);
           padding-right: 12px;
@@ -1298,7 +1457,9 @@
           <img src="img/logo-clove-purple.png" alt="Clove">
         </a>
         <div class="header-actions">
-          <button class="menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
+          <button class="menu-link language-link" type="button" data-language-toggle aria-label="Switch to English" title="English">🇬🇧</button>
+          <button class="menu-link allergen-link" type="button" data-open-allergens aria-label="Apri lista allergeni">ALLERGENI</button>
+          <button class="menu-link order-menu-link" type="button" data-menu-button aria-label="Vai ai tuoi spicchi">
             <span data-menu-button-label>ORDINE</span>
             <span class="order-count" data-order-count hidden>0</span>
           </button>
@@ -1339,7 +1500,7 @@
       </section>
 
       <section class="view order-page" id="order-view" aria-label="Il tuo ordine" hidden>
-        <h1 class="order-title">IL TUO ORDINE:</h1>
+        <h1 class="order-title" data-stamp="SEGNATI">IL TUO ORDINE:</h1>
         <p class="order-note">Mostralo al banco o usalo per non perdere il filo.</p>
         <div class="order-grid" id="order-grid"></div>
         <div class="order-text-list" id="order-text-list"></div>
@@ -1355,6 +1516,14 @@
           <button class="back-button" type="button" data-back-menu>TORNA AL MENU</button>
         </div>
       </section>
+
+      <section class="view allergen-page" id="allergen-view" aria-label="Lista allergeni" hidden>
+        <h1 class="allergen-title">ALLERGENI</h1>
+        <ol class="allergen-list" data-allergen-list></ol>
+        <div class="order-actions">
+          <button class="back-button" type="button" data-back-allergens>TORNA AL MENU</button>
+        </div>
+      </section>
     </main>
 
     <button class="floating-arrow" type="button" data-floating-arrow aria-label="Torna all'inizio">
@@ -1367,20 +1536,84 @@
 
     <script>
       const storageKey = "clove-menu-order-v5";
+      const languageStorageKey = "clove-menu-language-v1";
 
       const categories = [
-        { id: "spicchi", label: "SPICCHI" },
-        { id: "fritti", label: "FRITTI" },
-        { id: "dolci", label: "DOLCI" },
-        { id: "bevande", label: "BEVANDE" },
-        { id: "birre", label: "BIRRE" },
-        { id: "cocktail", label: "COCKTAIL" },
-        { id: "vini", label: "VINI" }
+        { id: "spicchi", label: "SPICCHI", labelEn: "SPICCHI" },
+        { id: "fritti", label: "FRITTI", labelEn: "FRIED" },
+        { id: "dolci", label: "DOLCI", labelEn: "SWEET" },
+        { id: "bevande", label: "BEVANDE", labelEn: "DRINKS" },
+        { id: "birre", label: "BIRRE", labelEn: "BEERS" },
+        { id: "cocktail", label: "COCKTAIL", labelEn: "COCKTAILS" },
+        { id: "vini", label: "VINI", labelEn: "WINES" }
       ];
+
+      const allergenLegend = [
+        { code: "1", name: "Cereali contenenti glutine", nameEn: "Cereals containing gluten" },
+        { code: "2", name: "Crostacei", nameEn: "Crustaceans" },
+        { code: "3", name: "Uova", nameEn: "Eggs" },
+        { code: "4", name: "Pesce", nameEn: "Fish" },
+        { code: "5", name: "Arachidi", nameEn: "Peanuts" },
+        { code: "6", name: "Soia", nameEn: "Soybeans" },
+        { code: "7", name: "Latte", nameEn: "Milk" },
+        { code: "8", name: "Frutta a guscio", nameEn: "Nuts" },
+        { code: "9", name: "Sedano", nameEn: "Celery" },
+        { code: "10", name: "Senape", nameEn: "Mustard" },
+        { code: "11", name: "Sesamo", nameEn: "Sesame" },
+        { code: "12", name: "Anidride solforosa e solfiti", nameEn: "Sulphur dioxide and sulphites" },
+        { code: "13", name: "Lupini", nameEn: "Lupin" },
+        { code: "14", name: "Molluschi", nameEn: "Molluscs" }
+      ];
+
+      const uiCopy = {
+        it: {
+          allergens: "ALLERGENI",
+          order: "ORDINE",
+          menu: "MENU",
+          mark: "SEGNA",
+          remove: "TOGLI",
+          addMore: "Aggiungi ancora",
+          add: "Aggiungi",
+          goToOrder: "IL TUO ORDINE →",
+          orderTitle: "IL TUO ORDINE:",
+          orderNote: "Mostralo al banco o usalo per non perdere il filo.",
+          emptyOrder: "NESSUN PRODOTTO SEGNATO",
+          total: "TOTALE:",
+          clear: "SVUOTA",
+          backToMenu: "TORNA AL MENU",
+          transition: "TIENI IL CONTO<br>DEI TUOI SPICCHI",
+          orderStamp: "SEGNATI",
+          orderAria: "Vai ai tuoi spicchi",
+          menuAria: "Torna al menu",
+          allergensAria: "Apri lista allergeni"
+        },
+        en: {
+          allergens: "ALLERGENS",
+          order: "ORDER",
+          menu: "MENU",
+          mark: "ADD",
+          remove: "REMOVE",
+          addMore: "Add another",
+          add: "Add",
+          goToOrder: "YOUR ORDER →",
+          orderTitle: "YOUR ORDER:",
+          orderNote: "Show it at the counter or use it to keep track.",
+          emptyOrder: "NO ITEMS MARKED",
+          total: "TOTAL:",
+          clear: "CLEAR",
+          backToMenu: "BACK TO MENU",
+          transition: "KEEP TRACK<br>OF YOUR SPICCHI",
+          orderStamp: "MARKED",
+          orderAria: "Go to your order",
+          menuAria: "Back to menu",
+          allergensAria: "Open allergen list"
+        }
+      };
 
       const products = [
         {
           id: "n1",
+          allergens: ["7"],
           category: "spicchi",
           number: "N.1",
           title: "NUMERO 1",
@@ -1402,6 +1635,7 @@
         },
         {
           id: "n2",
+          allergens: ["1", "7"],
           category: "spicchi",
           number: "N.2",
           title: "NUMERO 2",
@@ -1425,6 +1659,7 @@
         },
         {
           id: "n3",
+          allergens: ["11"],
           category: "spicchi",
           number: "N.3",
           title: "NUMERO 3",
@@ -1446,6 +1681,7 @@
         },
         {
           id: "n4",
+          allergens: ["7", "8"],
           category: "spicchi",
           number: "N.4",
           title: "NUMERO 4",
@@ -1466,6 +1702,7 @@
         },
         {
           id: "n5",
+          allergens: ["7"],
           category: "spicchi",
           number: "N.5",
           title: "NUMERO 5",
@@ -1488,6 +1725,7 @@
         },
         {
           id: "n6",
+          allergens: ["3", "4"],
           category: "spicchi",
           number: "N.6",
           title: "NUMERO 6",
@@ -1512,6 +1750,7 @@
         },
         {
           id: "n7",
+          allergens: ["7"],
           category: "spicchi",
           number: "N.7",
           title: "NUMERO 7",
@@ -1533,6 +1772,7 @@
         },
         {
           id: "n8",
+          allergens: ["4"],
           category: "spicchi",
           number: "N.8",
           title: "NUMERO 8",
@@ -1555,6 +1795,7 @@
         },
         {
           id: "n9",
+          allergens: ["7"],
           category: "spicchi",
           number: "N.9",
           title: "NUMERO 9",
@@ -1578,6 +1819,7 @@
         },
         {
           id: "n10",
+          allergens: ["2"],
           category: "spicchi",
           number: "N.10",
           title: "NUMERO 10",
@@ -1598,6 +1840,7 @@
         },
         {
           id: "polpette-veg",
+          allergens: ["3"],
           category: "fritti",
           title: "POLPETTE VEG",
           name: "Polpette veg",
@@ -1616,6 +1859,7 @@
         },
         {
           id: "polpettine",
+          allergens: ["1", "3"],
           category: "fritti",
           title: "POLPETTINE",
           name: "Polpettine",
@@ -1634,6 +1878,7 @@
         },
         {
           id: "patate-croc",
+          allergens: ["3", "7"],
           category: "fritti",
           title: "PATATE CROC",
           name: "Patate croc",
@@ -1649,6 +1894,7 @@
         },
         {
           id: "crema-pasticcera",
+          allergens: ["1", "3", "7"],
           category: "dolci",
           title: "CREMA PASTICCERA",
           name: "Crema Pasticcera",
@@ -1674,6 +1920,7 @@
         },
         {
           id: "crema-vaniglia",
+          allergens: ["1", "3", "7"],
           category: "dolci",
           title: "CREMA VANIGLIA",
           name: "Crema Vaniglia",
@@ -1701,6 +1948,7 @@
         },
         {
           id: "gianduia",
+          allergens: ["1", "3", "7", "8"],
           category: "dolci",
           title: "CREMA GIANDUIA",
           name: "Crema Gianduia",
@@ -1724,6 +1972,7 @@
         },
         {
           id: "ferrarelle",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Ferrarelle",
@@ -1733,6 +1982,7 @@
         },
         {
           id: "electa",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Electa",
@@ -1742,6 +1992,7 @@
         },
         {
           id: "maxima",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Maxima",
@@ -1751,6 +2002,7 @@
         },
         {
           id: "acqua-pet",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Acqua in PET",
@@ -1760,6 +2012,7 @@
         },
         {
           id: "chinotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Chinotto Ferrarelle",
@@ -1769,6 +2022,7 @@
         },
         {
           id: "limonata",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Limonata Ferrarelle",
@@ -1778,6 +2032,7 @@
         },
         {
           id: "aranciata",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Aranciata Ferrarelle",
@@ -1787,6 +2042,7 @@
         },
         {
           id: "gassosa",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Gassosa Ferrarelle",
@@ -1796,6 +2052,7 @@
         },
         {
           id: "coca-cola",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Coca Cola",
@@ -1805,6 +2062,7 @@
         },
         {
           id: "coca-zero",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Coca Zero",
@@ -1814,6 +2072,7 @@
         },
         {
           id: "te-pesca-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Te alla Pesca Prumotto",
@@ -1823,6 +2082,7 @@
         },
         {
           id: "te-menta-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Te alla Menta Prumotto",
@@ -1832,6 +2092,7 @@
         },
         {
           id: "te-earl-grey-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Te Earl Grey Prumotto",
@@ -1841,6 +2102,7 @@
         },
         {
           id: "succo-pesche-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Succo di Pesche Prumotto",
@@ -1850,6 +2112,7 @@
         },
         {
           id: "succo-albicocche-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Succo di Albicocche Prumotto",
@@ -1859,6 +2122,7 @@
         },
         {
           id: "succo-pere-prumotto",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Succo di Pere Prumotto",
@@ -1868,6 +2132,7 @@
         },
         {
           id: "cocktail-1-prumotto-carote-zenzero",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Cocktail 1 Prumotto",
@@ -1877,6 +2142,7 @@
         },
         {
           id: "cocktail-4-prumotto-arancio-sedano",
+          allergens: ["9"],
           category: "bevande",
           compact: true,
           name: "Cocktail 4 Prumotto",
@@ -1886,6 +2152,7 @@
         },
         {
           id: "cocktail-7-prumotto-rosa-canina",
+          allergens: [],
           category: "bevande",
           compact: true,
           name: "Cocktail 7 Prumotto",
@@ -1895,6 +2162,7 @@
         },
         {
           id: "arbor-yakima-valley-ipa",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Arbor Yakima Valley IPA",
@@ -1904,6 +2172,7 @@
         },
         {
           id: "arbor-rocketman-ipa",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Arbor Rocketman IPA",
@@ -1913,6 +2182,7 @@
         },
         {
           id: "renton-jimmy-pale-session-ipa",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Renton Jimmy Pale Session IPA",
@@ -1922,6 +2192,7 @@
         },
         {
           id: "renton-bombay-red-ale",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Renton Bombay Red Ale",
@@ -1931,6 +2202,7 @@
         },
         {
           id: "cala-passione-lager",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Cala Passione Lager",
@@ -1940,6 +2212,7 @@
         },
         {
           id: "cala-delirio-bock",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Cala Delirio Bock",
@@ -1949,6 +2222,7 @@
         },
         {
           id: "cala-nirvana-weizen",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Cala Nirvana Weizen",
@@ -1958,6 +2232,7 @@
         },
         {
           id: "cala-diavolicchia-golden-ale",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Cala Diavolicchia Golden Ale",
@@ -1967,6 +2242,7 @@
         },
         {
           id: "cala-citrusina-blanche-cedro",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Cala Citrusina Blanche al Cedro",
@@ -1976,6 +2252,7 @@
         },
         {
           id: "cala-giubilo-lager-senza-glutine",
+          allergens: [],
           category: "birre",
           compact: true,
           name: "Cala Giubilo Lager senza Glutine",
@@ -1985,6 +2262,7 @@
         },
         {
           id: "ichnusa-non-filtrata",
+          allergens: ["1"],
           category: "birre",
           compact: true,
           name: "Ichnusa Non Filtrata",
@@ -1994,6 +2272,7 @@
         },
         {
           id: "spritz",
+          allergens: ["12"],
           category: "cocktail",
           compact: true,
           name: "Spritz",
@@ -2003,6 +2282,7 @@
         },
         {
           id: "vodka-lemon",
+          allergens: [],
           category: "cocktail",
           compact: true,
           name: "Vodka Lemon",
@@ -2012,6 +2292,7 @@
         },
         {
           id: "gin-lemon",
+          allergens: [],
           category: "cocktail",
           compact: true,
           name: "Gin Lemon",
@@ -2021,42 +2302,47 @@
         },
         {
           id: "ridarola-bianco",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Calice Al Di La Del Fiume",
           detail: "Ridarola Bianco",
           service: "CALICE",
-          price: 600
+          price: 700
         },
         {
           id: "ridarola-rosso",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Calice Al Di La Del Fiume",
           detail: "Ridarola Rosso",
           service: "CALICE",
-          price: 600
+          price: 700
         },
         {
           id: "langhe-arneis",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Calice Cascina Albano",
           detail: "Langhe Arneis",
           service: "CALICE",
-          price: 600
+          price: 700
         },
         {
           id: "confine-rosato-frizzante",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Calice Vin Viandante",
           detail: "Confine Rosato Frizzante",
           service: "CALICE",
-          price: 600
+          price: 700
         },
         {
           id: "pevi-bollata-brut-nature",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Pevi",
@@ -2066,6 +2352,7 @@
         },
         {
           id: "pevi-miscellanea",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Pevi",
@@ -2075,6 +2362,7 @@
         },
         {
           id: "rinelli-ambra",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Rinelli Vigneti",
@@ -2084,6 +2372,7 @@
         },
         {
           id: "rinelli-24h",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Rinelli Vigneti",
@@ -2093,6 +2382,7 @@
         },
         {
           id: "rinelli-bosco",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Rinelli Vigneti",
@@ -2102,6 +2392,7 @@
         },
         {
           id: "colle-cianchetti-manco-nettaro",
+          allergens: ["12"],
           category: "vini",
           compact: true,
           name: "Bottiglia Colle Cianchetti",
@@ -2111,28 +2402,197 @@
         }
       ];
 
+      const productTranslations = {
+        n1: {
+          title: "NUMBER 1",
+          ingredients: ["CAPOCOLLO DI MARTINA FRANCA /", "STRACCIATELLA / TAGGIASCA OLIVES"]
+        },
+        n2: {
+          title: "NUMBER 2",
+          name: "Eggplant",
+          ingredients: ["ROASTED EGGPLANT / TOMATO CREAM", "STRACCIATELLA / PARMIGIANO REGGIANO / BASIL", "BREAD CRUMBLE"]
+        },
+        n3: {
+          title: "NUMBER 3",
+          name: "Zucchine",
+          ingredients: ["ZUCCHINE ALLA SCAPECE / ROASTED CARROT JULIENNE /", "CHICKPEA HUMMUS"]
+        },
+        n4: {
+          title: "NUMBER 4",
+          name: "Stracciata semi-dry",
+          ingredients: ["STRACCIATA / BASIL PESTO AND SEMI-DRIED CHERRY TOMATOES /", "30-MONTH PARMIGIANO REGGIANO"]
+        },
+        n5: {
+          title: "NUMBER 5",
+          name: "Guanciale truffle",
+          ingredients: ["BEECHWOOD-SMOKED GUANCIALE / STRACCIATELLA /", "TRUFFLE / CARAMELIZED CHERRY TOMATO"]
+        },
+        n6: {
+          title: "NUMBER 6",
+          ingredients: ["ROAST BEEF / SWEET POTATO / TUNA SAUCE /", "SEMI-DRIED CHERRY TOMATO / MIXED BABY GREENS"]
+        },
+        n7: {
+          title: "NUMBER 7",
+          ingredients: ["30-MONTH PROSCIUTTO DI PARMA SAN GIACOMO /", "STRACCIATELLA"]
+        },
+        n8: {
+          title: "NUMBER 8",
+          name: "Amberjack",
+          ingredients: ["AVOCADO AND TOMATO GUACAMOLE /", "AMBERJACK CARPACCIO MARINATED WITH JALAPENO /", "PASSION FRUIT AND TRUFFLE / WHITE PEPPER / EXTRA VIRGIN OLIVE OIL"]
+        },
+        n9: {
+          title: "NUMBER 9",
+          name: "Jamon Iberico",
+          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA /", "EXTRA VIRGIN OLIVE OIL / MIXED BABY GREENS"]
+        },
+        n10: {
+          title: "NUMBER 10",
+          name: "Gambero",
+          ingredients: ["GAMBERO ROSSO DI MAZARA DEL VALLO / AVOCADO /", "PASSION FRUIT / LIME / PINK PEPPERCORN"]
+        },
+        "polpette-veg": {
+          title: "VEG POLPETTE",
+          name: "Veg polpette",
+          ingredients: ["SWEET POTATO / CHICKPEAS / GINGER /", "TURMERIC MAYONNAISE"]
+        },
+        polpettine: {
+          title: "POLPETTINE",
+          ingredients: ["CRISPY MEAT AND OLIVE POLPETTINE /", "OLIVE MAYONNAISE"]
+        },
+        "patate-croc": {
+          title: "PATATE CROC",
+          ingredients: ["BOILED POTATOES / EGG / MOZZARELLA /", "PROVOLA"]
+        },
+        "crema-pasticcera": {
+          title: "PASTRY CREAM",
+          name: "Pastry Cream",
+          ingredients: ["SWEET BRIOCHE SPICCHIO WITH PASTRY CREAM /", "CARAMEL / POWDERED SUGAR"]
+        },
+        "crema-vaniglia": {
+          title: "VANILLA CREAM",
+          name: "Vanilla Cream",
+          ingredients: ["SWEET BRIOCHE SPICCHIO WITH VANILLA MILK CREAM /", "CARAMEL / POWDERED SUGAR"]
+        },
+        gianduia: {
+          title: "GIANDUIA CREAM",
+          name: "Gianduia Cream",
+          ingredients: ["SWEET BRIOCHE SPICCHIO WITH GIANDUIA CHOCOLATE CREAM /", "POWDERED SUGAR / HAZELNUT CRUMBLE"]
+        },
+        ferrarelle: { detail: "Canned water" },
+        electa: { detail: "Canned water" },
+        maxima: { detail: "Canned water" },
+        "acqua-pet": { name: "Water in PET bottle", detail: "Water bottle" },
+        chinotto: { detail: "Canned soft drink" },
+        limonata: { detail: "Canned soft drink" },
+        aranciata: { detail: "Canned soft drink" },
+        gassosa: { detail: "Canned soft drink" },
+        "coca-cola": { detail: "Canned soft drink" },
+        "coca-zero": { detail: "Canned soft drink" },
+        "te-pesca-prumotto": { name: "Peach Tea Prumotto", detail: "Bottled drink" },
+        "te-menta-prumotto": { name: "Mint Tea Prumotto", detail: "Bottled drink" },
+        "te-earl-grey-prumotto": { name: "Earl Grey Tea Prumotto", detail: "Bottled drink" },
+        "succo-pesche-prumotto": { name: "Peach Juice Prumotto", detail: "Juice bottle" },
+        "succo-albicocche-prumotto": { name: "Apricot Juice Prumotto", detail: "Juice bottle" },
+        "succo-pere-prumotto": { name: "Pear Juice Prumotto", detail: "Juice bottle" },
+        "cocktail-1-prumotto-carote-zenzero": { name: "Cocktail 1 Prumotto", detail: "Apple / carrot / ginger" },
+        "cocktail-4-prumotto-arancio-sedano": { name: "Cocktail 4 Prumotto", detail: "Apple / orange / celery" },
+        "cocktail-7-prumotto-rosa-canina": { name: "Cocktail 7 Prumotto", detail: "Apple / rosehip" },
+        "arbor-yakima-valley-ipa": { detail: "IPA / 7%" },
+        "arbor-rocketman-ipa": { detail: "IPA / 6%" },
+        "renton-jimmy-pale-session-ipa": { detail: "Session IPA / 4.5%" },
+        "renton-bombay-red-ale": { detail: "Red Ale / 5.7%" },
+        "cala-passione-lager": { detail: "Lager / 4.8%" },
+        "cala-delirio-bock": { detail: "Bock / 7.2%" },
+        "cala-nirvana-weizen": { detail: "Weizen / 5.1%" },
+        "cala-diavolicchia-golden-ale": { detail: "Golden Ale / 5.2%" },
+        "cala-citrusina-blanche-cedro": { name: "Cala Citrusina Blanche with Citron", detail: "Blanche / 4.6%" },
+        "cala-giubilo-lager-senza-glutine": { name: "Cala Giubilo Gluten-Free Lager", detail: "Gluten-free lager / 4.8%" },
+        "ichnusa-non-filtrata": { detail: "Lager / 5%" },
+        spritz: { detail: "Cocktail" },
+        "vodka-lemon": { detail: "Cocktail" },
+        "gin-lemon": { detail: "Cocktail" },
+        "ridarola-bianco": { name: "Glass Al Di La Del Fiume", detail: "Ridarola Bianco" },
+        "ridarola-rosso": { name: "Glass Al Di La Del Fiume", detail: "Ridarola Rosso" },
+        "langhe-arneis": { name: "Glass Cascina Albano", detail: "Langhe Arneis" },
+        "confine-rosato-frizzante": { name: "Glass Vin Viandante", detail: "Confine Rosato Frizzante" },
+        "pevi-bollata-brut-nature": { name: "Bottle Pevi", detail: "Bollata Metodo Classico Brut Nature" },
+        "pevi-miscellanea": { name: "Bottle Pevi", detail: "Miscellanea" },
+        "rinelli-ambra": { name: "Bottle Rinelli Vigneti", detail: "Ambra" },
+        "rinelli-24h": { name: "Bottle Rinelli Vigneti", detail: "24H" },
+        "rinelli-bosco": { name: "Bottle Rinelli Vigneti", detail: "Bosco" },
+        "colle-cianchetti-manco-nettaro": { name: "Bottle Colle Cianchetti", detail: "Manco N'Ettaro" }
+      };
+
+      products.forEach((product) => {
+        product.translations = { en: productTranslations[product.id] || {} };
+      });
+
       const productById = new Map(products.map((product) => [product.id, product]));
       const cart = new Map();
       const menuView = document.querySelector("#menu-view");
       const orderView = document.querySelector("#order-view");
+      const allergenView = document.querySelector("#allergen-view");
       const productList = document.querySelector("#product-list");
       const orderGrid = document.querySelector("#order-grid");
       const orderTextList = document.querySelector("#order-text-list");
+      const allergenList = document.querySelector("[data-allergen-list]");
       const emptyOrder = document.querySelector("#empty-order");
       const totalValue = document.querySelector("#total-value");
       const menuButton = document.querySelector("[data-menu-button]");
       const menuButtonLabel = document.querySelector("[data-menu-button-label]");
       const orderCount = document.querySelector("[data-order-count]");
+      const languageButton = document.querySelector("[data-language-toggle]");
+      const openAllergensButton = document.querySelector("[data-open-allergens]");
       const openOrderButton = document.querySelector("[data-open-order]");
       const backButton = document.querySelector("[data-back-menu]");
+      const backAllergensButton = document.querySelector("[data-back-allergens]");
       const clearButton = document.querySelector("[data-clear-order]");
       const floatingArrow = document.querySelector("[data-floating-arrow]");
       const orderTransition = document.querySelector("[data-order-transition]");
       const categoryRail = document.querySelector(".category-rail");
       let activeCategoryId = "";
+      let currentLanguage = localStorage.getItem(languageStorageKey) === "en" ? "en" : "it";
+
+      function copy(key) {
+        return uiCopy[currentLanguage][key];
+      }
+
+      function translated(product, field) {
+        return product.translations?.[currentLanguage]?.[field] || product[field];
+      }
+
+      function productName(product) {
+        return translated(product, "name");
+      }
+
+      function productTitle(product) {
+        return translated(product, "title") || productName(product);
+      }
+
+      function productDetail(product) {
+        return translated(product, "detail") || "";
+      }
+
+      function productIngredients(product) {
+        return translated(product, "ingredients") || product.ingredients || [];
+      }
+
+      function categoryLabel(categoryId) {
+        const category = categories.find((item) => item.id === categoryId);
+        if (!category) return "CLOVE";
+        return currentLanguage === "en" ? category.labelEn : category.label;
+      }
 
       function formatPrice(cents) {
         return `${(cents / 100).toFixed(2).replace(".", ",")}€`;
+      }
+
+      function formatAllergens(product) {
+        return product.allergens?.length ? product.allergens.join(", ") : "—";
+      }
+
+      function allergenLabel(product) {
+        return `${copy("allergens")} - ${formatAllergens(product)}`;
       }
 
       function loadCart() {
@@ -2186,8 +2646,9 @@
 
       function titleClass(product) {
         const classes = ["product-title"];
-        if (!product.title?.startsWith("NUMERO")) classes.push("is-word");
-        if ((product.title || "").length > 12) classes.push("is-long");
+        const title = productTitle(product);
+        if (!title?.startsWith("NUMERO") && !title?.startsWith("NUMBER")) classes.push("is-word");
+        if ((title || "").length > 12) classes.push("is-long");
         return classes.join(" ");
       }
 
@@ -2201,14 +2662,15 @@
 
       function renderQtyControl(product, extraClass = "") {
         const qty = cartQty(product.id);
+        const name = productName(product);
         if (qty === 0) {
-          return `<button class="mark-button" type="button" data-add="${product.id}">SEGNA</button>`;
+          return `<button class="mark-button" type="button" data-add="${product.id}">${copy("mark")}</button>`;
         }
 
         return `
           <div class="qty-control ${extraClass}">
-            <button class="qty-action" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
-            <button class="qty-number" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">
+            <button class="qty-action" type="button" data-decrement="${product.id}" aria-label="${copy("remove")} ${name}">${copy("remove")}</button>
+            <button class="qty-number" type="button" data-increment="${product.id}" aria-label="${copy("addMore")} ${name}">
               <span class="qty-value">${qty}</span>
             </button>
           </div>
@@ -2216,24 +2678,28 @@
       }
 
       function renderProduct(product) {
-        const title = product.title || product.name;
+        const title = productTitle(product);
+        const name = productName(product);
         const nameClass = `product-name${product.emphasisName ? " is-emphasis" : ""}`;
         return `
           <section class="${sectionClass(product)}" id="${product.id}" data-category="${product.category}" data-product-id="${product.id}" style="--accent:${product.accent || "var(--clove-purple)"}">
             <div class="product-kicker">
-              <span class="product-number">${product.number || categories.find((category) => category.id === product.category)?.label || "CLOVE"}</span>
-              <span class="${nameClass}">${product.name}</span>
+              <div class="product-kicker__left">
+                <span class="product-number">${product.number || categoryLabel(product.category)}</span>
+                <span class="${nameClass}">${name}</span>
+              </div>
+              <span class="product-allergens">${allergenLabel(product)}</span>
             </div>
             <h2 class="${titleClass(product)}">${title}</h2>
             <div class="product-stage">
               <div class="product-photo-wrap">
-                <img class="product-photo" src="${mainImage(product)}" alt="${product.name}" loading="lazy" decoding="async">
+                <img class="product-photo" src="${mainImage(product)}" alt="${name}" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="product-meta">
               <div class="price">${formatPrice(product.price)}</div>
             </div>
-            <p class="ingredients">${product.ingredients.map((line, index) => `${index ? "<br>" : ""}${line}`).join("")}</p>
+            <p class="ingredients">${productIngredients(product).map((line, index) => `${index ? "<br>" : ""}${line}`).join("")}</p>
             <div class="product-actions" data-actions-for="${product.id}">
               ${renderQtyControl(product)}
             </div>
@@ -2249,20 +2715,22 @@
 
       function renderCompactRow(product) {
         const qty = cartQty(product.id);
+        const name = productName(product);
         const actionMarkup = qty > 0
           ? `
             <div class="compact-quantity">
-              <button class="compact-quantity__remove" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
-              <button class="compact-quantity__count" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">${qty}</button>
+              <button class="compact-quantity__remove" type="button" data-decrement="${product.id}" aria-label="${copy("remove")} ${name}">${copy("remove")}</button>
+              <button class="compact-quantity__count" type="button" data-increment="${product.id}" aria-label="${copy("addMore")} ${name}">${qty}</button>
             </div>
           `
-          : `<button class="compact-add" type="button" data-add="${product.id}" aria-label="Aggiungi ${product.name}">SEGNA</button>`;
+          : `<button class="compact-add" type="button" data-add="${product.id}" aria-label="${copy("add")} ${name}">${copy("mark")}</button>`;
 
         return `
           <article class="compact-row" data-product-id="${product.id}" data-category="${product.category}">
             <div class="compact-row__text">
-              <h3 class="compact-row__name">${product.name}</h3>
-              <p class="compact-row__meta">${product.detail}</p>
+              <h3 class="compact-row__name">${name}</h3>
+              <p class="compact-row__meta">${productDetail(product)}</p>
+              <p class="compact-row__allergens">${allergenLabel(product)}</p>
               ${product.service ? `<div class="compact-badges">${renderCompactBadges(product)}</div>` : ""}
             </div>
             <div class="compact-price">${formatPrice(product.price)}</div>
@@ -2305,11 +2773,61 @@
           });
         });
 
-        chunks.push(renderCompactSection("bevande", "BEVANDE"));
-        chunks.push(renderCompactSection("birre", "BIRRE"));
-        chunks.push(renderCompactSection("cocktail", "COCKTAIL"));
-        chunks.push(renderCompactSection("vini", "VINI"));
+        chunks.push(renderCompactSection("bevande", categoryLabel("bevande")));
+        chunks.push(renderCompactSection("birre", categoryLabel("birre")));
+        chunks.push(renderCompactSection("cocktail", categoryLabel("cocktail")));
+        chunks.push(renderCompactSection("vini", categoryLabel("vini")));
         productList.innerHTML = chunks.join("");
+      }
+
+      function renderAllergenPage() {
+        allergenList.innerHTML = allergenLegend
+          .map((item) => `
+            <li>
+              <span class="allergen-code">${item.code}</span>
+              <span class="allergen-name">${currentLanguage === "en" ? item.nameEn : item.name}</span>
+            </li>
+          `)
+          .join("");
+      }
+
+      function updateStaticLabels() {
+        document.documentElement.lang = currentLanguage;
+        languageButton.textContent = currentLanguage === "en" ? "🇮🇹" : "🇬🇧";
+        languageButton.setAttribute("aria-label", currentLanguage === "en" ? "Passa all'italiano" : "Switch to English");
+        languageButton.setAttribute("title", currentLanguage === "en" ? "Italiano" : "English");
+        openAllergensButton.textContent = copy("allergens");
+        openAllergensButton.setAttribute("aria-label", copy("allergensAria"));
+        openOrderButton.textContent = copy("goToOrder");
+        const orderTitle = document.querySelector(".order-title");
+        orderTitle.textContent = copy("orderTitle");
+        orderTitle.dataset.stamp = copy("orderStamp");
+        document.querySelector(".order-note").textContent = copy("orderNote");
+        emptyOrder.textContent = copy("emptyOrder");
+        document.querySelector(".total-label").textContent = copy("total");
+        clearButton.textContent = copy("clear");
+        backButton.textContent = copy("backToMenu");
+        backAllergensButton.textContent = copy("backToMenu");
+        document.querySelector(".allergen-title").textContent = copy("allergens");
+        document.querySelector(".order-transition__text").innerHTML = copy("transition");
+        document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+          button.textContent = categoryLabel(button.dataset.scrollTarget);
+        });
+      }
+
+      function renderLanguage() {
+        updateStaticLabels();
+        renderMenu();
+        renderAllergenPage();
+        updateCartUI();
+        setupCategoryTracking();
+        updateScrollState();
+      }
+
+      function setLanguage(language) {
+        currentLanguage = language === "en" ? "en" : "it";
+        localStorage.setItem(languageStorageKey, currentLanguage);
+        renderLanguage();
       }
 
       function updateProductActions() {
@@ -2326,18 +2844,19 @@
 
       function updateHeaderButton() {
         const isOrderOpen = !orderView.hidden;
+        const isAllergenOpen = !allergenView.hidden;
         const units = cartUnits();
 
-        if (isOrderOpen) {
-          menuButtonLabel.textContent = "MENU";
-          menuButton.setAttribute("aria-label", "Torna al menu");
+        if (isOrderOpen || isAllergenOpen) {
+          menuButtonLabel.textContent = copy("menu");
+          menuButton.setAttribute("aria-label", copy("menuAria"));
           menuButton.classList.remove("is-filled");
           orderCount.hidden = true;
           return;
         }
 
-        menuButtonLabel.textContent = "ORDINE";
-        menuButton.setAttribute("aria-label", "Vai al tuo ordine");
+        menuButtonLabel.textContent = copy("order");
+        menuButton.setAttribute("aria-label", copy("orderAria"));
         menuButton.classList.toggle("is-filled", units > 0);
         orderCount.textContent = units;
         orderCount.hidden = units === 0;
@@ -2358,25 +2877,26 @@
         emptyOrder.hidden = items.length > 0;
 
         cardItems.forEach(({ product, qty }) => {
+          const name = productName(product);
           const card = document.createElement("article");
           card.className = "order-card";
           card.dataset.productId = product.id;
 
           const title = document.createElement("h2");
-          title.className = `order-card__title${(product.title || product.name).length > 10 ? " is-small" : ""}`;
-          title.textContent = product.title || product.name;
+          title.className = `order-card__title${productTitle(product).length > 10 ? " is-small" : ""}`;
+          title.textContent = productTitle(product);
 
           const imageSrc = mainImage(product);
           const media = imageSrc ? document.createElement("img") : document.createElement("div");
           if (imageSrc) {
             media.className = "order-card__img";
             media.src = imageSrc;
-            media.alt = product.name;
+            media.alt = name;
             media.loading = "lazy";
             media.decoding = "async";
           } else {
             media.className = "order-card__placeholder";
-            media.textContent = product.category;
+            media.textContent = categoryLabel(product.category);
           }
 
           const meta = document.createElement("p");
@@ -2391,6 +2911,7 @@
         });
 
         textItems.forEach(({ product, qty }) => {
+          const name = productName(product);
           const row = document.createElement("article");
           row.className = "order-text-row";
           row.dataset.productId = product.id;
@@ -2398,17 +2919,17 @@
           const textColumn = document.createElement("div");
           const title = document.createElement("h2");
           title.className = "order-text-row__name";
-          title.textContent = product.name;
+          title.textContent = name;
 
           const meta = document.createElement("p");
           meta.className = "order-text-row__meta";
-          meta.textContent = `${product.category} / ${formatPrice(product.price)} × ${qty}`;
+          meta.textContent = `${categoryLabel(product.category)} / ${formatPrice(product.price)} × ${qty}`;
 
           const controls = document.createElement("div");
           controls.className = "order-text-control";
           controls.innerHTML = `
-            <button class="order-text-control__remove" type="button" data-decrement="${product.id}" aria-label="Togli ${product.name}">TOGLI</button>
-            <button class="order-text-control__count" type="button" data-increment="${product.id}" aria-label="Aggiungi ancora ${product.name}">${qty}</button>
+            <button class="order-text-control__remove" type="button" data-decrement="${product.id}" aria-label="${copy("remove")} ${name}">${copy("remove")}</button>
+            <button class="order-text-control__count" type="button" data-increment="${product.id}" aria-label="${copy("addMore")} ${name}">${qty}</button>
           `;
 
           textColumn.append(title, meta);
@@ -2423,6 +2944,7 @@
         renderOrder();
         menuView.hidden = true;
         orderView.hidden = false;
+        allergenView.hidden = true;
         floatingArrow.hidden = true;
         updateHeaderButton();
         updateFloatingArrow();
@@ -2446,11 +2968,21 @@
 
       function showMenu() {
         orderView.hidden = true;
+        allergenView.hidden = true;
         menuView.hidden = false;
         floatingArrow.hidden = false;
         updateHeaderButton();
         updateFloatingArrow();
         updateCategoryTracking(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showAllergens() {
+        menuView.hidden = true;
+        orderView.hidden = true;
+        allergenView.hidden = false;
+        floatingArrow.hidden = true;
+        updateHeaderButton();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
@@ -2526,12 +3058,18 @@
       });
 
       menuButton.addEventListener("click", () => {
-        if (orderView.hidden) showOrder();
-        else showMenu();
+        if (menuView.hidden) showMenu();
+        else showOrder();
       });
 
+      languageButton.addEventListener("click", () => {
+        setLanguage(currentLanguage === "en" ? "it" : "en");
+      });
+
+      openAllergensButton.addEventListener("click", showAllergens);
       openOrderButton.addEventListener("click", showOrder);
       backButton.addEventListener("click", showMenu);
+      backAllergensButton.addEventListener("click", showMenu);
       clearButton.addEventListener("click", () => {
         cart.clear();
         saveCart();
@@ -2574,10 +3112,7 @@
       window.addEventListener("resize", updateScrollState);
 
       loadCart();
-      renderMenu();
-      setupCategoryTracking();
-      updateCartUI();
-      updateScrollState();
+      renderLanguage();
     </script>
   </body>
 </html>
