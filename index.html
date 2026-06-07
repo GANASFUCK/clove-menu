@@ -302,6 +302,66 @@
         text-decoration: none;
       }
 
+      .service-strip__line--social {
+        gap: 8px;
+        overflow: visible;
+        padding: 9px 0 4px;
+      }
+
+      .ig-follow {
+        flex: 0 0 auto;
+        color: var(--clove-purple);
+        font-size: 21px;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+
+      .ig-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        overflow: visible;
+      }
+
+      .ig-link {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 6px;
+        min-height: 33px;
+        padding: 5px 12px 6px !important;
+        border-radius: 999px;
+        background: var(--clove-purple);
+        color: var(--clove-white) !important;
+        font-size: 13px;
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+        box-shadow: 0 3px 0 rgba(92, 42, 128, 0.18);
+      }
+
+      .ig-link:hover {
+        background: #4a206a;
+      }
+
+      .ig-link:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 0 rgba(92, 42, 128, 0.18);
+      }
+
+      .ig-icon {
+        width: 15px;
+        height: 15px;
+        flex: 0 0 auto;
+      }
+
+      .ig-link span {
+        min-width: 0;
+        white-space: nowrap;
+      }
+
       .combo-menu-section {
         position: relative;
         scroll-margin-top: calc(var(--header-height) + var(--rail-height));
@@ -2451,9 +2511,18 @@
             <span>17 MAGGIO 2026</span>
             <span>100% LIEVITO MADRE</span>
           </div>
-          <div class="service-strip__line">
-            <a href="https://www.instagram.com/clove.roma/" target="_blank" rel="noreferrer">@CLOVE.ROMA</a>
-            <a href="https://www.instagram.com/amaliacostantini/" target="_blank" rel="noreferrer">@AMALIACOSTANTINI</a>
+          <div class="service-strip__line service-strip__line--social">
+            <span class="ig-follow" data-follow-label>SEGUICI</span>
+            <div class="ig-links">
+            <a class="ig-link" href="https://www.instagram.com/clove.roma/" target="_blank" rel="noreferrer" aria-label="Apri @clove.roma su Instagram">
+              <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+              <span>@CLOVE.ROMA</span>
+            </a>
+            <a class="ig-link" href="https://www.instagram.com/amaliacostantini/" target="_blank" rel="noreferrer" aria-label="Apri @amaliacostantini su Instagram">
+              <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+              <span>@AMALIACOSTANTINI</span>
+            </a>
+            </div>
           </div>
         </section>
 
@@ -2589,7 +2658,8 @@
           back: "INDIETRO",
           done: "FATTO",
           optionalHint: "FACOLTATIVO",
-          recapEmpty: "COMPONI IL TUO MENU"
+          recapEmpty: "COMPONI IL TUO MENU",
+          follow: "SEGUICI"
         },
         en: {
           allergens: "ALLERGENS",
@@ -2630,7 +2700,8 @@
           back: "BACK",
           done: "DONE",
           optionalHint: "OPTIONAL",
-          recapEmpty: "BUILD YOUR MENU"
+          recapEmpty: "BUILD YOUR MENU",
+          follow: "FOLLOW US"
         }
       };
 
@@ -4092,7 +4163,8 @@
         const id = `combo-${menu.id}`;
         const qty = cartQty(id);
         if (qty === 0) {
-          return `<button class="combo-card__cta" type="button" data-add-combo="${id}" disabled>${copy("markMenu")}</button>`;
+          // Nessun pulsante qui: l'azione "SEGNA MENU" è il CTA dell'ultimo step (nav).
+          return "";
         }
 
         return `
@@ -4110,7 +4182,7 @@
           const menu = comboMenus.find((item) => item.id === node.dataset.comboCartActions);
           if (menu) node.innerHTML = renderComboCartControl(menu);
           const card = node.closest("[data-combo-card]");
-          if (card) updateComboAddState(card);
+          if (card) updateComboFinishButton(card);
         });
       }
 
@@ -4280,13 +4352,8 @@
         });
 
         const prevBtn = cfg.querySelector("[data-step-prev]");
-        const nextBtn = cfg.querySelector("[data-step-next]");
         if (prevBtn) prevBtn.disabled = next === 0;
-        if (nextBtn) {
-          const last = next === total - 1;
-          nextBtn.textContent = last ? copy("done") : copy("next");
-          nextBtn.classList.toggle("is-done", last);
-        }
+        updateComboFinishButton(card);
       }
 
       function enforceGroupLimits(card) {
@@ -4372,12 +4439,38 @@
         return groupsOk && drinkOk;
       }
 
-      function updateComboAddState(card) {
-        const btn = card.querySelector("[data-add-combo]");
-        if (!btn) return;
-        const complete = comboSelectionComplete(card);
-        btn.disabled = !complete;
-        btn.classList.toggle("is-disabled", !complete);
+      // Il pulsante "next" dell'ultimo step È il CTA finale:
+      // - non ultimo step  -> "AVANTI" (naviga)
+      // - ultimo step, non in carrello -> "SEGNA MENU" (aggiunge, disabilitato finché incompleto)
+      // - ultimo step, già in carrello  -> "FATTO" (chiude il configuratore)
+      function updateComboFinishButton(card) {
+        const cfg = comboConfigEl(card);
+        if (!cfg) return;
+        const nextBtn = cfg.querySelector("[data-step-next]");
+        if (!nextBtn) return;
+        const total = comboStepTotal(card);
+        const step = Number(cfg.dataset.step);
+        const last = step === total - 1;
+        const inCart = cartQty(`combo-${card.dataset.comboId}`) > 0;
+
+        if (!last) {
+          nextBtn.textContent = copy("next");
+          nextBtn.dataset.mode = "next";
+          nextBtn.disabled = false;
+          nextBtn.classList.remove("is-done");
+          return;
+        }
+        if (inCart) {
+          nextBtn.textContent = copy("done");
+          nextBtn.dataset.mode = "close";
+          nextBtn.disabled = false;
+          nextBtn.classList.add("is-done");
+        } else {
+          nextBtn.textContent = copy("markMenu");
+          nextBtn.dataset.mode = "add";
+          nextBtn.disabled = !comboSelectionComplete(card);
+          nextBtn.classList.remove("is-done");
+        }
       }
 
       function initComboConfig(card) {
@@ -4385,7 +4478,7 @@
         updateComboCounters(card);
         setComboStep(card, 0);
         renderComboLiveRecap(card);
-        updateComboAddState(card);
+        updateComboFinishButton(card);
       }
 
       function allergenLabel(product) {
@@ -4624,6 +4717,8 @@
         document.querySelector(".allergen-title").textContent = copy("allergens");
         document.querySelector(".order-transition__text").innerHTML = copy("transition");
         document.querySelector(".combo-menu-copy").textContent = copy("menuSubtitle");
+        const followLabel = document.querySelector("[data-follow-label]");
+        if (followLabel) followLabel.textContent = copy("follow");
         document.querySelectorAll("[data-combo-period]").forEach((button) => {
           button.textContent = copy(button.dataset.comboPeriod);
         });
@@ -4893,7 +4988,23 @@
         const stepNext = event.target.closest("[data-step-next]");
         if (stepNext) {
           const card = stepNext.closest("[data-combo-card]");
-          if (card) setComboStep(card, Number(comboConfigEl(card).dataset.step) + 1);
+          if (!card) return;
+          const cfg = comboConfigEl(card);
+          const mode = stepNext.dataset.mode || "next";
+          if (mode === "add") {
+            if (stepNext.disabled || !comboSelectionComplete(card)) return;
+            const id = `combo-${card.dataset.comboId}`;
+            comboSelections.set(id, readComboSelection(card));
+            saveComboSelections();
+            increment(id);
+          } else if (mode === "close") {
+            const detail = card.querySelector("[data-combo-detail]");
+            const toggle = card.querySelector("[data-combo-toggle]");
+            if (detail) detail.hidden = true;
+            if (toggle) { toggle.textContent = copy("chooseMenu"); toggle.classList.remove("is-open"); }
+          } else {
+            setComboStep(card, Number(cfg.dataset.step) + 1);
+          }
           return;
         }
 
@@ -4944,7 +5055,7 @@
         enforceGroupLimits(card);
         updateComboCounters(card);
         renderComboLiveRecap(card);
-        updateComboAddState(card);
+        updateComboFinishButton(card);
 
         const comboCartId = `combo-${card.dataset.comboId}`;
         if (cartQty(comboCartId) > 0) {
