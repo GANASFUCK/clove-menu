@@ -656,10 +656,18 @@
       /* ===== Combo configurator (stepped, visual) ===== */
       .combo-config {
         display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 14px;
         margin-top: 16px;
         padding-top: 16px;
         border-top: 1.5px solid var(--clove-purple);
+      }
+
+      .combo-config__panels,
+      .combo-config__progress,
+      .combo-config__nav,
+      .combo-config__recap {
+        min-width: 0;
       }
 
       .combo-config[hidden] {
@@ -1028,6 +1036,18 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        min-width: 0;
+      }
+
+      .combo-recap__foot .combo-card__cart {
+        min-width: 0;
+      }
+
+      /* il controllo quantità nel recap deve restare dentro la card: niente min-width fisso */
+      .combo-recap__foot .combo-card__qty {
+        min-width: 0;
+        width: 100%;
+        min-height: 46px;
       }
 
       .combo-recap__price {
