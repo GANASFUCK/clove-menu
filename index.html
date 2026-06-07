@@ -302,6 +302,719 @@
         text-decoration: none;
       }
 
+      .combo-menu-section {
+        position: relative;
+        scroll-margin-top: calc(var(--header-height) + var(--rail-height));
+        padding: 20px 18px 46px;
+        border-bottom: 1.5px solid var(--clove-line);
+        background:
+          linear-gradient(rgba(92, 42, 128, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(92, 42, 128, 0.045) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+
+      .combo-menu-header {
+        width: 100%;
+        margin: 0 auto 26px;
+      }
+
+      .combo-menu-title {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        overflow: visible;
+      }
+
+      .combo-menu-title__image {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .combo-menu-copy {
+        width: 100%;
+        max-width: none;
+        margin: 9px auto 0;
+        color: var(--clove-purple);
+        font-size: clamp(11px, 2.95vw, 16px);
+        font-weight: 900;
+        line-height: 1.02;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: scaleX(0.86);
+      }
+
+      .combo-filter {
+        width: min(100%, 500px);
+        margin: 0 auto 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .combo-filter__button {
+        min-height: 44px;
+        padding: 8px 10px 9px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.88);
+      }
+
+      .combo-filter__button.is-active {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .combo-grid {
+        width: min(100%, 1040px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .combo-card {
+        position: relative;
+        overflow: hidden;
+        border: 1.5px solid rgba(92, 42, 128, 0.45);
+        background: var(--clove-white);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.055);
+      }
+
+      .combo-card[hidden] {
+        display: none;
+      }
+
+      .combo-card__image-wrap {
+        position: relative;
+        min-height: clamp(318px, 78vw, 380px);
+        display: grid;
+        place-items: center;
+        padding: 58px 10px 10px;
+        background: var(--clove-white);
+      }
+
+      .combo-card__image {
+        width: min(100%, 500px);
+        max-height: 318px;
+        object-fit: contain;
+        filter: drop-shadow(0 16px 14px rgba(48, 0, 120, 0.045));
+        position: relative;
+        z-index: 1;
+      }
+
+      .combo-card__badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        padding: 8px 13px 9px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+        font-size: 17px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: rotate(-5deg) scaleX(0.86);
+        transform-origin: left center;
+        z-index: 4;
+      }
+
+      .plant-badge {
+        position: relative;
+        display: inline-grid !important;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border: 2px solid #20a300;
+        border-radius: 50%;
+        background: var(--clove-white);
+        color: #20a300;
+        font-family: Arial, sans-serif;
+        font-size: 19px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: none !important;
+      }
+
+      .plant-badge::before {
+        content: "V";
+        display: block;
+        transform: translateY(-1px) scaleX(0.76);
+      }
+
+      .plant-badge::after {
+        content: "";
+        position: absolute;
+        width: 9px;
+        height: 5px;
+        border-radius: 100% 0 100% 0;
+        background: #20a300;
+        transform: translate(6px, -8px) rotate(-22deg);
+      }
+
+      .combo-card__plant {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 3;
+      }
+
+      .combo-card__body {
+        padding: 15px 16px 17px;
+      }
+
+      .combo-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 9px;
+        color: var(--clove-purple);
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .combo-card__period,
+      .combo-card__include {
+        display: inline-block;
+        transform: scaleX(0.84);
+      }
+
+      .combo-card__include {
+        text-align: right;
+        transform-origin: right center;
+      }
+
+      .combo-card__title {
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: clamp(42px, 11.5vw, 64px);
+        font-weight: 900;
+        line-height: 0.78;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        transform: scaleX(0.72);
+        transform-origin: left center;
+      }
+
+      .combo-card__price {
+        margin: 8px 0 0;
+        color: var(--clove-purple);
+        font-size: clamp(42px, 11vw, 60px);
+        font-weight: 900;
+        line-height: 0.82;
+        transform: scaleX(0.78);
+        transform-origin: left center;
+      }
+
+      .combo-card__description {
+        margin: 7px 0 0;
+        color: var(--clove-purple);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+      }
+
+      .combo-card__actions {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .combo-card__cta {
+        min-height: 48px;
+        padding: 8px 20px 10px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 25px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .combo-card__mini {
+        display: none;
+      }
+
+      .combo-card__cta.is-open {
+        background: var(--clove-cream);
+        color: var(--clove-purple);
+      }
+
+      .combo-card__cta:disabled,
+      .combo-card__cta.is-disabled {
+        background: rgba(92, 42, 128, 0.18);
+        border-color: rgba(92, 42, 128, 0.22);
+        color: var(--clove-white);
+        opacity: 1;
+        cursor: not-allowed;
+      }
+
+      .combo-card__cart {
+        flex: 1 1 auto;
+        min-width: 0;
+        display: grid;
+        place-items: stretch;
+      }
+
+      .combo-card__cart .combo-card__cta {
+        width: 100%;
+        min-height: 44px;
+        font-size: 21px;
+      }
+
+      .combo-card__qty {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+      }
+
+      /* ===== Combo configurator (stepped, visual) ===== */
+      .combo-config {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1.5px solid var(--clove-purple);
+      }
+
+      .combo-config[hidden] {
+        display: none;
+      }
+
+      .combo-config__progress {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 4px;
+      }
+
+      .combo-step-dot {
+        position: relative;
+        flex: 1 1 0;
+        display: grid;
+        justify-items: center;
+        gap: 5px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--clove-purple);
+        cursor: pointer;
+      }
+
+      .combo-step-dot::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: calc(-50% + 17px);
+        width: calc(100% - 34px);
+        height: 2px;
+        background: rgba(92, 42, 128, 0.24);
+        z-index: 0;
+      }
+
+      .combo-step-dot:first-child::before {
+        display: none;
+      }
+
+      .combo-step-dot.is-active::before,
+      .combo-step-dot.is-done::before {
+        background: var(--clove-purple);
+      }
+
+      .combo-step-dot__num {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border: 2px solid rgba(92, 42, 128, 0.4);
+        border-radius: 50%;
+        background: var(--clove-white);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1;
+        transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+      }
+
+      .combo-step-dot.is-active .combo-step-dot__num {
+        background: var(--clove-purple);
+        border-color: var(--clove-purple);
+        color: var(--clove-white);
+        transform: scale(1.08);
+      }
+
+      .combo-step-dot.is-done .combo-step-dot__num {
+        background: var(--clove-purple);
+        border-color: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .combo-step-dot__label {
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        opacity: 0.62;
+        transform: scaleX(0.9);
+        transition: opacity 0.22s ease;
+      }
+
+      .combo-step-dot.is-active .combo-step-dot__label {
+        opacity: 1;
+      }
+
+      .combo-step[hidden] {
+        display: none;
+      }
+
+      .combo-step:not([hidden]) {
+        animation: comboStepIn 0.26s ease;
+      }
+
+      @keyframes comboStepIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .combo-step__head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 11px;
+      }
+
+      .combo-step__title {
+        margin: 0;
+        color: var(--clove-purple);
+        font-size: 22px;
+        font-weight: 900;
+        line-height: 0.92;
+        text-transform: uppercase;
+        transform: scaleX(0.82);
+        transform-origin: left center;
+      }
+
+      .combo-step__counter {
+        flex: 0 0 auto;
+        padding: 5px 11px 6px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        color: var(--clove-purple);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background 0.22s ease, color 0.22s ease;
+      }
+
+      .combo-step__counter.is-full {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .combo-step__counter.is-optional {
+        border-style: dashed;
+        opacity: 0.7;
+      }
+
+      .combo-chip-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .combo-chip {
+        position: relative;
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+        padding: 8px 32px 8px 8px;
+        border: 1.5px solid rgba(92, 42, 128, 0.3);
+        border-radius: 14px;
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        cursor: pointer;
+        transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+      }
+
+      .combo-chip:active {
+        transform: scale(0.98);
+      }
+
+      .combo-chip input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .combo-chip__thumb {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 11px;
+        background: rgba(92, 42, 128, 0.05);
+        overflow: hidden;
+      }
+
+      .combo-chip__thumb img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        filter: drop-shadow(0 5px 5px rgba(48, 0, 120, 0.07));
+      }
+
+      .combo-chip__thumb.is-glyph {
+        background: rgba(92, 42, 128, 0.07);
+      }
+
+      .drink-glyph {
+        width: 60%;
+        height: 60%;
+        color: var(--clove-purple);
+        opacity: 0.85;
+      }
+
+      .combo-chip__name {
+        min-width: 0;
+        font-size: 12.5px;
+        font-weight: 900;
+        line-height: 1.04;
+        text-transform: uppercase;
+        overflow-wrap: anywhere;
+        transform: scaleX(0.94);
+        transform-origin: left center;
+      }
+
+      .combo-chip__check {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 22px;
+        height: 22px;
+        margin-top: -11px;
+        border: 2px solid rgba(92, 42, 128, 0.4);
+        border-radius: 50%;
+        background: var(--clove-white);
+        transition: background 0.18s ease, border-color 0.18s ease;
+      }
+
+      .combo-chip__check::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 7px;
+        width: 5px;
+        height: 9px;
+        border: solid var(--clove-white);
+        border-width: 0 2.5px 2.5px 0;
+        opacity: 0;
+        transform: rotate(45deg) scale(0.5);
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      .combo-chip.is-selected {
+        border-color: var(--clove-purple);
+        background: rgba(92, 42, 128, 0.06);
+        box-shadow: inset 0 0 0 1px var(--clove-purple);
+      }
+
+      .combo-chip.is-selected .combo-chip__check {
+        background: var(--clove-purple);
+        border-color: var(--clove-purple);
+      }
+
+      .combo-chip.is-selected .combo-chip__check::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+
+      .combo-chip.is-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        filter: grayscale(0.4);
+      }
+
+      .combo-config__nav {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 10px;
+      }
+
+      .combo-nav__btn {
+        min-height: 46px;
+        padding: 8px 14px 10px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 17px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        transform: scaleX(0.92);
+        transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+      }
+
+      .combo-nav__btn.is-primary {
+        background: var(--clove-purple);
+        color: var(--clove-white);
+      }
+
+      .combo-nav__btn:disabled {
+        opacity: 0.32;
+      }
+
+      .combo-config__recap {
+        padding: 12px 13px 13px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 16px;
+        background: var(--clove-cream);
+      }
+
+      .combo-recap__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        min-height: 36px;
+        margin-bottom: 11px;
+      }
+
+      .combo-recap__chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 11px 5px 5px;
+        border: 1.5px solid rgba(92, 42, 128, 0.4);
+        border-radius: 999px;
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        animation: comboStepIn 0.2s ease;
+      }
+
+      .combo-recap__chip img {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: rgba(92, 42, 128, 0.05);
+      }
+
+      .combo-recap__glyph {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(92, 42, 128, 0.08);
+      }
+
+      .combo-recap__glyph .drink-glyph {
+        width: 16px;
+        height: 16px;
+      }
+
+      .combo-recap__chip-name {
+        transform: scaleX(0.92);
+        transform-origin: left center;
+      }
+
+      .combo-recap__empty {
+        align-self: center;
+        color: var(--clove-purple);
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+        opacity: 0.6;
+        transform: scaleX(0.86);
+        transform-origin: left center;
+      }
+
+      .combo-recap__foot {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .combo-recap__price {
+        flex: 0 0 auto;
+        color: var(--clove-purple);
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 0.9;
+        transform: scaleX(0.8);
+        transform-origin: left center;
+      }
+
+      .category-title-section {
+        position: relative;
+        scroll-margin-top: calc(var(--header-height) + var(--rail-height));
+        padding: 30px 18px 20px;
+        display: grid;
+        grid-template-columns: minmax(42px, 1fr) auto minmax(42px, 1fr);
+        align-items: center;
+        gap: 16px;
+      }
+
+      .category-title-section::before,
+      .category-title-section::after {
+        content: "";
+        height: 1.5px;
+        background: var(--clove-purple);
+      }
+
+      .category-title {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        color: var(--clove-purple);
+        font-family: "Obviously Demo", "Obviously", "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+        font-size: clamp(31px, 8.6vw, 48px);
+        font-weight: 900;
+        line-height: 0.78;
+        letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: translateY(var(--title-float, 0px)) scaleX(1.08);
+        transform-origin: center;
+        transition: transform 120ms linear;
+      }
+
       .product-section {
         --accent: var(--clove-purple);
         --photo-width: min(84vw, 392px);
@@ -330,8 +1043,17 @@
         --photo-height: 292px;
       }
 
+      .product-section.is-gianduia {
+        --photo-width: min(86vw, 360px);
+        --photo-height: 404px;
+      }
+
       .product-section.is-fritti {
         --photo-height: 300px;
+      }
+
+      .product-section.is-base .ingredients {
+        font-size: clamp(18px, 4.8vw, 27px);
       }
 
       .product-kicker {
@@ -357,6 +1079,14 @@
         gap: 10px;
       }
 
+      .product-kicker__right {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
       .product-kicker span {
         display: inline-block;
         transform: scaleX(0.82);
@@ -366,6 +1096,13 @@
         flex: 0 0 auto;
         text-align: right;
         white-space: nowrap;
+      }
+
+      .product-kicker__right .plant-badge {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        transform: none;
       }
 
       .product-name {
@@ -546,6 +1283,7 @@
         max-width: none;
         margin: 0 auto 24px;
         color: var(--clove-purple);
+        font-family: "Obviously Demo", "Obviously", "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
         font-size: clamp(68px, 18vw, 104px);
         font-weight: 900;
         line-height: 0.78;
@@ -882,22 +1620,6 @@
         transform: scaleX(0.72);
       }
 
-      .order-title::after {
-        content: attr(data-stamp);
-        position: absolute;
-        right: -24px;
-        bottom: -19px;
-        padding: 4px 10px 6px;
-        border: 1.5px solid var(--clove-purple);
-        border-radius: 999px;
-        background: var(--clove-cream);
-        color: var(--clove-purple);
-        font-size: 18px;
-        font-weight: 900;
-        line-height: 0.9;
-        transform: rotate(-8deg) scaleX(0.86);
-      }
-
       .order-note {
         width: min(100%, 410px);
         margin: 0 auto 34px;
@@ -1015,6 +1737,31 @@
         transform: rotate(-1.4deg);
       }
 
+      .order-card.is-combo {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(100%, 392px);
+        min-height: 360px;
+        padding: 54px 16px 18px;
+        grid-template-rows: auto auto auto;
+        align-content: start;
+        transform: rotate(-0.8deg);
+      }
+
+      .order-card.is-combo .order-card__title {
+        top: 40px;
+        width: 92%;
+        font-size: clamp(36px, 10.6vw, 48px);
+        white-space: normal;
+      }
+
+      .order-card.is-combo .order-card__img {
+        width: min(94%, 330px);
+        max-width: 94%;
+        max-height: 164px;
+        margin-top: 44px;
+      }
+
       .order-card:nth-child(2n) {
         transform: rotate(1.2deg);
       }
@@ -1113,6 +1860,131 @@
         font-weight: 900;
         line-height: 0.9;
         transform: scaleX(0.82);
+      }
+
+      .order-card__recap {
+        position: relative;
+        z-index: 3;
+        width: 94%;
+        margin: 5px auto 10px;
+        display: grid;
+        gap: 4px;
+        color: var(--clove-purple);
+        text-transform: uppercase;
+      }
+
+      .order-card__recap-row {
+        min-height: 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 5px;
+        border-top: 1px solid rgba(92, 42, 128, 0.26);
+        padding-top: 4px;
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 0.94;
+      }
+
+      .order-card__recap-row:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .order-card__recap-tag {
+        flex: 0 0 auto;
+        display: inline-grid;
+        place-items: center;
+        min-width: 34px;
+        min-height: 18px;
+        border: 1.2px solid var(--clove-purple);
+        border-radius: 999px;
+        font-size: 9px;
+        line-height: 1;
+        transform: scaleX(0.86);
+      }
+
+      .order-card__recap-text {
+        min-width: 0;
+        white-space: normal;
+        transform: scaleX(0.88);
+        transform-origin: left center;
+      }
+
+      .order-card.is-combo .order-card__recap {
+        width: 92%;
+        margin-top: 12px;
+        margin-bottom: 14px;
+        gap: 6px;
+      }
+
+      .order-card.is-combo .order-card__recap-row {
+        min-height: 27px;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 0.96;
+      }
+
+      .order-card.is-combo .order-card__recap-tag {
+        min-width: 58px;
+        min-height: 20px;
+        font-size: 8px;
+      }
+
+      .order-card__thumbs {
+        position: relative;
+        z-index: 3;
+        width: 94%;
+        margin: 12px auto 4px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 7px;
+      }
+
+      .order-thumb {
+        display: grid;
+        justify-items: center;
+        gap: 4px;
+        width: 64px;
+      }
+
+      .order-thumb__img {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: rgba(92, 42, 128, 0.05);
+        filter: drop-shadow(0 6px 6px rgba(48, 0, 120, 0.06));
+      }
+
+      .order-thumb__glyph {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        background: rgba(92, 42, 128, 0.07);
+      }
+
+      .order-thumb__glyph .drink-glyph {
+        width: 28px;
+        height: 28px;
+      }
+
+      .order-thumb__name {
+        width: 100%;
+        color: var(--clove-purple);
+        font-size: 9px;
+        font-weight: 900;
+        line-height: 1.02;
+        text-align: center;
+        text-transform: uppercase;
+        word-break: break-word;
+      }
+
+      .order-card.is-combo .order-card__qty {
+        width: min(100%, 224px);
+        min-height: 43px;
       }
 
       .order-card__qty {
@@ -1395,6 +2267,16 @@
           gap: 10px;
         }
 
+        .order-title {
+          margin-bottom: 12px;
+          font-size: clamp(50px, 15vw, 58px);
+        }
+
+        .order-note {
+          margin-bottom: 34px;
+          font-size: 17px;
+        }
+
         .order-card {
           min-height: 202px;
         }
@@ -1423,6 +2305,70 @@
         .compact-quantity {
           min-width: 98px;
         }
+
+        .combo-menu-section {
+          padding-top: 16px;
+          padding-right: 14px;
+          padding-left: 14px;
+        }
+
+        .combo-menu-title {
+          width: 100%;
+          height: auto;
+        }
+
+        .combo-menu-title__image {
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+        }
+
+        .combo-menu-copy {
+          margin-top: 7px;
+          font-size: 10px;
+          transform: scaleX(0.84);
+        }
+
+        .combo-filter {
+          gap: 10px;
+        }
+
+        .combo-filter__button {
+          min-height: 38px;
+          padding-right: 8px;
+          padding-left: 8px;
+          font-size: 14px;
+        }
+
+        .combo-card__image-wrap {
+          min-height: 292px;
+          padding: 54px 8px 8px;
+        }
+
+        .combo-card__image {
+          width: min(100%, 430px);
+          max-height: 260px;
+        }
+
+        .combo-card__badge {
+          top: 14px;
+          left: 14px;
+          font-size: 15px;
+        }
+
+        .combo-card__title {
+          font-size: clamp(36px, 10.8vw, 42px);
+        }
+
+        .category-title-section {
+          padding-right: 12px;
+          padding-left: 12px;
+          gap: 10px;
+        }
+
+        .category-title {
+          font-size: clamp(25px, 7.4vw, 32px);
+        }
       }
 
       @media (min-width: 560px) {
@@ -1435,6 +2381,24 @@
 
         .product-section {
           min-height: 760px;
+        }
+
+        .combo-menu-header,
+        .combo-filter {
+          width: min(100%, 760px);
+        }
+
+        .combo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .combo-card__image-wrap {
+          min-height: 372px;
+        }
+
+        .combo-card__image {
+          width: min(100%, 560px);
+          max-height: 336px;
         }
 
       }
@@ -1468,7 +2432,8 @@
 
       <section class="view" id="menu-view" aria-label="Menu Clove">
         <nav class="category-rail" aria-label="Categorie menu">
-          <button class="category-link is-active" type="button" data-scroll-target="spicchi">SPICCHI</button>
+          <button class="category-link is-active" type="button" data-scroll-target="menu-combo">MENU</button>
+          <button class="category-link" type="button" data-scroll-target="spicchi">SPICCHI</button>
           <button class="category-link" type="button" data-scroll-target="fritti">FRITTI</button>
           <button class="category-link" type="button" data-scroll-target="dolci">DOLCI</button>
           <button class="category-link" type="button" data-scroll-target="bevande">BEVANDE</button>
@@ -1492,6 +2457,23 @@
           </div>
         </section>
 
+        <section class="combo-menu-section" id="menu-combo" data-category="menu-combo" aria-label="Menu Clove">
+          <header class="combo-menu-header">
+            <h1 class="combo-menu-title">
+              <img class="combo-menu-title__image" src="img/menu-sprint/MENU-crop.png" alt="MENU">
+            </h1>
+            <p class="combo-menu-copy">Scegli una combo Clove oppure seleziona spicchi o drink a scelta</p>
+          </header>
+
+          <div class="combo-filter" role="tablist" aria-label="Filtra menu">
+            <button class="combo-filter__button is-active" type="button" role="tab" aria-selected="true" data-combo-period="pranzo">Pranzo</button>
+            <button class="combo-filter__button" type="button" role="tab" aria-selected="false" data-combo-period="aperitivo">Aperitivo</button>
+            <button class="combo-filter__button" type="button" role="tab" aria-selected="false" data-combo-period="cena">Cena</button>
+          </div>
+
+          <div class="combo-grid" id="combo-grid"></div>
+        </section>
+
         <div id="product-list"></div>
 
         <section class="order-cta-section" aria-label="Vai al tuo ordine">
@@ -1500,7 +2482,7 @@
       </section>
 
       <section class="view order-page" id="order-view" aria-label="Il tuo ordine" hidden>
-        <h1 class="order-title" data-stamp="SEGNATI">IL TUO ORDINE:</h1>
+        <h1 class="order-title">IL TUO ORDINE:</h1>
         <p class="order-note">Mostralo al banco o usalo per non perdere il filo.</p>
         <div class="order-grid" id="order-grid"></div>
         <div class="order-text-list" id="order-text-list"></div>
@@ -1536,9 +2518,11 @@
 
     <script>
       const storageKey = "clove-menu-order-v5";
+      const comboStorageKey = "clove-menu-combo-config-v1";
       const languageStorageKey = "clove-menu-language-v1";
 
       const categories = [
+        { id: "menu-combo", label: "MENU", labelEn: "MENU" },
         { id: "spicchi", label: "SPICCHI", labelEn: "SPICCHI" },
         { id: "fritti", label: "FRITTI", labelEn: "FRIED" },
         { id: "dolci", label: "DOLCI", labelEn: "SWEET" },
@@ -1582,10 +2566,30 @@
           clear: "SVUOTA",
           backToMenu: "TORNA AL MENU",
           transition: "TIENI IL CONTO<br>DEI TUOI SPICCHI",
-          orderStamp: "SEGNATI",
           orderAria: "Vai ai tuoi spicchi",
           menuAria: "Torna al menu",
-          allergensAria: "Apri lista allergeni"
+          allergensAria: "Apri lista allergeni",
+          chooseMenu: "SCEGLI MENU",
+          close: "CHIUDI",
+          markMenu: "SEGNA MENU",
+          configureMenu: "Configura il menu qui sopra.",
+          includedDrink: "DRINK INCLUSO",
+          optionalExtras: "EXTRA OPZIONALI",
+          selectedChoices: "scelte",
+          includedDrinkFallback: "drink incluso",
+          menuSubtitle: "Scegli una combo Clove oppure seleziona spicchi o drink a scelta",
+          pranzo: "PRANZO",
+          aperitivo: "APERITIVO",
+          cena: "CENA",
+          stepSpicchi: "SPICCHI",
+          stepDrink: "DRINK",
+          stepExtra: "EXTRA",
+          chosen: "SCELTI",
+          next: "AVANTI",
+          back: "INDIETRO",
+          done: "FATTO",
+          optionalHint: "FACOLTATIVO",
+          recapEmpty: "COMPONI IL TUO MENU"
         },
         en: {
           allergens: "ALLERGENS",
@@ -1603,17 +2607,37 @@
           clear: "CLEAR",
           backToMenu: "BACK TO MENU",
           transition: "KEEP TRACK<br>OF YOUR SPICCHI",
-          orderStamp: "MARKED",
           orderAria: "Go to your order",
           menuAria: "Back to menu",
-          allergensAria: "Open allergen list"
+          allergensAria: "Open allergen list",
+          chooseMenu: "CHOOSE MENU",
+          close: "CLOSE",
+          markMenu: "ADD MENU",
+          configureMenu: "Configure your menu above.",
+          includedDrink: "DRINK INCLUDED",
+          optionalExtras: "OPTIONAL EXTRAS",
+          selectedChoices: "choices",
+          includedDrinkFallback: "included drink",
+          menuSubtitle: "Choose a Clove combo or select spicchi and drinks",
+          pranzo: "LUNCH",
+          aperitivo: "APERITIVO",
+          cena: "DINNER",
+          stepSpicchi: "SPICCHI",
+          stepDrink: "DRINK",
+          stepExtra: "EXTRA",
+          chosen: "CHOSEN",
+          next: "NEXT",
+          back: "BACK",
+          done: "DONE",
+          optionalHint: "OPTIONAL",
+          recapEmpty: "BUILD YOUR MENU"
         }
       };
 
       const products = [
         {
           id: "n1",
-          allergens: ["7"],
+          allergens: ["1", "7"],
           category: "spicchi",
           number: "N.1",
           title: "NUMERO 1",
@@ -1659,7 +2683,7 @@
         },
         {
           id: "n3",
-          allergens: ["11"],
+          allergens: ["1", "11"],
           category: "spicchi",
           number: "N.3",
           title: "NUMERO 3",
@@ -1681,7 +2705,7 @@
         },
         {
           id: "n4",
-          allergens: ["7", "8"],
+          allergens: ["1", "7", "8"],
           category: "spicchi",
           number: "N.4",
           title: "NUMERO 4",
@@ -1702,7 +2726,7 @@
         },
         {
           id: "n5",
-          allergens: ["7"],
+          allergens: ["1", "7"],
           category: "spicchi",
           number: "N.5",
           title: "NUMERO 5",
@@ -1725,7 +2749,7 @@
         },
         {
           id: "n6",
-          allergens: ["3", "4"],
+          allergens: ["1", "3"],
           category: "spicchi",
           number: "N.6",
           title: "NUMERO 6",
@@ -1750,7 +2774,7 @@
         },
         {
           id: "n7",
-          allergens: ["7"],
+          allergens: ["1", "7"],
           category: "spicchi",
           number: "N.7",
           title: "NUMERO 7",
@@ -1772,15 +2796,15 @@
         },
         {
           id: "n8",
-          allergens: ["4"],
+          allergens: ["1", "7"],
           category: "spicchi",
           number: "N.8",
           title: "NUMERO 8",
-          name: "Ricciola",
-          ingredients: ["GUACAMOLE AVOCADO E POMODORO /", "CARPACCIO DI RICCIOLA MARINATO CON JALAPENO /", "FRUTTO DELLA PASSIONE E TARTUFO / PEPE BIANCO / OLIO EVO"],
-          highlights: ["Ricciola", "Guacamole", "Passion fruit", "Tartufo"],
+          name: "Jamon",
+          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA /", "OLIO EVO / MISTICANZA"],
+          highlights: ["Jamon", "BEHER", "Stracciatella", "Misticanza"],
           price: 450,
-          image: "img/NUMERO_10_cut.png",
+          image: "img/NUMERO_6_cut.png",
           gallery: [
             "../01_Spicchi/MENU/N10_Ricciola/P1004827 1.jpg",
             "../01_Spicchi/MENU/N10_Ricciola/P1004828 1.jpg",
@@ -1788,22 +2812,22 @@
             "../01_Spicchi/MENU/N10_Ricciola/P1004841 1.jpg",
             "../01_Spicchi/MENU/N10_Ricciola/P1004850 1.jpg"
           ],
-          story: "Pesce crudo, avocado e acidita. Il lato piu fresco di Clove.",
-          tags: ["PESCE", "4,50", "CRUDO"],
+          story: "Rosa chiaro e verde: premium senza peso.",
+          tags: ["SALUME", "4,50", "IBERICO"],
           emphasisName: true,
-          accent: "#007800"
+          accent: "#f09060"
         },
         {
           id: "n9",
-          allergens: ["7"],
+          allergens: ["1", "4"],
           category: "spicchi",
           number: "N.9",
           title: "NUMERO 9",
-          name: "Jamon Iberico",
-          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA /", "OLIO EVO / MISTICANZA"],
-          highlights: ["Jamon", "BEHER", "Stracciatella", "Misticanza"],
-          price: 450,
-          image: "img/NUMERO_6_cut.png",
+          name: "Ricciola",
+          ingredients: ["GUACAMOLE AVOCADO E POMODORO /", "CARPACCIO DI RICCIOLA MARINATO CON JALAPENO /", "FRUTTO DELLA PASSIONE E TARTUFO / PEPE BIANCO / OLIO EVO"],
+          highlights: ["Ricciola", "Guacamole", "Passion fruit", "Tartufo"],
+          price: 550,
+          image: "img/NUMERO_10_cut.png",
           gallery: [
             "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 39.jpg",
             "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 40.jpg",
@@ -1812,21 +2836,21 @@
             "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 43.jpg",
             "../01_Spicchi/MENU/N06_Jamon/Giulio-di-gregorio-clovo-roma 44.jpg"
           ],
-          story: "Rosa chiaro e verde: premium senza peso.",
-          tags: ["SALUME", "4,50", "IBERICO"],
+          story: "Pesce crudo, avocado e acidita. Il lato piu fresco di Clove.",
+          tags: ["PESCE", "5,50", "CRUDO"],
           emphasisName: true,
-          accent: "#f09060"
+          accent: "#007800"
         },
         {
           id: "n10",
-          allergens: ["2"],
+          allergens: ["1", "2"],
           category: "spicchi",
           number: "N.10",
           title: "NUMERO 10",
           name: "Gambero",
           ingredients: ["GAMBERO ROSSO DI MAZARA DEL VALLO / AVOCADO /", "FRUTTO DELLA PASSIONE / LIME / PEPE ROSA"],
           highlights: ["Gambero rosso", "Avocado", "Passion fruit", "Lime"],
-          price: 450,
+          price: 550,
           image: "img/NUMERO_9_cut.png",
           gallery: [
             "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 35.jpg",
@@ -1835,12 +2859,52 @@
             "../01_Spicchi/MENU/N09_Gambero/Giulio-di-gregorio-clovo-roma 38.jpg"
           ],
           story: "Corallo, verde e giallo. Tropicale ma preciso.",
-          tags: ["PESCE", "4,50", "MAZARA"],
+          tags: ["PESCE", "5,50", "MAZARA"],
           accent: "#d89000"
         },
         {
+          id: "base-margherita",
+          allergens: ["1", "7"],
+          category: "spicchi",
+          number: "SPICCHIO",
+          title: "MARGHERITA",
+          name: "Margherita",
+          ingredients: ["POMODORO SAN MARZANO /", "FIOR DI LATTE / OLIO EVO /", "SALSA AL BASILICO"],
+          highlights: ["Pomodoro San Marzano", "Fior di latte", "Salsa al basilico"],
+          price: 290,
+          image: "img/SPICCHIO_MARGHERITA_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/Spicchio_Margherita/hf_20260529_153128_f9b6496c-2ad1-4167-9b84-179636497131.png",
+            "../01_Spicchi/MENU/Spicchio_Margherita/hf_20260529_153917_4d7c70f5-c2ab-4a16-abde-be5cd4679662.png"
+          ],
+          story: "La base Clove: pomodoro, fior di latte e basilico. Il punto di partenza.",
+          tags: ["BASE", "2,90", "CLASSICA"],
+          className: "is-wide is-base",
+          accent: "#d23c32"
+        },
+        {
+          id: "base-marinara",
+          allergens: ["1"],
+          category: "spicchi",
+          number: "SPICCHIO",
+          title: "MARINARA",
+          name: "Marinara",
+          ingredients: ["POMODORO SAN MARZANO /", "SALSA CON AGLIO / OLIO EVO /", "PREZZEMOLO"],
+          highlights: ["Pomodoro San Marzano", "Aglio", "Prezzemolo"],
+          price: 290,
+          image: "img/SPICCHIO_MARINARA_cut.png",
+          gallery: [
+            "../01_Spicchi/MENU/Spicchio_Marinara/hf_20260529_235305_0118a981-ae5d-40b8-85b5-18d518c56a68.png",
+            "../01_Spicchi/MENU/Spicchio_Marinara/hf_20260529_235830_0611ddf3-6cf8-4440-a764-263ff823a82c.png"
+          ],
+          story: "Rossa, essenziale, senza latticini: pomodoro, aglio e prezzemolo.",
+          tags: ["BASE", "2,90", "ROSSA"],
+          className: "is-wide is-base",
+          accent: "#a8431f"
+        },
+        {
           id: "polpette-veg",
-          allergens: ["3"],
+          allergens: ["1", "11"],
           category: "fritti",
           title: "POLPETTE VEG",
           name: "Polpette veg",
@@ -1878,7 +2942,7 @@
         },
         {
           id: "patate-croc",
-          allergens: ["3", "7"],
+          allergens: ["1", "3", "7"],
           category: "fritti",
           title: "PATATE CROC",
           name: "Patate croc",
@@ -1967,7 +3031,7 @@
           ],
           story: "Il finale piu scuro: cioccolato, nocciola, brioche.",
           tags: ["DOLCE", "4,50", "NOCCIOLA"],
-          className: "is-dessert",
+          className: "is-dessert is-gianduia",
           accent: "#180000"
         },
         {
@@ -2437,13 +3501,13 @@
         },
         n8: {
           title: "NUMBER 8",
-          name: "Amberjack",
-          ingredients: ["AVOCADO AND TOMATO GUACAMOLE /", "AMBERJACK CARPACCIO MARINATED WITH JALAPENO /", "PASSION FRUIT AND TRUFFLE / WHITE PEPPER / EXTRA VIRGIN OLIVE OIL"]
+          name: "Jamon",
+          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA /", "EXTRA VIRGIN OLIVE OIL / MIXED BABY GREENS"]
         },
         n9: {
           title: "NUMBER 9",
-          name: "Jamon Iberico",
-          ingredients: ["JAMON COCIDO 100% IBERICO BEHER / STRACCIATELLA /", "EXTRA VIRGIN OLIVE OIL / MIXED BABY GREENS"]
+          name: "Amberjack",
+          ingredients: ["AVOCADO AND TOMATO GUACAMOLE /", "AMBERJACK CARPACCIO MARINATED WITH JALAPENO /", "PASSION FRUIT AND TRUFFLE / WHITE PEPPER / EXTRA VIRGIN OLIVE OIL"]
         },
         n10: {
           title: "NUMBER 10",
@@ -2528,11 +3592,235 @@
       });
 
       const productById = new Map(products.map((product) => [product.id, product]));
+      const comboMenus = [
+        {
+          id: "la-norcineria",
+          period: "pranzo",
+          name: "La Norcineria",
+          price: 1150,
+          image: "img/menu-sprint/combo-cutout/la-norcineria.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Pranzo",
+          badgeEn: "Lunch",
+          description: "Salumi + drink",
+          descriptionEn: "Cured meats + drink",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-1", "spicchio-5", "spicchio-7", "spicchio-8"] }],
+          drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
+          drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
+        },
+        {
+          id: "orto-latte",
+          period: "pranzo",
+          name: "L'Orto e il Latte",
+          price: 1050,
+          image: "img/menu-sprint/combo-cutout/orto-latte.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Pranzo",
+          badgeEn: "Lunch",
+          description: "Vegetale + drink",
+          descriptionEn: "Vegetable + drink",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }],
+          drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
+          drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
+        },
+        {
+          id: "spazio-libero",
+          period: "pranzo",
+          name: "Spazio Libero",
+          price: 1050,
+          image: "img/menu-sprint/combo-cutout/spazio-libero.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Pranzo",
+          badgeEn: "Lunch",
+          description: "Classici + drink",
+          descriptionEn: "Classics + drink",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-1", "spicchio-2", "spicchio-3", "spicchio-4", "spicchio-5"] }],
+          drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
+          drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
+        },
+        {
+          id: "ora-di-punta",
+          period: "aperitivo",
+          name: "Ora di Punta",
+          price: 1450,
+          image: "img/menu-sprint/combo-cutout/ora-di-punta.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Aperitivo",
+          badgeEn: "Aperitivo",
+          description: "Salumi + calice o Spritz",
+          descriptionEn: "Cured meats + glass or Spritz",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-1", "spicchio-5", "spicchio-7", "spicchio-8"] }],
+          drinks: ["Calice vino naturale", "Spritz"],
+          drinksEn: ["Natural wine by the glass", "Spritz"]
+        },
+        {
+          id: "bassa-marea",
+          period: "aperitivo",
+          name: "Bassa Marea",
+          price: 1580,
+          image: "img/menu-sprint/combo-cutout/bassa-marea.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Aperitivo",
+          badgeEn: "Aperitivo",
+          description: "Mare + calice o Spritz",
+          descriptionEn: "Sea + glass or Spritz",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-9", "spicchio-10"] }],
+          drinks: ["Calice vino naturale", "Spritz"],
+          drinksEn: ["Natural wine by the glass", "Spritz"]
+        },
+        {
+          id: "radici",
+          period: "aperitivo",
+          name: "Radici",
+          price: 1450,
+          image: "img/menu-sprint/combo-cutout/radici.png",
+          include: "2 spicchi + drink",
+          includeEn: "2 spicchi + drink",
+          badge: "Aperitivo",
+          badgeEn: "Aperitivo",
+          description: "Vegetale + calice o Spritz",
+          descriptionEn: "Vegetable + glass or Spritz",
+          groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }],
+          drinks: ["Calice vino naturale", "Spritz"],
+          drinksEn: ["Natural wine by the glass", "Spritz"]
+        },
+        {
+          id: "istinto",
+          period: "aperitivo",
+          name: "Istinto",
+          price: 1480,
+          image: "img/menu-sprint/combo-cutout/istinto.png",
+          include: "1 affettato + 1 libero + drink",
+          includeEn: "1 cured meat + 1 free choice + drink",
+          badge: "Aperitivo",
+          badgeEn: "Aperitivo",
+          description: "Affettato + libero + calice",
+          descriptionEn: "Cured meat + free choice + glass",
+          groups: [
+            { title: "Scegli 1 affettato", titleEn: "Choose 1 cured meat", max: 1, products: ["spicchio-1", "spicchio-5", "spicchio-7", "spicchio-8"] },
+            { title: "Scegli 1 libero", titleEn: "Choose 1 free choice", max: 1, products: ["spicchio-1", "spicchio-2", "spicchio-3", "spicchio-4", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8", "spicchio-9", "spicchio-10"] }
+          ],
+          drinks: ["Calice vino naturale", "Spritz"],
+          drinksEn: ["Natural wine by the glass", "Spritz"]
+        },
+        {
+          id: "lunga-tavola",
+          period: "cena",
+          name: "La Lunga Tavola",
+          price: 1990,
+          image: "img/menu-sprint/combo-cutout/la-lunga-tavola.png",
+          include: "3 spicchi + calice",
+          includeEn: "3 spicchi + glass",
+          badge: "Cena",
+          badgeEn: "Dinner",
+          description: "Carne + salumi + calice",
+          descriptionEn: "Meat + cured meats + glass",
+          groups: [{ title: "Scegli 3 spicchi", titleEn: "Choose 3 spicchi", max: 3, products: ["spicchio-1", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8"] }],
+          drinks: ["Calice vino naturale"],
+          drinksEn: ["Natural wine by the glass"]
+        },
+        {
+          id: "carta-bianca",
+          period: "cena",
+          name: "Carta Bianca",
+          price: 1850,
+          image: "img/menu-sprint/combo-cutout/carta-bianca.png",
+          include: "3 spicchi + calice",
+          includeEn: "3 spicchi + glass",
+          badge: "Cena",
+          badgeEn: "Dinner",
+          description: "Scelta libera + calice",
+          descriptionEn: "Free choice + glass",
+          groups: [{ title: "Scegli 3 spicchi", titleEn: "Choose 3 spicchi", max: 3, products: ["spicchio-3", "spicchio-4", "spicchio-9", "spicchio-10"] }],
+          drinks: ["Calice vino naturale"],
+          drinksEn: ["Natural wine by the glass"]
+        },
+        {
+          id: "solo-verde",
+          period: "cena",
+          name: "Solo Verde",
+          price: 1690,
+          image: "img/menu-sprint/combo-cutout/solo-verde.png",
+          include: "3 spicchi + calice",
+          includeEn: "3 spicchi + glass",
+          badge: "Cena",
+          badgeEn: "Dinner",
+          description: "Vegetale + calice",
+          descriptionEn: "Vegetable + glass",
+          groups: [{ title: "Scegli 3 spicchi", titleEn: "Choose 3 spicchi", max: 3, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }],
+          drinks: ["Calice vino naturale"],
+          drinksEn: ["Natural wine by the glass"]
+        },
+        {
+          id: "regola-del-tre",
+          period: "cena",
+          name: "La Regola del Tre",
+          price: 1850,
+          image: "img/menu-sprint/combo-cutout/regola-del-tre.png",
+          include: "1 carne + 1 mare + 1 vegetale + calice",
+          includeEn: "1 meat + 1 sea + 1 vegetable + glass",
+          badge: "Cena",
+          badgeEn: "Dinner",
+          description: "Carne + mare + vegetale",
+          descriptionEn: "Meat + sea + vegetable",
+          groups: [
+            { title: "Scegli 1 carne", titleEn: "Choose 1 meat", max: 1, products: ["spicchio-1", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8"] },
+            { title: "Scegli 1 mare", titleEn: "Choose 1 sea", max: 1, products: ["spicchio-9", "spicchio-10"] },
+            { title: "Scegli 1 vegetale", titleEn: "Choose 1 vegetable", max: 1, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }
+          ],
+          drinks: ["Calice vino naturale"],
+          drinksEn: ["Natural wine by the glass"]
+        }
+      ];
+      const comboExtras = ["Patate croc +3,00€", "Polpette veg +3,00€", "Polpettine +4,00€"];
+      const comboExtrasEn = ["Patate croc +3,00€", "Veg polpette +3,00€", "Polpettine +4,00€"];
+      const comboExtraPrices = [300, 300, 400];
+      const comboExtraImages = ["img/PATATE_CROC_menu.png", "img/POLPETTE_VEG_cut.png", "img/POLPETTINE_cut.png"];
+      // Miniature scontornate per i drink. Solo i file effettivamente presenti sono mappati;
+      // gli altri usano il glyph SVG pulito come fallback (mai il pallino).
+      const comboDrinkAssets = new Set([
+        "img/menu-sprint/drinks/soft-drink.png",
+        "img/menu-sprint/drinks/vino.png",
+        "img/menu-sprint/drinks/spritz.png",
+        "img/menu-sprint/drinks/acqua.png",
+        "img/menu-sprint/drinks/birra.png"
+      ]);
+      const comboDrinkImageMap = [
+        { re: /spritz/i, src: "img/menu-sprint/drinks/spritz.png" },
+        { re: /(soft drink|coca|cola)/i, src: "img/menu-sprint/drinks/soft-drink.png" },
+        { re: /(vino|wine|calice)/i, src: "img/menu-sprint/drinks/vino.png" },
+        { re: /(birra|beer)/i, src: "img/menu-sprint/drinks/birra.png" },
+        { re: /(acqua|water|ferrarelle)/i, src: "img/menu-sprint/drinks/acqua.png" }
+      ];
+      function comboDrinkImage(label) {
+        const hit = comboDrinkImageMap.find((item) => item.re.test(label || ""));
+        return hit && comboDrinkAssets.has(hit.src) ? hit.src : "";
+      }
+      const DRINK_GLYPH_SVG = '<svg class="drink-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h11l-1.2 6.2a4.3 4.3 0 0 1-8.6 0L6.5 3Z"/><path d="M12 15.5V20"/><path d="M8.5 20h7"/></svg>';
+      const plantProductIds = new Set(["n2", "n3", "n4"]);
+      const plantMenuIds = new Set(["orto-latte", "radici", "solo-verde"]);
+      comboMenus.forEach((menu) => {
+        productById.set(`combo-${menu.id}`, {
+          id: `combo-${menu.id}`,
+          category: "menu-combo",
+          title: menu.name,
+          name: menu.name,
+          price: menu.price,
+          image: menu.image,
+          translations: { en: { title: menu.name, name: menu.name, detail: menu.includeEn || menu.include } }
+        });
+      });
       const cart = new Map();
       const menuView = document.querySelector("#menu-view");
       const orderView = document.querySelector("#order-view");
       const allergenView = document.querySelector("#allergen-view");
       const productList = document.querySelector("#product-list");
+      const comboGrid = document.querySelector("#combo-grid");
       const orderGrid = document.querySelector("#order-grid");
       const orderTextList = document.querySelector("#order-text-list");
       const allergenList = document.querySelector("[data-allergen-list]");
@@ -2552,6 +3840,7 @@
       const categoryRail = document.querySelector(".category-rail");
       let activeCategoryId = "";
       let currentLanguage = localStorage.getItem(languageStorageKey) === "en" ? "en" : "it";
+      const comboSelections = new Map();
 
       function copy(key) {
         return uiCopy[currentLanguage][key];
@@ -2563,6 +3852,10 @@
 
       function productName(product) {
         return translated(product, "name");
+      }
+
+      function productKickerName(product) {
+        return productName(product);
       }
 
       function productTitle(product) {
@@ -2589,6 +3882,510 @@
 
       function formatAllergens(product) {
         return product.allergens?.length ? product.allergens.join(", ") : "—";
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function comboProductLabel(productId) {
+        const normalizedId = productId.replace(/^spicchio-(\d+)$/, "n$1");
+        const product = productById.get(normalizedId);
+        if (!product) return productId;
+        const number = product.number?.replace(/^N\./, "").trim() || "";
+        return `Spicchio ${number} - ${productName(product)}`;
+      }
+
+      function comboProductShortLabel(productId) {
+        const normalizedId = productId.replace(/^spicchio-(\d+)$/, "n$1");
+        const product = productById.get(normalizedId);
+        if (!product) return productId;
+        return `${product.number || ""} ${productName(product)}`.trim();
+      }
+
+      function comboProductImage(productId) {
+        const normalizedId = productId.replace(/^spicchio-(\d+)$/, "n$1");
+        const product = productById.get(normalizedId);
+        return product?.image || "";
+      }
+
+      function isPlantProduct(product) {
+        return plantProductIds.has(product.id);
+      }
+
+      function isPlantMenu(menu) {
+        return plantMenuIds.has(menu.id);
+      }
+
+      function renderPlantBadge(extraClass = "") {
+        return `<span class="plant-badge ${extraClass}" aria-label="Vegetariano o vegano" title="Vegetariano / vegano"></span>`;
+      }
+
+      function comboField(menu, field) {
+        return currentLanguage === "en" ? (menu[`${field}En`] || menu[field]) : menu[field];
+      }
+
+      function comboGroupTitle(group) {
+        return currentLanguage === "en" ? (group.titleEn || group.title) : group.title;
+      }
+
+      function comboDrinks(menu) {
+        return currentLanguage === "en" ? (menu.drinksEn || menu.drinks) : menu.drinks;
+      }
+
+      function comboExtraLabels() {
+        return currentLanguage === "en" ? comboExtrasEn : comboExtras;
+      }
+
+      function readComboSelection(card) {
+        if (!card) return null;
+        const productInputs = Array.from(card.querySelectorAll("[data-combo-input]:checked"))
+          .filter((input) => input.dataset.comboExtra !== "true" && input.dataset.comboGroup !== "drink");
+        const drinkInputs = Array.from(card.querySelectorAll("[data-combo-group='drink']"));
+        const selectedDrink = drinkInputs.find((input) => input.checked);
+        const extraInputs = Array.from(card.querySelectorAll("[data-combo-extra='true']"));
+        const selectedExtras = extraInputs.filter((input) => input.checked);
+
+        return {
+          products: productInputs.map((input) => input.value),
+          drinkIndex: selectedDrink ? drinkInputs.indexOf(selectedDrink) : 0,
+          extras: selectedExtras.map((input) => extraInputs.indexOf(input)).filter((index) => index >= 0)
+        };
+      }
+
+      function saveComboSelections() {
+        localStorage.setItem(comboStorageKey, JSON.stringify(Object.fromEntries(comboSelections)));
+      }
+
+      function loadComboSelections() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(comboStorageKey) || "{}");
+          Object.entries(saved).forEach(([id, selection]) => {
+            if (productById.has(id)) comboSelections.set(id, selection);
+          });
+        } catch {
+          comboSelections.clear();
+        }
+      }
+
+      function comboSelectionLabels(menu, selection) {
+        if (!menu || !selection) return [];
+        const drinkLabels = comboDrinks(menu);
+        const extraLabels = comboExtraLabels();
+        const products = selection.products.map((productId) => comboProductShortLabel(productId)).filter(Boolean);
+        const drink = drinkLabels[selection.drinkIndex] || drinkLabels[0] || copy("includedDrinkFallback");
+        const extras = selection.extras.map((index) => extraLabels[index]).filter(Boolean);
+        const rows = [];
+
+        if (products.length) rows.push({ tag: "SPICCHI", text: products.join(" + ") });
+        if (drink) rows.push({ tag: "DRINK", text: drink });
+        if (extras.length) rows.push({ tag: "EXTRA", text: extras.join(" + ") });
+
+        return rows;
+      }
+
+      function comboSelectionExtraTotal(selection) {
+        if (!selection) return 0;
+        return selection.extras.reduce((sum, index) => sum + (comboExtraPrices[index] || 0), 0);
+      }
+
+      function comboConfiguredPrice(product) {
+        if (product.category !== "menu-combo") return product.price;
+        return product.price + comboSelectionExtraTotal(comboSelections.get(product.id));
+      }
+
+      function comboSummaryText(menu, selection) {
+        const labels = comboSelectionLabels(menu, selection);
+        return labels.length ? labels.map((item) => `${item.tag}: ${item.text}`).join(" / ") : copy("configureMenu");
+      }
+
+      function comboMenuFromProductId(productId) {
+        return comboMenus.find((menu) => `combo-${menu.id}` === productId);
+      }
+
+      function renderOrderComboRecap(productId) {
+        const menu = comboMenuFromProductId(productId);
+        const selection = comboSelections.get(productId);
+        const labels = comboSelectionLabels(menu, selection);
+        const recap = document.createElement("div");
+        recap.className = "order-card__recap";
+
+        const rows = labels.length
+          ? labels
+          : [{ tag: "MENU", text: menu ? comboField(menu, "include") : "" }];
+
+        rows.slice(0, 6).forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "order-card__recap-row";
+
+          const tag = document.createElement("span");
+          tag.className = "order-card__recap-tag";
+          tag.textContent = `${item.tag}:`;
+
+          const text = document.createElement("span");
+          text.className = "order-card__recap-text";
+          text.textContent = item.text;
+
+          row.append(tag, text);
+          recap.append(row);
+        });
+
+        return recap;
+      }
+
+      function renderOrderComboThumbs(productId) {
+        const menu = comboMenuFromProductId(productId);
+        const selection = comboSelections.get(productId);
+        const wrap = document.createElement("div");
+        wrap.className = "order-card__thumbs";
+        if (!menu || !selection) return wrap;
+
+        const items = [];
+        selection.products.forEach((pid) => items.push({
+          image: comboProductImage(pid),
+          label: comboProductShortLabel(pid)
+        }));
+        const drink = comboDrinks(menu)[selection.drinkIndex] || comboDrinks(menu)[0];
+        if (drink) items.push({ image: comboDrinkImage(drink), label: drink });
+        selection.extras.forEach((index) => items.push({
+          image: comboExtraImages[index],
+          label: comboExtraLabels()[index]
+        }));
+
+        items.forEach((item) => {
+          const cell = document.createElement("div");
+          cell.className = "order-thumb";
+          if (item.image) {
+            const img = document.createElement("img");
+            img.className = "order-thumb__img";
+            img.src = item.image;
+            img.alt = item.label;
+            img.loading = "lazy";
+            img.decoding = "async";
+            cell.append(img);
+          } else {
+            const glyph = document.createElement("span");
+            glyph.className = "order-thumb__glyph";
+            glyph.innerHTML = DRINK_GLYPH_SVG;
+            cell.append(glyph);
+          }
+          const name = document.createElement("span");
+          name.className = "order-thumb__name";
+          name.textContent = item.label;
+          cell.append(name);
+          wrap.append(cell);
+        });
+
+        return wrap;
+      }
+
+      function comboQty(menuId) {
+        return cartQty(`combo-${menuId}`);
+      }
+
+      function renderComboCartControl(menu) {
+        const id = `combo-${menu.id}`;
+        const qty = cartQty(id);
+        if (qty === 0) {
+          return `<button class="combo-card__cta" type="button" data-add-combo="${id}" disabled>${copy("markMenu")}</button>`;
+        }
+
+        return `
+          <div class="qty-control combo-card__qty">
+            <button class="qty-action" type="button" data-decrement="${id}" aria-label="${copy("remove")} ${menu.name}">${copy("remove")}</button>
+            <button class="qty-number" type="button" data-increment="${id}" aria-label="${copy("addMore")} ${menu.name}">
+              <span class="qty-value">${qty}</span>
+            </button>
+          </div>
+        `;
+      }
+
+      function updateComboActions() {
+        document.querySelectorAll("[data-combo-cart-actions]").forEach((node) => {
+          const menu = comboMenus.find((item) => item.id === node.dataset.comboCartActions);
+          if (menu) node.innerHTML = renderComboCartControl(menu);
+          const card = node.closest("[data-combo-card]");
+          if (card) updateComboAddState(card);
+        });
+      }
+
+      function renderComboChip({ comboId, groupId, label, value, max, checked = false, extra = false, image = "" }) {
+        const inputType = max === 1 ? "radio" : "checkbox";
+        const name = max === 1 ? `combo-${comboId}-${groupId}` : `combo-${comboId}-${groupId}-${value}`;
+        const thumb = image
+          ? `<span class="combo-chip__thumb"><img src="${escapeHtml(image)}" alt="" loading="lazy" decoding="async"></span>`
+          : `<span class="combo-chip__thumb is-glyph">${DRINK_GLYPH_SVG}</span>`;
+        return `
+          <label class="combo-chip${checked ? " is-selected" : ""}">
+            <input
+              type="${inputType}"
+              name="${escapeHtml(name)}"
+              value="${escapeHtml(value)}"
+              data-combo-input
+              data-combo-group="${escapeHtml(groupId)}"
+              data-combo-max="${max}"
+              data-combo-extra="${extra ? "true" : "false"}"
+              ${checked ? "checked" : ""}
+            >
+            ${thumb}
+            <span class="combo-chip__name">${escapeHtml(label)}</span>
+            <span class="combo-chip__check" aria-hidden="true"></span>
+          </label>
+        `;
+      }
+
+      function renderComboStepPanel(index, title, max, chips, optional = false) {
+        const counter = optional
+          ? `<span class="combo-step__counter is-optional">${copy("optionalHint")}</span>`
+          : `<span class="combo-step__counter" data-step-counter data-step-max="${max}">0/${max} ${copy("chosen")}</span>`;
+        return `
+          <section class="combo-step" data-step-panel="${index}"${index === 0 ? "" : " hidden"}>
+            <div class="combo-step__head">
+              <h3 class="combo-step__title">${escapeHtml(title)}</h3>
+              ${counter}
+            </div>
+            <div class="combo-chip-grid">${chips}</div>
+          </section>
+        `;
+      }
+
+      function renderComboStepDot(index, label) {
+        return `
+          <button type="button" class="combo-step-dot${index === 0 ? " is-active" : ""}" data-step-dot="${index}">
+            <span class="combo-step-dot__num">${index + 1}</span>
+            <span class="combo-step-dot__label">${escapeHtml(label)}</span>
+          </button>
+        `;
+      }
+
+      function renderComboMenus(period = "pranzo") {
+        if (!comboGrid) return;
+        const visibleMenus = comboMenus.filter((item) => item.period === period);
+        comboGrid.innerHTML = visibleMenus.map((menu) => {
+          const panels = [];
+          const dots = [];
+          let stepIndex = 0;
+
+          menu.groups.forEach((group, gi) => {
+            const chips = group.products.map((productId) => renderComboChip({
+              comboId: menu.id,
+              groupId: `group-${gi}`,
+              label: comboProductShortLabel(productId),
+              value: productId,
+              max: group.max,
+              checked: false,
+              image: comboProductImage(productId)
+            })).join("");
+            panels.push(renderComboStepPanel(stepIndex, comboGroupTitle(group), group.max, chips));
+            dots.push(renderComboStepDot(stepIndex, copy("stepSpicchi")));
+            stepIndex += 1;
+          });
+
+          const drinkChips = comboDrinks(menu).map((drink, index) => renderComboChip({
+            comboId: menu.id,
+            groupId: "drink",
+            label: drink,
+            value: drink,
+            max: 1,
+            checked: false,
+            image: comboDrinkImage(drink)
+          })).join("");
+          panels.push(renderComboStepPanel(stepIndex, copy("includedDrink"), 1, drinkChips));
+          dots.push(renderComboStepDot(stepIndex, copy("stepDrink")));
+          stepIndex += 1;
+
+          const extraChips = comboExtraLabels().map((extra, index) => renderComboChip({
+            comboId: menu.id,
+            groupId: "extra",
+            label: extra,
+            value: `extra-${index}`,
+            max: comboExtras.length,
+            extra: true,
+            image: comboExtraImages[index]
+          })).join("");
+          panels.push(renderComboStepPanel(stepIndex, copy("optionalExtras"), 0, extraChips, true));
+          dots.push(renderComboStepDot(stepIndex, copy("stepExtra")));
+
+          const stepTotal = stepIndex + 1;
+
+          return `
+            <article class="combo-card" data-combo-card data-combo-id="${escapeHtml(menu.id)}">
+              <div class="combo-card__image-wrap">
+                <span class="combo-card__badge">${escapeHtml(comboField(menu, "badge"))}</span>
+                ${isPlantMenu(menu) ? renderPlantBadge("combo-card__plant") : ""}
+                <img class="combo-card__image" src="${escapeHtml(menu.image)}" alt="${escapeHtml(menu.name)}">
+              </div>
+              <div class="combo-card__body">
+                <div class="combo-card__meta">
+                  <span class="combo-card__period">${escapeHtml(comboField(menu, "badge"))}</span>
+                  <span class="combo-card__include">${escapeHtml(comboField(menu, "include"))}</span>
+                </div>
+                <h2 class="combo-card__title">${escapeHtml(menu.name)}</h2>
+                <p class="combo-card__price">${formatPrice(menu.price)}</p>
+                <p class="combo-card__description">${escapeHtml(comboField(menu, "description"))}</p>
+                <div class="combo-card__actions">
+                  <button class="combo-card__cta" type="button" data-combo-toggle>${copy("chooseMenu")}</button>
+                </div>
+                <div class="combo-config" hidden data-combo-detail data-step="0" data-step-total="${stepTotal}">
+                  <div class="combo-config__progress">${dots.join("")}</div>
+                  <div class="combo-config__panels">${panels.join("")}</div>
+                  <div class="combo-config__nav">
+                    <button type="button" class="combo-nav__btn" data-step-prev disabled>${copy("back")}</button>
+                    <button type="button" class="combo-nav__btn is-primary" data-step-next>${copy("next")}</button>
+                  </div>
+                  <div class="combo-config__recap" data-combo-live-recap>
+                    <div class="combo-recap__list" data-recap-chips></div>
+                    <div class="combo-recap__foot">
+                      <span class="combo-recap__price" data-recap-price>${formatPrice(menu.price)}</span>
+                      <div class="combo-card__cart" data-combo-cart-actions="${escapeHtml(menu.id)}">
+                        ${renderComboCartControl(menu)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function comboConfigEl(card) {
+        return card.querySelector("[data-combo-detail]");
+      }
+
+      function comboStepTotal(card) {
+        const cfg = comboConfigEl(card);
+        return Number(cfg?.dataset.stepTotal) || 1;
+      }
+
+      function setComboStep(card, index) {
+        const cfg = comboConfigEl(card);
+        if (!cfg) return;
+        const total = comboStepTotal(card);
+        const next = Math.max(0, Math.min(index, total - 1));
+        cfg.dataset.step = String(next);
+
+        card.querySelectorAll("[data-step-panel]").forEach((panel) => {
+          panel.hidden = Number(panel.dataset.stepPanel) !== next;
+        });
+        card.querySelectorAll("[data-step-dot]").forEach((dot) => {
+          const di = Number(dot.dataset.stepDot);
+          dot.classList.toggle("is-active", di === next);
+          dot.classList.toggle("is-done", di < next);
+        });
+
+        const prevBtn = cfg.querySelector("[data-step-prev]");
+        const nextBtn = cfg.querySelector("[data-step-next]");
+        if (prevBtn) prevBtn.disabled = next === 0;
+        if (nextBtn) {
+          const last = next === total - 1;
+          nextBtn.textContent = last ? copy("done") : copy("next");
+          nextBtn.classList.toggle("is-done", last);
+        }
+      }
+
+      function enforceGroupLimits(card) {
+        const groups = new Map();
+        card.querySelectorAll("[data-combo-input]").forEach((input) => {
+          const chip = input.closest(".combo-chip");
+          if (chip) chip.classList.toggle("is-selected", input.checked);
+          if (input.type !== "checkbox" || input.dataset.comboExtra === "true") return;
+          const key = input.dataset.comboGroup;
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(input);
+        });
+        groups.forEach((inputs) => {
+          const max = Number(inputs[0].dataset.comboMax) || inputs.length;
+          const checked = inputs.filter((input) => input.checked).length;
+          inputs.forEach((input) => {
+            const disable = !input.checked && checked >= max;
+            input.disabled = disable;
+            input.closest(".combo-chip")?.classList.toggle("is-disabled", disable);
+          });
+        });
+      }
+
+      function updateComboCounters(card) {
+        card.querySelectorAll("[data-step-panel]").forEach((panel) => {
+          const counter = panel.querySelector("[data-step-counter]");
+          if (!counter || !counter.dataset.stepMax) return;
+          const max = Number(counter.dataset.stepMax);
+          const checked = panel.querySelectorAll("[data-combo-input]:checked").length;
+          counter.textContent = `${checked}/${max} ${copy("chosen")}`;
+          counter.classList.toggle("is-full", checked >= max);
+        });
+      }
+
+      function renderComboLiveRecap(card) {
+        const cfg = comboConfigEl(card);
+        if (!cfg) return;
+        const menu = comboMenus.find((item) => item.id === card.dataset.comboId);
+        if (!menu) return;
+        const selection = readComboSelection(card);
+        const list = cfg.querySelector("[data-recap-chips]");
+        const priceEl = cfg.querySelector("[data-recap-price]");
+
+        if (list) {
+          const items = [];
+          selection.products.forEach((productId) => items.push({
+            image: comboProductImage(productId),
+            label: comboProductShortLabel(productId)
+          }));
+          const drinkChecked = card.querySelector('[data-combo-group="drink"]:checked');
+          if (drinkChecked) {
+            const drink = drinkChecked.value;
+            items.push({ image: comboDrinkImage(drink), label: drink });
+          }
+          selection.extras.forEach((index) => items.push({
+            image: comboExtraImages[index],
+            label: comboExtraLabels()[index]
+          }));
+
+          list.innerHTML = items.length
+            ? items.map((item) => `
+                <span class="combo-recap__chip">
+                  ${item.image
+                    ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async">`
+                    : `<span class="combo-recap__glyph">${DRINK_GLYPH_SVG}</span>`}
+                  <span class="combo-recap__chip-name">${escapeHtml(item.label)}</span>
+                </span>
+              `).join("")
+            : `<span class="combo-recap__empty">${copy("recapEmpty")}</span>`;
+        }
+
+        if (priceEl) {
+          priceEl.textContent = formatPrice(menu.price + comboSelectionExtraTotal(selection));
+        }
+      }
+
+      function comboSelectionComplete(card) {
+        const menu = comboMenus.find((item) => item.id === card.dataset.comboId);
+        if (!menu) return false;
+        const groupsOk = menu.groups.every((group, gi) =>
+          card.querySelectorAll(`[data-combo-group="group-${gi}"]:checked`).length >= group.max);
+        const drinkOk = card.querySelectorAll('[data-combo-group="drink"]:checked').length >= 1;
+        return groupsOk && drinkOk;
+      }
+
+      function updateComboAddState(card) {
+        const btn = card.querySelector("[data-add-combo]");
+        if (!btn) return;
+        const complete = comboSelectionComplete(card);
+        btn.disabled = !complete;
+        btn.classList.toggle("is-disabled", !complete);
+      }
+
+      function initComboConfig(card) {
+        enforceGroupLimits(card);
+        updateComboCounters(card);
+        setComboStep(card, 0);
+        renderComboLiveRecap(card);
+        updateComboAddState(card);
       }
 
       function allergenLabel(product) {
@@ -2625,13 +4422,20 @@
       }
 
       function cartTotal() {
-        return cartItems().reduce((sum, item) => sum + item.product.price * item.qty, 0);
+        return cartItems().reduce((sum, item) => sum + comboConfiguredPrice(item.product) * item.qty, 0);
       }
 
       function setQty(id, qty) {
         const nextQty = Math.max(0, Number(qty) || 0);
-        if (nextQty === 0) cart.delete(id);
-        else cart.set(id, nextQty);
+        if (nextQty === 0) {
+          cart.delete(id);
+          if (id.startsWith("combo-")) {
+            comboSelections.delete(id);
+            saveComboSelections();
+          }
+        } else {
+          cart.set(id, nextQty);
+        }
         saveCart();
         updateCartUI();
       }
@@ -2680,15 +4484,19 @@
       function renderProduct(product) {
         const title = productTitle(product);
         const name = productName(product);
+        const kickerName = productKickerName(product);
         const nameClass = `product-name${product.emphasisName ? " is-emphasis" : ""}`;
         return `
           <section class="${sectionClass(product)}" id="${product.id}" data-category="${product.category}" data-product-id="${product.id}" style="--accent:${product.accent || "var(--clove-purple)"}">
             <div class="product-kicker">
               <div class="product-kicker__left">
                 <span class="product-number">${product.number || categoryLabel(product.category)}</span>
-                <span class="${nameClass}">${name}</span>
+                <span class="${nameClass}">${kickerName}</span>
               </div>
-              <span class="product-allergens">${allergenLabel(product)}</span>
+              <div class="product-kicker__right">
+                ${isPlantProduct(product) ? renderPlantBadge() : ""}
+                <span class="product-allergens">${allergenLabel(product)}</span>
+              </div>
             </div>
             <h2 class="${titleClass(product)}">${title}</h2>
             <div class="product-stage">
@@ -2756,6 +4564,15 @@
         `;
       }
 
+      function renderCategoryHeader(categoryId) {
+        const title = categoryLabel(categoryId);
+        return `
+          <section class="category-title-section" id="${categoryId}" data-category="${categoryId}" aria-label="${title}">
+            <h2 class="category-title">${title}</h2>
+          </section>
+        `;
+      }
+
       function renderMenu() {
         const visibleProducts = products.filter((product) => !product.compact);
         const chunks = [];
@@ -2763,13 +4580,10 @@
         categories.forEach((category) => {
           if (["bevande", "birre", "cocktail", "vini"].includes(category.id)) return;
           const categoryProducts = visibleProducts.filter((product) => product.category === category.id);
-          categoryProducts.forEach((product, index) => {
-            const html = renderProduct(product);
-            if (index === 0) {
-              chunks.push(html.replace(`id="${product.id}"`, `id="${category.id}" data-anchor-product="${product.id}"`));
-            } else {
-              chunks.push(html);
-            }
+          if (!categoryProducts.length) return;
+          chunks.push(renderCategoryHeader(category.id));
+          categoryProducts.forEach((product) => {
+            chunks.push(renderProduct(product));
           });
         });
 
@@ -2801,7 +4615,6 @@
         openOrderButton.textContent = copy("goToOrder");
         const orderTitle = document.querySelector(".order-title");
         orderTitle.textContent = copy("orderTitle");
-        orderTitle.dataset.stamp = copy("orderStamp");
         document.querySelector(".order-note").textContent = copy("orderNote");
         emptyOrder.textContent = copy("emptyOrder");
         document.querySelector(".total-label").textContent = copy("total");
@@ -2810,13 +4623,19 @@
         backAllergensButton.textContent = copy("backToMenu");
         document.querySelector(".allergen-title").textContent = copy("allergens");
         document.querySelector(".order-transition__text").innerHTML = copy("transition");
+        document.querySelector(".combo-menu-copy").textContent = copy("menuSubtitle");
+        document.querySelectorAll("[data-combo-period]").forEach((button) => {
+          button.textContent = copy(button.dataset.comboPeriod);
+        });
         document.querySelectorAll("[data-scroll-target]").forEach((button) => {
           button.textContent = categoryLabel(button.dataset.scrollTarget);
         });
       }
 
       function renderLanguage() {
+        const activeComboPeriod = document.querySelector("[data-combo-period].is-active")?.dataset.comboPeriod || "pranzo";
         updateStaticLabels();
+        renderComboMenus(activeComboPeriod);
         renderMenu();
         renderAllergenPage();
         updateCartUI();
@@ -2864,6 +4683,7 @@
 
       function updateCartUI() {
         updateProductActions();
+        updateComboActions();
         updateHeaderButton();
         if (!orderView.hidden) renderOrder();
       }
@@ -2879,7 +4699,8 @@
         cardItems.forEach(({ product, qty }) => {
           const name = productName(product);
           const card = document.createElement("article");
-          card.className = "order-card";
+          const isComboProduct = product.category === "menu-combo";
+          card.className = `order-card${isComboProduct ? " is-combo" : ""}`;
           card.dataset.productId = product.id;
 
           const title = document.createElement("h2");
@@ -2906,7 +4727,13 @@
           const qtyWrap = document.createElement("div");
           qtyWrap.innerHTML = renderQtyControl(product, "order-card__qty");
 
-          card.append(title, media, meta, qtyWrap.firstElementChild);
+          const parts = [title, media, meta];
+          if (isComboProduct) {
+            parts.push(renderOrderComboThumbs(product.id));
+            parts.push(renderOrderComboRecap(product.id));
+          }
+          parts.push(qtyWrap.firstElementChild);
+          card.append(...parts);
           orderGrid.append(card);
         });
 
@@ -3029,6 +4856,63 @@
       }
 
       document.addEventListener("click", (event) => {
+        const comboPeriodButton = event.target.closest("[data-combo-period]");
+        if (comboPeriodButton) {
+          document.querySelectorAll("[data-combo-period]").forEach((button) => {
+            const isActive = button === comboPeriodButton;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-selected", String(isActive));
+          });
+          renderComboMenus(comboPeriodButton.dataset.comboPeriod);
+          return;
+        }
+
+        const comboToggle = event.target.closest("[data-combo-toggle]");
+        if (comboToggle) {
+          const card = comboToggle.closest("[data-combo-card]");
+          const detail = card?.querySelector("[data-combo-detail]");
+          if (!detail) return;
+          const isOpening = detail.hidden;
+          detail.hidden = !isOpening;
+          comboToggle.textContent = isOpening ? copy("close") : copy("chooseMenu");
+          comboToggle.classList.toggle("is-open", isOpening);
+          if (isOpening) {
+            initComboConfig(card);
+            detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+          return;
+        }
+
+        const stepDot = event.target.closest("[data-step-dot]");
+        if (stepDot) {
+          const card = stepDot.closest("[data-combo-card]");
+          if (card) setComboStep(card, Number(stepDot.dataset.stepDot));
+          return;
+        }
+
+        const stepNext = event.target.closest("[data-step-next]");
+        if (stepNext) {
+          const card = stepNext.closest("[data-combo-card]");
+          if (card) setComboStep(card, Number(comboConfigEl(card).dataset.step) + 1);
+          return;
+        }
+
+        const stepPrev = event.target.closest("[data-step-prev]");
+        if (stepPrev) {
+          const card = stepPrev.closest("[data-combo-card]");
+          if (card) setComboStep(card, Number(comboConfigEl(card).dataset.step) - 1);
+          return;
+        }
+
+        const addCombo = event.target.closest("[data-add-combo]");
+        if (addCombo) {
+          const card = addCombo.closest("[data-combo-card]");
+          comboSelections.set(addCombo.dataset.addCombo, readComboSelection(card));
+          saveComboSelections();
+          increment(addCombo.dataset.addCombo);
+          return;
+        }
+
         const add = event.target.closest("[data-add]");
         if (add) {
           increment(add.dataset.add);
@@ -3047,6 +4931,27 @@
           return;
         }
 
+      });
+
+      document.addEventListener("change", (event) => {
+        const input = event.target.closest("[data-combo-input]");
+        if (!input) return;
+        const card = input.closest("[data-combo-card]");
+        if (!card) return;
+        const groupId = input.dataset.comboGroup;
+        const max = Number(input.dataset.comboMax) || 1;
+
+        enforceGroupLimits(card);
+        updateComboCounters(card);
+        renderComboLiveRecap(card);
+        updateComboAddState(card);
+
+        const comboCartId = `combo-${card.dataset.comboId}`;
+        if (cartQty(comboCartId) > 0) {
+          comboSelections.set(comboCartId, readComboSelection(card));
+          saveComboSelections();
+          updateCartUI();
+        }
       });
 
       document.querySelectorAll("[data-scroll-target]").forEach((button) => {
@@ -3072,6 +4977,8 @@
       backAllergensButton.addEventListener("click", showMenu);
       clearButton.addEventListener("click", () => {
         cart.clear();
+        comboSelections.clear();
+        saveComboSelections();
         saveCart();
         updateCartUI();
       });
@@ -3098,7 +5005,7 @@
         floatingArrow.classList.toggle("is-bottom", isNearBottom);
         floatingArrow.classList.toggle("is-hidden", !isVisible);
 
-        document.querySelectorAll(".product-kicker, .product-title, .compact-title").forEach((element) => {
+        document.querySelectorAll(".product-kicker, .product-title, .category-title, .compact-title").forEach((element) => {
           element.style.setProperty("--title-float", titleValue);
         });
       }
@@ -3112,6 +5019,7 @@
       window.addEventListener("resize", updateScrollState);
 
       loadCart();
+      loadComboSelections();
       renderLanguage();
     </script>
   </body>
