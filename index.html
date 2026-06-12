@@ -457,6 +457,43 @@
         display: none;
       }
 
+      /* Card "segnata": tinta viola leggera + bordo pieno, così si capisce a colpo d'occhio che è in carrello */
+      .combo-card.is-in-cart {
+        border-color: var(--clove-purple);
+        box-shadow: 0 10px 0 rgba(92, 42, 128, 0.14), inset 0 0 0 1.5px var(--clove-purple);
+        background: linear-gradient(180deg, rgba(92, 42, 128, 0.06), rgba(92, 42, 128, 0.02));
+      }
+
+      /* Timbro "SEGNATO ×N" sull'angolo della foto */
+      .combo-card__marked {
+        position: absolute;
+        top: 14px;
+        right: 12px;
+        z-index: 4;
+        padding: 7px 12px 8px;
+        border: 2px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: rotate(5deg);
+        box-shadow: 2px 4px 0 rgba(92, 42, 128, 0.18);
+      }
+
+      .combo-card__marked[hidden] {
+        display: none;
+      }
+
+      /* se c'è anche il badge veg in alto a destra, scendo il timbro per non sovrapporli */
+      .combo-card.is-in-cart .combo-card__plant {
+        top: 52px;
+      }
+
       .combo-card__image-wrap {
         position: relative;
         min-height: clamp(318px, 78vw, 380px);
@@ -593,6 +630,49 @@
         text-transform: uppercase;
         transform: scaleX(0.82);
         transform-origin: left center;
+      }
+
+      .combo-card__included {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 11px 0 0;
+        padding: 5px 14px 6px 6px;
+        border: 1.5px solid var(--clove-purple);
+        border-radius: 999px;
+        background: var(--clove-white);
+        color: var(--clove-purple);
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .combo-card__included img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: rgba(92, 42, 128, 0.06);
+      }
+
+      .combo-card__included-tag {
+        padding: 4px 8px 5px;
+        border-radius: 999px;
+        background: var(--clove-purple);
+        color: var(--clove-white);
+        font-size: 10px;
+        letter-spacing: 0.3px;
+      }
+
+      .combo-recap__chip.is-included {
+        border-style: dashed;
+      }
+
+      .combo-recap__chip.is-included em {
+        font-style: normal;
+        font-size: 8px;
+        opacity: 0.62;
       }
 
       .combo-card__actions {
@@ -930,6 +1010,36 @@
         opacity: 0.4;
         cursor: not-allowed;
         filter: grayscale(0.4);
+      }
+
+      /* Pulsante "NESSUN EXTRA": salta gli extra e conclude (occupa lo slot vuoto della griglia) */
+      .combo-chip--skip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 68px;
+        padding: 8px 12px;
+        border: 1.5px dashed rgba(92, 42, 128, 0.55);
+        border-radius: 14px;
+        background: transparent;
+        color: var(--clove-purple);
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1.04;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+      }
+
+      .combo-chip--skip:active {
+        transform: scale(0.98);
+        background: rgba(92, 42, 128, 0.06);
+      }
+
+      .combo-chip__skip-arrow {
+        font-size: 17px;
+        line-height: 1;
       }
 
       .combo-config__nav {
@@ -2679,7 +2789,12 @@
           done: "FATTO",
           optionalHint: "FACOLTATIVO",
           recapEmpty: "COMPONI IL TUO MENU",
-          follow: "SEGUICI"
+          follow: "SEGUICI",
+          stepFritto: "POLPETTA",
+          frittoTag: "POLPETTA",
+          includedTag: "INCLUSO",
+          skipExtras: "NESSUN EXTRA",
+          marked: "SEGNATO"
         },
         en: {
           allergens: "ALLERGENS",
@@ -2721,7 +2836,12 @@
           done: "DONE",
           optionalHint: "OPTIONAL",
           recapEmpty: "BUILD YOUR MENU",
-          follow: "FOLLOW US"
+          follow: "FOLLOW US",
+          stepFritto: "POLPETTA",
+          frittoTag: "POLPETTA",
+          includedTag: "INCLUDED",
+          skipExtras: "NO EXTRAS",
+          marked: "ADDED"
         }
       };
 
@@ -2980,15 +3100,15 @@
           number: "SPICCHIO",
           title: "MARINARA",
           name: "Marinara",
-          ingredients: ["POMODORO SAN MARZANO /", "SALSA CON AGLIO / OLIO EVO /", "PREZZEMOLO"],
-          highlights: ["Pomodoro San Marzano", "Aglio", "Prezzemolo"],
+          ingredients: ["POMODORO SAN MARZANO /", "SALSA: AGLIO / OLIO EVO / PREZZEMOLO /", "POLVERE DI CAPPERI / SALE"],
+          highlights: ["Pomodoro San Marzano", "Aglio", "Prezzemolo", "Polvere di capperi"],
           price: 290,
           image: "img/SPICCHIO_MARINARA_cut.png",
           gallery: [
             "../01_Spicchi/MENU/Spicchio_Marinara/hf_20260529_235305_0118a981-ae5d-40b8-85b5-18d518c56a68.png",
             "../01_Spicchi/MENU/Spicchio_Marinara/hf_20260529_235830_0611ddf3-6cf8-4440-a764-263ff823a82c.png"
           ],
-          story: "Rossa, essenziale, senza latticini: pomodoro, aglio e prezzemolo.",
+          story: "Rossa, essenziale, senza latticini: pomodoro, aglio, prezzemolo e polvere di capperi.",
           tags: ["BASE", "2,90", "ROSSA"],
           className: "is-wide is-base",
           accent: "#a8431f"
@@ -3422,8 +3542,8 @@
           compact: true,
           name: "Ichnusa Non Filtrata",
           detail: "Lager / 5%",
-          service: "44CL",
-          price: 450
+          service: "33CL",
+          price: 350
         },
         {
           id: "spritz",
@@ -3440,7 +3560,7 @@
           allergens: [],
           category: "cocktail",
           compact: true,
-          name: "Vodka Lemon",
+          name: "Vodka Tonic/Lemon",
           detail: "Cocktail",
           service: "COCKTAIL",
           price: 700
@@ -3450,7 +3570,7 @@
           allergens: [],
           category: "cocktail",
           compact: true,
-          name: "Gin Lemon",
+          name: "Gin Tonic/Lemon",
           detail: "Cocktail",
           service: "COCKTAIL",
           price: 700
@@ -3696,6 +3816,7 @@
           badgeEn: "Lunch",
           description: "Salumi + drink",
           descriptionEn: "Cured meats + drink",
+          includedFritto: 2,
           groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-1", "spicchio-5", "spicchio-7", "spicchio-8"] }],
           drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
           drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
@@ -3704,7 +3825,7 @@
           id: "orto-latte",
           period: "pranzo",
           name: "L'Orto e il Latte",
-          price: 1050,
+          price: 1090,
           image: "img/menu-sprint/combo-cutout/orto-latte.png",
           include: "2 spicchi + drink",
           includeEn: "2 spicchi + drink",
@@ -3712,6 +3833,7 @@
           badgeEn: "Lunch",
           description: "Vegetale + drink",
           descriptionEn: "Vegetable + drink",
+          includedFritto: 1,
           groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }],
           drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
           drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
@@ -3728,6 +3850,7 @@
           badgeEn: "Lunch",
           description: "Classici + drink",
           descriptionEn: "Classics + drink",
+          includedFritto: 0,
           groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-1", "spicchio-2", "spicchio-3", "spicchio-4", "spicchio-5"] }],
           drinks: ["Acqua Ferrarelle 33cl", "Soft drink a scelta"],
           drinksEn: ["Ferrarelle water 33cl", "Soft drink of your choice"]
@@ -3752,7 +3875,7 @@
           id: "bassa-marea",
           period: "aperitivo",
           name: "Bassa Marea",
-          price: 1580,
+          price: 1650,
           image: "img/menu-sprint/combo-cutout/bassa-marea.png",
           include: "2 spicchi + drink",
           includeEn: "2 spicchi + drink",
@@ -3768,7 +3891,7 @@
           id: "radici",
           period: "aperitivo",
           name: "Radici",
-          price: 1450,
+          price: 1550,
           image: "img/menu-sprint/combo-cutout/radici.png",
           include: "2 spicchi + drink",
           includeEn: "2 spicchi + drink",
@@ -3776,6 +3899,7 @@
           badgeEn: "Aperitivo",
           description: "Vegetale + calice o Spritz",
           descriptionEn: "Vegetable + glass or Spritz",
+          includedFritto: 1,
           groups: [{ title: "Scegli 2 spicchi", titleEn: "Choose 2 spicchi", max: 2, products: ["spicchio-2", "spicchio-3", "spicchio-4"] }],
           drinks: ["Calice vino naturale", "Spritz"],
           drinksEn: ["Natural wine by the glass", "Spritz"]
@@ -3811,7 +3935,10 @@
           badgeEn: "Dinner",
           description: "Carne + salumi + calice",
           descriptionEn: "Meat + cured meats + glass",
-          groups: [{ title: "Scegli 3 spicchi", titleEn: "Choose 3 spicchi", max: 3, products: ["spicchio-1", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8"] }],
+          groups: [
+            { title: "Scegli 3 spicchi", titleEn: "Choose 3 spicchi", max: 3, products: ["spicchio-1", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8"] },
+            { title: "Scegli 1 polpetta", titleEn: "Choose 1 polpetta", max: 1, kind: "fritto", stepKey: "stepFritto", products: ["fritto-2", "fritto-1", "fritto-0"] }
+          ],
           drinks: ["Calice vino naturale"],
           drinksEn: ["Natural wine by the glass"]
         },
@@ -3872,6 +3999,13 @@
       const comboExtrasEn = ["Patate croc +3,00€", "Veg polpette +3,00€", "Polpettine +4,00€"];
       const comboExtraPrices = [300, 300, 400];
       const comboExtraImages = ["img/PATATE_CROC_menu.png", "img/POLPETTE_VEG_cut.png", "img/POLPETTINE_cut.png"];
+      // Nomi brevi dei fritti (senza prezzo), index-allineati con comboExtras: 0 patate, 1 veg, 2 polpettine
+      const comboFrittoNames = ["Patate croc", "Polpette veg", "Polpettine"];
+      const comboFrittoNamesEn = ["Patate croc", "Veg polpette", "Polpettine"];
+      function comboFrittoName(i) {
+        const list = currentLanguage === "en" ? comboFrittoNamesEn : comboFrittoNames;
+        return list[i] || "";
+      }
       // Miniature scontornate per i drink. Solo i file effettivamente presenti sono mappati;
       // gli altri usano il glyph SVG pulito come fallback (mai il pallino).
       const comboDrinkAssets = new Set([
@@ -3993,6 +4127,8 @@
       }
 
       function comboProductShortLabel(productId) {
+        const fr = String(productId).match(/^fritto-(\d+)$/);
+        if (fr) return comboFrittoName(Number(fr[1]));
         const normalizedId = productId.replace(/^spicchio-(\d+)$/, "n$1");
         const product = productById.get(normalizedId);
         if (!product) return productId;
@@ -4000,6 +4136,8 @@
       }
 
       function comboProductImage(productId) {
+        const fr = String(productId).match(/^fritto-(\d+)$/);
+        if (fr) return comboExtraImages[Number(fr[1])] || "";
         const normalizedId = productId.replace(/^spicchio-(\d+)$/, "n$1");
         const product = productById.get(normalizedId);
         return product?.image || "";
@@ -4068,12 +4206,15 @@
         if (!menu || !selection) return [];
         const drinkLabels = comboDrinks(menu);
         const extraLabels = comboExtraLabels();
-        const products = selection.products.map((productId) => comboProductShortLabel(productId)).filter(Boolean);
+        const spicchi = selection.products.filter((p) => !/^fritto-/.test(p)).map((p) => comboProductShortLabel(p)).filter(Boolean);
+        const polpetta = selection.products.filter((p) => /^fritto-/.test(p)).map((p) => comboProductShortLabel(p)).filter(Boolean);
         const drink = drinkLabels[selection.drinkIndex] || drinkLabels[0] || copy("includedDrinkFallback");
         const extras = selection.extras.map((index) => extraLabels[index]).filter(Boolean);
         const rows = [];
 
-        if (products.length) rows.push({ tag: "SPICCHI", text: products.join(" + ") });
+        if (spicchi.length) rows.push({ tag: "SPICCHI", text: spicchi.join(" + ") });
+        if (polpetta.length) rows.push({ tag: copy("frittoTag"), text: polpetta.join(" + ") });
+        if (menu.includedFritto != null) rows.push({ tag: copy("includedTag"), text: comboFrittoName(menu.includedFritto) });
         if (drink) rows.push({ tag: "DRINK", text: drink });
         if (extras.length) rows.push({ tag: "EXTRA", text: extras.join(" + ") });
 
@@ -4141,6 +4282,9 @@
           image: comboProductImage(pid),
           label: comboProductShortLabel(pid)
         }));
+        if (menu.includedFritto != null) {
+          items.push({ image: comboExtraImages[menu.includedFritto], label: comboFrittoName(menu.includedFritto) });
+        }
         const drink = comboDrinks(menu)[selection.drinkIndex] || comboDrinks(menu)[0];
         if (drink) items.push({ image: comboDrinkImage(drink), label: drink });
         selection.extras.forEach((index) => items.push({
@@ -4202,7 +4346,16 @@
           const menu = comboMenus.find((item) => item.id === node.dataset.comboCartActions);
           if (menu) node.innerHTML = renderComboCartControl(menu);
           const card = node.closest("[data-combo-card]");
-          if (card) updateComboFinishButton(card);
+          if (card) {
+            updateComboFinishButton(card);
+            const qty = cartQty(`combo-${card.dataset.comboId}`);
+            card.classList.toggle("is-in-cart", qty > 0);
+            const marked = card.querySelector("[data-combo-marked]");
+            if (marked) {
+              marked.hidden = qty === 0;
+              marked.innerHTML = `${copy("marked")} &times;${qty}`;
+            }
+          }
         });
       }
 
@@ -4241,7 +4394,7 @@
               <h3 class="combo-step__title">${escapeHtml(title)}</h3>
               ${counter}
             </div>
-            <div class="combo-chip-grid">${chips}</div>
+            <div class="combo-chip-grid">${chips}${optional ? `<button type="button" class="combo-chip combo-chip--skip" data-skip-extras><span>${copy("skipExtras")}</span><span class="combo-chip__skip-arrow" aria-hidden="true">&rarr;</span></button>` : ""}</div>
           </section>
         `;
       }
@@ -4274,7 +4427,7 @@
               image: comboProductImage(productId)
             })).join("");
             panels.push(renderComboStepPanel(stepIndex, comboGroupTitle(group), group.max, chips));
-            dots.push(renderComboStepDot(stepIndex, copy("stepSpicchi")));
+            dots.push(renderComboStepDot(stepIndex, copy(group.stepKey || "stepSpicchi")));
             stepIndex += 1;
           });
 
@@ -4304,12 +4457,14 @@
           dots.push(renderComboStepDot(stepIndex, copy("stepExtra")));
 
           const stepTotal = stepIndex + 1;
+          const cardQty = cartQty(`combo-${menu.id}`);
 
           return `
-            <article class="combo-card" data-combo-card data-combo-id="${escapeHtml(menu.id)}">
+            <article class="combo-card${cardQty > 0 ? " is-in-cart" : ""}" data-combo-card data-combo-id="${escapeHtml(menu.id)}">
               <div class="combo-card__image-wrap">
                 <span class="combo-card__badge">${escapeHtml(comboField(menu, "badge"))}</span>
                 ${isPlantMenu(menu) ? renderPlantBadge("combo-card__plant") : ""}
+                <span class="combo-card__marked" data-combo-marked${cardQty > 0 ? "" : " hidden"}>${copy("marked")} &times;${cardQty}</span>
                 <img class="combo-card__image" src="${escapeHtml(menu.image)}" alt="${escapeHtml(menu.name)}">
               </div>
               <div class="combo-card__body">
@@ -4320,6 +4475,7 @@
                 <h2 class="combo-card__title">${escapeHtml(menu.name)}</h2>
                 <p class="combo-card__price">${formatPrice(menu.price)}</p>
                 <p class="combo-card__description">${escapeHtml(comboField(menu, "description"))}</p>
+                ${menu.includedFritto != null ? `<p class="combo-card__included"><span class="combo-card__included-tag">${copy("includedTag")}</span><img src="${escapeHtml(comboExtraImages[menu.includedFritto])}" alt="" loading="lazy" decoding="async">${escapeHtml(comboFrittoName(menu.includedFritto))}</p>` : ""}
                 <div class="combo-card__actions">
                   <button class="combo-card__cta" type="button" data-combo-toggle>${copy("chooseMenu")}</button>
                 </div>
@@ -4423,6 +4579,9 @@
             image: comboProductImage(productId),
             label: comboProductShortLabel(productId)
           }));
+          if (menu.includedFritto != null) {
+            items.push({ image: comboExtraImages[menu.includedFritto], label: comboFrittoName(menu.includedFritto), included: true });
+          }
           const drinkChecked = card.querySelector('[data-combo-group="drink"]:checked');
           if (drinkChecked) {
             const drink = drinkChecked.value;
@@ -4435,11 +4594,11 @@
 
           list.innerHTML = items.length
             ? items.map((item) => `
-                <span class="combo-recap__chip">
+                <span class="combo-recap__chip${item.included ? " is-included" : ""}">
                   ${item.image
                     ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async">`
                     : `<span class="combo-recap__glyph">${DRINK_GLYPH_SVG}</span>`}
-                  <span class="combo-recap__chip-name">${escapeHtml(item.label)}</span>
+                  <span class="combo-recap__chip-name">${escapeHtml(item.label)}${item.included ? ` <em>${copy("includedTag")}</em>` : ""}</span>
                 </span>
               `).join("")
             : `<span class="combo-recap__empty">${copy("recapEmpty")}</span>`;
@@ -5002,6 +5161,28 @@
         if (stepDot) {
           const card = stepDot.closest("[data-combo-card]");
           if (card) setComboStep(card, Number(stepDot.dataset.stepDot));
+          return;
+        }
+
+        const skipExtras = event.target.closest("[data-skip-extras]");
+        if (skipExtras) {
+          const card = skipExtras.closest("[data-combo-card]");
+          if (!card) return;
+          card.querySelectorAll('[data-combo-extra="true"]:checked').forEach((input) => {
+            input.checked = false;
+          });
+          enforceGroupLimits(card);
+          updateComboCounters(card);
+          renderComboLiveRecap(card);
+          updateComboFinishButton(card);
+          const comboCartId = `combo-${card.dataset.comboId}`;
+          if (cartQty(comboCartId) > 0) {
+            comboSelections.set(comboCartId, readComboSelection(card));
+            saveComboSelections();
+            updateCartUI();
+          }
+          const nav = card.querySelector("[data-step-next]");
+          if (nav && !nav.disabled) nav.click();
           return;
         }
 
