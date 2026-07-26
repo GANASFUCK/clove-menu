@@ -3886,7 +3886,7 @@
           descriptionEn: "Cured meat + free choice + glass",
           groups: [
             { title: "Scegli 1 affettato", titleEn: "Choose 1 cured meat", max: 1, products: ["spicchio-1", "spicchio-5", "spicchio-7", "spicchio-8"] },
-            { title: "Scegli 1 libero", titleEn: "Choose 1 free choice", max: 1, products: ["spicchio-1", "spicchio-2", "spicchio-3", "spicchio-4", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8", "spicchio-9", "spicchio-10"] }
+            { title: "Scegli 1 libero", titleEn: "Choose 1 free choice", max: 1, products: ["spicchio-1", "spicchio-2", "spicchio-3", "spicchio-4", "spicchio-5", "spicchio-6", "spicchio-7", "spicchio-8", "spicchio-10"] }
           ],
           drinks: ["Calice vino naturale", "Spritz"],
           drinksEn: ["Natural wine by the glass", "Spritz"]
@@ -4750,7 +4750,7 @@
             </div>
             <p class="ingredients">${productIngredients(product).map((line, index) => `${index ? "<br>" : ""}${line}`).join("")}</p>
             <div class="product-actions" data-actions-for="${product.id}">
-              ${renderQtyControl(product)}
+              ${product.soldOut ? "" : renderQtyControl(product)}
             </div>
           </section>
         `;
@@ -4895,7 +4895,7 @@
       function updateProductActions() {
         products.forEach((product) => {
           const actionNode = document.querySelector(`[data-actions-for="${product.id}"]`);
-          if (actionNode) actionNode.innerHTML = renderQtyControl(product);
+          if (actionNode) actionNode.innerHTML = product.soldOut ? "" : renderQtyControl(product);
         });
 
         document.querySelectorAll(".compact-row").forEach((row) => {
